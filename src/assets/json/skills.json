@@ -1,29 +1,104 @@
 {
     "skills": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "React",
-        "Node",
-        "Express",
-        "MongoDB",
-        "Python",
-        "Django",
-        "Flask",
-        "Java",
-        "Spring",
-        "C",
-        "C++",
-        "C#",
-        "SQL",
-        "Git",
-        "GitHub",
-        "Heroku",
-        "Firebase",
-        "AWS",
-        "Azure",
-        "Google Cloud",
-        "Netlify",
-        "Postman"
+        {
+            "skill": "HTML",
+            "skillId": 1
+        },
+        {
+            "skill": "CSS",
+            "skillId": 2
+        },
+        {
+            "skill": "JavaScript",
+            "skillId": 3
+        },
+        {
+            "skill": "ReactJS",
+            "skillId": 4
+        },
+        {
+            "skill": "Node",
+            "skillId": 5
+        },
+        {
+            "skill": "Express",
+            "skillId": 6
+        },
+        {
+            "skill": "MongoDB",
+            "skillId": 7
+        },
+        {
+            "skill": "Python",
+            "skillId": 8
+        },
+        {
+            "skill": "Django",
+            "skillId": 9
+        },
+        {
+            "skill": "Flask",
+            "skillId": 10
+        },
+        {
+            "skill": "Java",
+            "skillId": 11
+        },
+        {
+            "skill": "Spring",
+            "skillId": 12
+        },
+        {
+            "skill": "C",
+            "skillId": 13
+        },
+        {
+            "skill": "C++",
+            "skillId": 14
+        },
+        {
+            "skill": "C#",
+            "skillId": 15
+        },
+        {
+            "skill": "SQL",
+            "skillId": 16
+        },
+        {
+            "skill": "Git",
+            "skillId": 17
+        },
+        {
+            "skill": "GitHub",
+            "skillId": 18
+        },
+        {
+            "skill": "Heroku",
+            "skillId": 19
+        },
+        {
+            "skill": "Firebase",
+            "skillId": 20
+        },
+        {
+            "skill": "AWS",
+            "skillId": 21
+        },
+        {
+            "skill": "Azure",
+            "skillId": 22
+        },
+        {
+            "skill": "Google Cloud",
+            "skillId": 23
+        },
+        {
+            "skill": "Netlify",
+            "skillId": 24
+        },
+        {
+            "skill": "Postman",
+            "skillId": 25
+        }
     ]
 }
