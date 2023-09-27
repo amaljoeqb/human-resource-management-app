@@ -5,11 +5,16 @@ const table = document.querySelector('.emp-table');
 const tableHeader = table.querySelector('.header-row');
 const tableBody = table.querySelector('tbody');
 const columnTitles = tableHeader.querySelectorAll('.column-title');
+const filterButtons = document.querySelectorAll('.filter');
 
 let employees = {}
 
 columnTitles.forEach((columnTitle) => {
     columnTitle.addEventListener('click', onClickColumnTitle);
+});
+
+filterButtons.forEach((filterButton) => {
+    filterButton.addEventListener('click', onClickFilterButton);
 });
 
 /**
@@ -78,7 +83,8 @@ function onClickColumnTitle(event) {
  * Function to trigger on click of filter button
  */
 function onClickFilterButton(event) {
-    event.currentTarget.classList.toggle('hidden');
+    const filterForm = event.currentTarget.parentElement.querySelector('.filter-form');
+    filterForm.classList.toggle('hidden');
 }
 
 
