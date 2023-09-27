@@ -74,6 +74,13 @@ function onClickColumnTitle(event) {
     renderTable(sortedEmployees);
 }
 
+/**
+ * Function to trigger on click of filter button
+ */
+function onClickFilterButton(event) {
+    event.currentTarget.classList.toggle('hidden');
+}
+
 
 loadEmployees().then((data) => {
     renderTable(Object.values(data));

@@ -29,6 +29,7 @@ td {
     margin: 0;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .column-title .up {
@@ -50,4 +51,38 @@ td {
 .filter {
     font-weight: 400;
     font-size: 16px;
+}
+
+.filter-form-container {
+    position: relative;
+    height: 100%;
+    align-self: flex-end;
+}
+
+.filter-form {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    row-gap: 16px;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3), 0 4px 8px 3px rgba(0, 0, 0, .15);
+}
+
+.filter-form button {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.filter-form input {
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline-color: var(--primary-color);
 }
