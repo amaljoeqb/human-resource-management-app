@@ -60,3 +60,5 @@ function filterEmployees(employees, key, value) {
         return employees;
     }
 }
+
+export { sortEmployees, filterEmployees };

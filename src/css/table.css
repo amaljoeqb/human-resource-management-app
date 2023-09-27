@@ -1,0 +1,35 @@
+.table-container {
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.emp-table {
+    border-collapse: collapse;
+    min-width: 1600px;
+    width: 100%;
+}
+
+.emp-table th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+}
+
+.column-title {
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    text-align: start;
+    margin: 0;
+}
+
+.filter {
+    font-weight: 400;
+    font-size: 16px;
+}

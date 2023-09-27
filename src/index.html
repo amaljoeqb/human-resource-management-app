@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR Management</title>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/table.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +14,142 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
-<script src="js/index.js" type="module"></script>
-
 <body>
+    <div class="table-container">
+        <table class="emp-table">
+            <thead>
+                <tr class="header-row">
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="employeeId">
+                                <a href="javascript:void(0)">Employee ID</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="name">
+                                <a href="javascript:void(0)">Name</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="email">
+                                <a href="javascript:void(0)">Email</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="designation">
+                                <a href="javascript:void(0)">Designation</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="department">
+                                <a href="javascript:void(0)">Department</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="skills">
+                                <a href="javascript:void(0)">Skills</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="dateOfBirth">
+                                <a href="javascript:void(0)">Date of Birth</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="joiningDate">
+                                <a href="javascript:void(0)">Joining Date</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="header-container">
+                            <h3 class="column-title" data-key="salary">
+                                <a href="javascript:void(0)">Salary</a>
+                            </h3>
+                            <a href="javascript:void(0)" class="filter">
+                                <span class="material-symbols-outlined">
+                                    filter_alt
+                                </span>
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+    <script src="js/constants.js" type="module"></script>
+    <script src="js/helpers.js" type="module"></script>
+    <script src="js/data.js" type="module"></script>
+    <script src="js/index.js" type="module"></script>
 
 </body>
 
