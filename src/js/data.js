@@ -30,9 +30,9 @@ function sortEmployees(employees, key, asc = true) {
     }
 
     switch (key) {
+        case 'employeeId':
         case 'salary':
             return employees.sort(numericalSort);
-        case 'employeeId':
         case 'name':
         case 'email':
         case 'designation':

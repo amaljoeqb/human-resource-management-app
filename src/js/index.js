@@ -50,6 +50,8 @@ function onClickColumnTitle(event) {
     const clickedTitle = event.currentTarget;
     const isAsc = clickedTitle.classList.contains('asc');
     const isDesc = clickedTitle.classList.contains('desc');
+    let key = event.currentTarget.dataset.key;
+    let asc = true;
 
     // Remove asc and desc classes from all column titles
     columnTitles.forEach(title => {
@@ -62,11 +64,13 @@ function onClickColumnTitle(event) {
     } else if (isAsc) {
         clickedTitle.classList.remove('asc');
         clickedTitle.classList.add('desc');
+        asc = false;
     } else if (isDesc) {
         clickedTitle.classList.remove('desc');
+        // By default, sort employeeId column in ascending order
+        key = 'employeeId';
     }
-    const key = event.target.dataset.key;
-    const sortedEmployees = sortEmployees(Object.values(employees), key, true);
+    const sortedEmployees = sortEmployees(Object.values(employees), key, asc);
     renderTable(sortedEmployees);
 }
 
