@@ -1,0 +1,30 @@
+{
+    "employees": {
+        "trainee2016": {
+            "name": "Shyam",
+            "email": "shyam@mycompany.com",
+            "department": "IT",
+            "skills": [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            "dateOfBirth": "12/01/1990",
+            "joiningDate": "12/01/2023",
+            "salary": 10000
+        },
+        "trainee2017": {
+            "name": "Bob",
+            "email": "bob@mycompany.com",
+            "department": "Development",
+            "skills": [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            "dateOfBirth": "12/01/1990",
+            "joiningDate": "12/01/2023",
+            "salary": 10000
+        }
+    }
+}
