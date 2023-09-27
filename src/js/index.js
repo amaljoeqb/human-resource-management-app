@@ -47,9 +47,26 @@ async function loadEmployees() {
  * Function to trigger on click of column title
  */
 function onClickColumnTitle(event) {
+    const clickedTitle = event.currentTarget;
+    const isAsc = clickedTitle.classList.contains('asc');
+    const isDesc = clickedTitle.classList.contains('desc');
+
+    // Remove asc and desc classes from all column titles
+    columnTitles.forEach(title => {
+        title.classList.remove('asc', 'desc');
+    });
+
+    // Toggle asc and desc classes on clicked column title
+    if (!isAsc && !isDesc) {
+        clickedTitle.classList.add('asc');
+    } else if (isAsc) {
+        clickedTitle.classList.remove('asc');
+        clickedTitle.classList.add('desc');
+    } else if (isDesc) {
+        clickedTitle.classList.remove('desc');
+    }
     const key = event.target.dataset.key;
-    const asc = event.target.classList.contains('asc');
-    const sortedEmployees = sortEmployees(Object.values(employees), key, asc);
+    const sortedEmployees = sortEmployees(Object.values(employees), key, true);
     renderTable(sortedEmployees);
 }
 

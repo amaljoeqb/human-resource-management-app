@@ -27,7 +27,25 @@ td {
     width: 100%;
     text-align: start;
     margin: 0;
+    display: flex;
+    align-items: center;
 }
+
+.column-title .up {
+    margin-left: 8px;
+    visibility: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.column-title.desc .up {
+    visibility: visible;
+    transform: rotate(180deg);
+}
+
+.column-title.asc .up {
+    visibility: visible;
+}
+
 
 .filter {
     font-weight: 400;
