@@ -4,6 +4,7 @@
             "employeeId": "trainee2016",
             "name": "Shyam",
             "email": "shyam@mycompany.com",
+            "designation": "System Analyst",
             "department": "IT",
             "skills": [
                 "HTML",
@@ -18,6 +19,7 @@
             "employeeId": "trainee2017",
             "name": "Bob",
             "email": "bob@mycompany.com",
+            "designation": "System Analyst",
             "department": "Development",
             "skills": [
                 "HTML",
