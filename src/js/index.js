@@ -1,13 +1,16 @@
 import { getData } from "./helpers.js";
-import { sortEmployees } from "./data.js";
+import { sortEmployees, searchEmployees } from "./data.js";
 
 const table = document.querySelector('.emp-table');
 const tableHeader = table.querySelector('.header-row');
 const tableBody = table.querySelector('tbody');
 const columnTitles = tableHeader.querySelectorAll('.column-title');
 const filterButtons = document.querySelectorAll('.filter');
+const searchInput = document.querySelector('.search-input');
 
 let employees = {}
+
+searchInput.addEventListener('input', onChangeSearchInput);
 
 columnTitles.forEach((columnTitle) => {
     columnTitle.addEventListener('click', onClickColumnTitle);
@@ -87,6 +90,17 @@ function onClickFilterButton(event) {
     filterForm.classList.toggle('hidden');
 }
 
+/**
+ * Function to trigger on change of search input
+ */
+function onChangeSearchInput(event) {
+    event.preventDefault();
+    const searchInput = event.currentTarget;
+    const searchValue = searchInput.value;
+    console.log(searchValue);
+    const filteredEmployees = searchEmployees(Object.values(employees), searchValue);
+    renderTable(filteredEmployees);
+}
 
 loadEmployees().then((data) => {
     renderTable(Object.values(data));
