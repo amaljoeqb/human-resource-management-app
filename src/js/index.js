@@ -1,4 +1,4 @@
-import { getData } from "./helpers.js";
+import { getData, highlightSearchTerm } from "./helpers.js";
 import { sortEmployees, searchEmployees } from "./data.js";
 
 const table = document.querySelector('.emp-table');
@@ -8,7 +8,8 @@ const columnTitles = tableHeader.querySelectorAll('.column-title');
 const filterButtons = document.querySelectorAll('.filter');
 const searchInput = document.querySelector('.search-input');
 
-let employees = {}
+let employees = {};
+let searchValue = '';
 
 searchInput.addEventListener('input', onChangeSearchInput);
 
@@ -23,20 +24,20 @@ filterButtons.forEach((filterButton) => {
 /**
  * Function to render rows of the table
  */
-function renderTable(data) {
+function renderTable(data, searchTerm) {
     tableBody.innerHTML = '';
     data.forEach((employee) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${employee.employeeId}</td>
-            <td>${employee.name}</td>
-            <td>${employee.email}</td>
-            <td>${employee.designation}</td>
-            <td>${employee.department}</td>
+            <td>${highlightSearchTerm(employee.employeeId, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.name, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.email, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.designation, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.department, searchTerm)}</td>
             <td>${employee.skills.join(", ")}</td>
-            <td>${employee.dateOfBirth}</td>
-            <td>${employee.joiningDate}</td>
-            <td>${employee.salary}</td>
+            <td>${highlightSearchTerm(employee.dateOfBirth, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.joiningDate, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.salary, searchTerm)}</td>
         `;
         tableBody.appendChild(row);
     });
@@ -79,7 +80,7 @@ function onClickColumnTitle(event) {
         key = 'employeeId';
     }
     const sortedEmployees = sortEmployees(Object.values(employees), key, asc);
-    renderTable(sortedEmployees);
+    renderTable(sortedEmployees, searchValue);
 }
 
 /**
@@ -96,10 +97,9 @@ function onClickFilterButton(event) {
 function onChangeSearchInput(event) {
     event.preventDefault();
     const searchInput = event.currentTarget;
-    const searchValue = searchInput.value;
-    console.log(searchValue);
+    searchValue = searchInput.value.toLowerCase();
     const filteredEmployees = searchEmployees(Object.values(employees), searchValue);
-    renderTable(filteredEmployees);
+    renderTable(filteredEmployees, searchValue);
 }
 
 loadEmployees().then((data) => {

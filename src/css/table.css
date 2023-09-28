@@ -121,3 +121,7 @@
     border: 1px solid #ddd;
     outline-color: var(--primary-color);
 }
+
+.highlight {
+    background-color: rgba(80, 151, 255, 0.4);
+}
