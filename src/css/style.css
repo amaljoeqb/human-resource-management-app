@@ -13,10 +13,13 @@ body {
     color: white;
     font-weight: bold;
     font-size: 16px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 8px 16px;
     border: 2px solid transparent;
     border-radius: 6px;
+    cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
@@ -28,4 +31,38 @@ body {
 
 .hidden {
     display: none !important;
+}
+
+.emp-listing-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 32px;
+    margin-bottom: 16px;
+}
+
+.emp-listing-header .start-section {
+    display: flex;
+    align-items: center;
+    column-gap: 32px;
+}
+
+.emp-listing-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.search-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline-color: var(--primary-color);
 }
