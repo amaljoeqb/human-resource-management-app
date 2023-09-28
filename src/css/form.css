@@ -9,6 +9,7 @@ form {
 form .field {
     display: flex;
     flex-direction: column;
+    row-gap: 4px;
     width: 100%;
 }
 
@@ -46,4 +47,8 @@ form textarea:focus {
 
 .form-header h2 {
     margin: 16px 0;
+}
+
+.submit {
+    align-self: end;
 }

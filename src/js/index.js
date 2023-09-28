@@ -10,10 +10,13 @@ const searchInput = document.querySelector('.search-input');
 const allCheck = document.querySelector('.all-check');
 const popup = document.querySelector('.popup');
 const closePopupButton = document.querySelector('.close-popup');
+const addEmployeeButton = document.querySelector('.add-employee');
 
 let employees = {};
 let searchValue = '';
 let filteredEmployees = [];
+
+addEmployeeButton.addEventListener('click', onClickAddEmployee);
 
 closePopupButton.addEventListener('click', closePopup);
 popup.addEventListener('click', (e) => {
@@ -174,6 +177,36 @@ function editEmployee(id) {
     editForm.querySelector("#employee-id").value = employee.employeeId;
     // show edit popup
     document.querySelector(".popup").classList.add("show-popup");
+}
+
+/**
+ * Function to trigger on click of add employee button
+ */
+function onClickAddEmployee() {
+    // show add popup
+    document.querySelector(".popup").classList.add("show-popup");
+}
+
+/**
+ * Function to trigger on click of save button
+ */
+function onClickSave() {
+    const editForm = document.querySelector("#edit");
+    const employeeId = editForm.querySelector("#employee-id").value;
+    // get student from students object
+    const employee = employees[employeeId];
+    // set student values
+    employee.name = editForm.querySelector("#name").value;
+    employee.email = editForm.querySelector("#email").value;
+    employee.dateOfBirth = editForm.querySelector("#dob").value;
+    employee.joiningDate = editForm.querySelector("#joining-date").value;
+    employee.salary = editForm.querySelector("#salary").value;
+    employee.designation = editForm.querySelector("#designation").value;
+    employee.department = editForm.querySelector("#department").value;
+    // close popup
+    closePopup();
+    // render table
+    renderTable();
 }
 
 /**
