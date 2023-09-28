@@ -9,10 +9,14 @@
     width: 100%;
 }
 
-.emp-table th,
-td {
+.emp-table th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 0;
+}
+
+.emp-table td {
+    border: 1px solid #ddd;
+    padding: 8px 8px;
 }
 
 .header-container {
@@ -30,6 +34,7 @@ td {
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding: 8px;
 }
 
 .column-title .up {
