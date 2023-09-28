@@ -1,6 +1,6 @@
 {
     "employees": {
-        "employee1": {
+        "1": {
             "employeeId": 1,
             "name": "John Smith",
             "email": "john.smith@mycompany.com",
@@ -19,7 +19,7 @@
             "joiningDate": "01/01/2020",
             "salary": 60000
         },
-        "employee2": {
+        "2": {
             "employeeId": 2,
             "name": "Jane Doe",
             "email": "jane.doe@mycompany.com",
@@ -38,7 +38,7 @@
             "joiningDate": "02/02/2021",
             "salary": 55000
         },
-        "employee3": {
+        "3": {
             "employeeId": 3,
             "name": "David Lee",
             "email": "david.lee@mycompany.com",
@@ -55,7 +55,7 @@
             "joiningDate": "03/03/2022",
             "salary": 65000
         },
-        "employee4": {
+        "4": {
             "employeeId": 4,
             "name": "Emily Chen",
             "email": "emily.chen@mycompany.com",
@@ -72,7 +72,7 @@
             "joiningDate": "04/04/2023",
             "salary": 70000
         },
-        "employee5": {
+        "5": {
             "employeeId": 5,
             "name": "Michael Kim",
             "email": "michael.kim@mycompany.com",
@@ -89,7 +89,7 @@
             "joiningDate": "05/05/2024",
             "salary": 75000
         },
-        "employee6": {
+        "6": {
             "employeeId": 6,
             "name": "Samantha Lee",
             "email": "samantha.lee@mycompany.com",
@@ -110,7 +110,7 @@
             "joiningDate": "06/06/2025",
             "salary": 80000
         },
-        "employee7": {
+        "7": {
             "employeeId": 7,
             "name": "Daniel Kim",
             "email": "daniel.kim@mycompany.com",
@@ -127,7 +127,7 @@
             "joiningDate": "07/07/2026",
             "salary": 85000
         },
-        "employee8": {
+        "8": {
             "employeeId": 8,
             "name": "Olivia Chen",
             "email": "olivia.chen@mycompany.com",
@@ -144,7 +144,7 @@
             "joiningDate": "08/08/2027",
             "salary": 90000
         },
-        "employee9": {
+        "9": {
             "employeeId": 9,
             "name": "William Lee",
             "email": "william.lee@mycompany.com",
@@ -163,7 +163,7 @@
             "joiningDate": "09/09/2028",
             "salary": 95000
         },
-        "employee10": {
+        "10": {
             "employeeId": 10,
             "name": "Sophia Kim",
             "email": "sophia.kim@mycompany.com",

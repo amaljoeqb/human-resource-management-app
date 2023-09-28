@@ -8,10 +8,19 @@ const columnTitles = tableHeader.querySelectorAll('.column-title');
 const filterButtons = document.querySelectorAll('.filter');
 const searchInput = document.querySelector('.search-input');
 const allCheck = document.querySelector('.all-check');
+const popup = document.querySelector('.popup');
+const closePopupButton = document.querySelector('.close-popup');
 
 let employees = {};
 let searchValue = '';
 let filteredEmployees = [];
+
+closePopupButton.addEventListener('click', closePopup);
+popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+        closePopup();
+    }
+});
 
 allCheck.addEventListener('click', onClickAllCheck);
 
@@ -44,6 +53,9 @@ function renderTable() {
             <td>${highlightSearchTerm(employee.joiningDate, searchValue)}</td>
             <td>${highlightSearchTerm(employee.salary, searchValue)}</td>
         `;
+        row.addEventListener('click', () => {
+            editEmployee(employee.employeeId);
+        });
         row.querySelector('.row-check').addEventListener('click', onChangeRowCheck);
         tableBody.appendChild(row);
     });
@@ -140,6 +152,35 @@ function onChangeRowCheck(event) {
         });
         allCheck.checked = allChecked;
     }
+}
+
+/**
+ * Function to edit employee with edit popup
+ * @param {string} id student id
+ */
+function editEmployee(id) {
+    // get student from students object
+    const employee = employees[id];
+    console.log(employees);
+    const editForm = document.querySelector("#edit");
+    // set edit form values
+    editForm.querySelector("#name").value = employee.name;
+    editForm.querySelector("#email").value = employee.email;
+    editForm.querySelector("#dob").value = employee.dateOfBirth;
+    editForm.querySelector("#joining-date").value = employee.joiningDate;
+    editForm.querySelector("#salary").value = employee.salary;
+    editForm.querySelector("#designation").value = employee.designation;
+    editForm.querySelector("#department").value = employee.department;
+    editForm.querySelector("#employee-id").value = employee.employeeId;
+    // show edit popup
+    document.querySelector(".popup").classList.add("show-popup");
+}
+
+/**
+ * Function to close popup
+ */
+function closePopup() {
+    document.querySelector(".popup").classList.remove("show-popup");
 }
 
 loadEmployees().then((data) => {
