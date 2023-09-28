@@ -7,9 +7,13 @@ const tableBody = table.querySelector('tbody');
 const columnTitles = tableHeader.querySelectorAll('.column-title');
 const filterButtons = document.querySelectorAll('.filter');
 const searchInput = document.querySelector('.search-input');
+const allCheck = document.querySelector('.all-check');
 
 let employees = {};
 let searchValue = '';
+let filteredEmployees = [];
+
+allCheck.addEventListener('click', onClickAllCheck);
 
 searchInput.addEventListener('input', onChangeSearchInput);
 
@@ -24,21 +28,23 @@ filterButtons.forEach((filterButton) => {
 /**
  * Function to render rows of the table
  */
-function renderTable(data, searchTerm) {
+function renderTable() {
     tableBody.innerHTML = '';
-    data.forEach((employee) => {
+    filteredEmployees.forEach((employee) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${highlightSearchTerm(employee.employeeId, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.name, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.email, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.designation, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.department, searchTerm)}</td>
+            <td><input type="checkbox" class="row-check"></td>
+            <td>${highlightSearchTerm(employee.employeeId, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.name, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.email, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.designation, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.department, searchValue)}</td>
             <td>${employee.skills.join(", ")}</td>
-            <td>${highlightSearchTerm(employee.dateOfBirth, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.joiningDate, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.salary, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.dateOfBirth, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.joiningDate, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.salary, searchValue)}</td>
         `;
+        row.querySelector('.row-check').addEventListener('click', onChangeRowCheck);
         tableBody.appendChild(row);
     });
 }
@@ -79,8 +85,8 @@ function onClickColumnTitle(event) {
         // By default, sort employeeId column in ascending order
         key = 'employeeId';
     }
-    const sortedEmployees = sortEmployees(Object.values(employees), key, asc);
-    renderTable(sortedEmployees, searchValue);
+    filteredEmployees = sortEmployees(Object.values(employees), key, asc);
+    renderTable();
 }
 
 /**
@@ -98,10 +104,45 @@ function onChangeSearchInput(event) {
     event.preventDefault();
     const searchInput = event.currentTarget;
     searchValue = searchInput.value.toLowerCase();
-    const filteredEmployees = searchEmployees(Object.values(employees), searchValue);
-    renderTable(filteredEmployees, searchValue);
+    filteredEmployees = searchEmployees(Object.values(employees), searchValue);
+    renderTable();
+}
+
+/**
+ * Function to trigger on click of all check
+ */
+function onClickAllCheck(event) {
+    const allCheck = event.currentTarget;
+    const isChecked = allCheck.checked;
+    const rowChecks = tableBody.querySelectorAll('.row-check');
+    rowChecks.forEach((rowCheck) => {
+        rowCheck.checked = isChecked;
+    });
+}
+
+/**
+ * Function to trigger on change of row check
+ * @param {Event} event 
+ */
+function onChangeRowCheck(event) {
+    const rowCheck = event.currentTarget;
+    const isChecked = rowCheck.checked;
+    const allCheck = document.querySelector('.all-check');
+    if (!isChecked) {
+        allCheck.checked = false;
+    } else {
+        const rowChecks = tableBody.querySelectorAll('.row-check');
+        let allChecked = true;
+        rowChecks.forEach((rowCheck) => {
+            if (!rowCheck.checked) {
+                allChecked = false;
+            }
+        });
+        allCheck.checked = allChecked;
+    }
 }
 
 loadEmployees().then((data) => {
-    renderTable(Object.values(data));
+    filteredEmployees = Object.values(data);
+    renderTable();
 });

@@ -17,6 +17,10 @@
 .emp-table td {
     border: 1px solid #ddd;
     padding: 8px 8px;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .header-container {
