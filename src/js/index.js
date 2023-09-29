@@ -1,5 +1,5 @@
 import { getData, highlightSearchTerm } from "./helpers.js";
-import { sortEmployees, searchEmployees } from "./data.js";
+import { sortEmployees, searchEmployees, getRupeesFormat } from "./data.js";
 
 const table = document.querySelector('.emp-table');
 const tableHeader = table.querySelector('.header-row');
@@ -12,7 +12,10 @@ const popup = document.querySelector('.popup');
 const closePopupButton = document.querySelector('.close-popup');
 const addEmployeeButton = document.querySelector('.add-employee');
 
+// data of the application
 let employees = {};
+
+// state of the application
 let sort = {
     key: 'employeeId',
     asc: true
@@ -60,10 +63,10 @@ function renderTable() {
             <td>${highlightSearchTerm(employee.email, searchTerm)}</td>
             <td>${highlightSearchTerm(employee.designation, searchTerm)}</td>
             <td>${highlightSearchTerm(employee.department, searchTerm)}</td>
-            <td>${employee.skills.join(", ")}</td>
+            <td>${highlightSearchTerm(employee.skills.join(", "))}</td>
             <td>${highlightSearchTerm(employee.dateOfBirth, searchTerm)}</td>
             <td>${highlightSearchTerm(employee.joiningDate, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.salary, searchTerm)}</td>
+            <td>${highlightSearchTerm(getRupeesFormat(employee.salary), searchTerm)}</td>
         `;
         row.addEventListener('click', () => {
             editEmployee(employee.employeeId);

@@ -12,16 +12,17 @@ async function getData(url) {
  */
 function highlightSearchTerm(text, searchTerm) {
     try {
-        if (typeof text !== 'string') {
+        if (typeof text !== 'string' && typeof text !== 'number') {
             return text;
         }
-        const lowerCaseText = text.toLowerCase();
+        const textString = text.toString();
+        const lowerCaseText = textString.toString().toLowerCase();
         if (!searchTerm || !lowerCaseText.includes(searchTerm)) {
             return text;
         }
-        const startIndex = lowerCaseText.indexOf(searchTerm);
+        const startIndex = lowerCaseText.toString().indexOf(searchTerm);
         const endIndex = startIndex + searchTerm.length;
-        const highlightedText = text.slice(0, startIndex) + '<span class="highlight">' + text.slice(startIndex, endIndex) + '</span>' + text.slice(endIndex);
+        const highlightedText = textString.toString().slice(0, startIndex) + '<span class="highlight">' + textString.slice(startIndex, endIndex) + '</span>' + textString.slice(endIndex);
         return highlightedText;
     } catch (e) {
         console.log(e)
