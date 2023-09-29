@@ -13,8 +13,15 @@ const closePopupButton = document.querySelector('.close-popup');
 const addEmployeeButton = document.querySelector('.add-employee');
 
 let employees = {};
-let searchValue = '';
-let filteredEmployees = [];
+let sort = {
+    key: 'employeeId',
+    asc: true
+}
+let searchTerm = '';
+let pagination = {
+    page: 1,
+    limit: 10
+}
 
 addEmployeeButton.addEventListener('click', onClickAddEmployee);
 
@@ -41,20 +48,22 @@ filterButtons.forEach((filterButton) => {
  * Function to render rows of the table
  */
 function renderTable() {
+    let filteredEmployees = searchEmployees(Object.values(employees), searchTerm);
+    filteredEmployees = sortEmployees(filteredEmployees, sort.key, sort.asc);
     tableBody.innerHTML = '';
     filteredEmployees.forEach((employee) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td><input type="checkbox" class="row-check"></td>
-            <td>${highlightSearchTerm(employee.employeeId, searchValue)}</td>
-            <td>${highlightSearchTerm(employee.name, searchValue)}</td>
-            <td>${highlightSearchTerm(employee.email, searchValue)}</td>
-            <td>${highlightSearchTerm(employee.designation, searchValue)}</td>
-            <td>${highlightSearchTerm(employee.department, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.employeeId, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.name, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.email, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.designation, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.department, searchTerm)}</td>
             <td>${employee.skills.join(", ")}</td>
-            <td>${highlightSearchTerm(employee.dateOfBirth, searchValue)}</td>
-            <td>${highlightSearchTerm(employee.joiningDate, searchValue)}</td>
-            <td>${highlightSearchTerm(employee.salary, searchValue)}</td>
+            <td>${highlightSearchTerm(employee.dateOfBirth, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.joiningDate, searchTerm)}</td>
+            <td>${highlightSearchTerm(employee.salary, searchTerm)}</td>
         `;
         row.addEventListener('click', () => {
             editEmployee(employee.employeeId);
@@ -80,8 +89,8 @@ function onClickColumnTitle(event) {
     const clickedTitle = event.currentTarget;
     const isAsc = clickedTitle.classList.contains('asc');
     const isDesc = clickedTitle.classList.contains('desc');
-    let key = event.currentTarget.dataset.key;
-    let asc = true;
+    sort.key = event.currentTarget.dataset.key;
+    sort.asc = true;
 
     // Remove asc and desc classes from all column titles
     columnTitles.forEach(title => {
@@ -94,13 +103,12 @@ function onClickColumnTitle(event) {
     } else if (isAsc) {
         clickedTitle.classList.remove('asc');
         clickedTitle.classList.add('desc');
-        asc = false;
+        sort.asc = false;
     } else if (isDesc) {
         clickedTitle.classList.remove('desc');
         // By default, sort employeeId column in ascending order
-        key = 'employeeId';
+        sort.key = 'employeeId';
     }
-    filteredEmployees = sortEmployees(Object.values(employees), key, asc);
     renderTable();
 }
 
@@ -118,8 +126,7 @@ function onClickFilterButton(event) {
 function onChangeSearchInput(event) {
     event.preventDefault();
     const searchInput = event.currentTarget;
-    searchValue = searchInput.value.toLowerCase();
-    filteredEmployees = searchEmployees(Object.values(employees), searchValue);
+    searchTerm = searchInput.value.trim().toLowerCase();
     renderTable();
 }
 
@@ -216,7 +223,6 @@ function closePopup() {
     document.querySelector(".popup").classList.remove("show-popup");
 }
 
-loadEmployees().then((data) => {
-    filteredEmployees = Object.values(data);
+loadEmployees().then(() => {
     renderTable();
 });
