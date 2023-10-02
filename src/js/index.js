@@ -1,4 +1,10 @@
-import { getData, highlightSearchTerm, getRupeesFormat } from "./helpers.js";
+import {
+  getData,
+  highlightSearchTerm,
+  getRupeesFormat,
+  convertFromDate,
+  convertToDate,
+} from "./helpers.js";
 import { sortEmployees, searchEmployees } from "./data.js";
 
 const table = document.querySelector(".emp-table");
@@ -11,6 +17,7 @@ const allCheck = document.querySelector(".all-check");
 const popup = document.querySelector(".popup");
 const closePopupButton = document.querySelector(".close-popup");
 const addEmployeeButton = document.querySelector(".add-employee");
+const saveButton = document.querySelector("#save-button");
 
 // data of the application
 let employees = {};
@@ -46,6 +53,8 @@ columnTitles.forEach((columnTitle) => {
 filterButtons.forEach((filterButton) => {
   filterButton.addEventListener("click", onClickFilterButton);
 });
+
+saveButton.addEventListener("click", onClickSave);
 
 /**
  * Function to render rows of the table
@@ -199,16 +208,20 @@ function editEmployee(id) {
 function onClickAddEmployee() {
   // show add popup
   document.querySelector(".popup").classList = "popup show-popup add-popup";
+  const empForm = document.querySelector("#emp-form");
+  empForm.querySelector("#employee-id").value = 44;
 }
 
 /**
  * Function to trigger on click of save button
  */
-function onClickSave() {
+function onClickSave(event) {
+  event.preventDefault();
+  console.log("save button clicked");
   const editForm = document.querySelector("#emp-form");
   const employeeId = editForm.querySelector("#employee-id").value;
   // get student from students object
-  const employee = employees[employeeId];
+  const employee = employees[employeeId] || {};
   // set student values
   employee.name = editForm.querySelector("#name").value;
   employee.email = editForm.querySelector("#email").value;
@@ -217,6 +230,10 @@ function onClickSave() {
   employee.salary = editForm.querySelector("#salary").value;
   employee.designation = editForm.querySelector("#designation").value;
   employee.department = editForm.querySelector("#department").value;
+  employee.employeeId = employeeId;
+  employee.skills = employee.skills || [];
+  employees[employeeId] = employee;
+  console.log(employees);
   // close popup
   closePopup();
   // render table
