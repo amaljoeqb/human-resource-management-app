@@ -2,7 +2,9 @@ import { setEmployee, getNextEmployeeId, getEmployee } from "./data.js";
 import { state } from "./context.js";
 import { renderTable, closePopup } from "./controller.js";
 
-const columnTitles = document.querySelectorAll(".column-title");
+const table = document.querySelector(".emp-table");
+const tableBody = table.querySelector("tbody");
+const columnTitles = table.querySelectorAll(".column-title");
 
 /**
  * Function to trigger on click of column title

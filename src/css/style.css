@@ -1,5 +1,10 @@
 :root {
-    --primary-color: rgb(24, 24, 27);
+    --primary-color: hsl(240 5.9% 10%);
+    --primary-overlay: hsl(240 5.9% 10% / 0.9);
+    --text-color: hsl(240 5.9% 10%);
+    --text-overlay: hsla(235, 50%, 29%, 0.9);
+    --accent-color: hsl(240 4.8% 95.9%);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
 }
 
 body {
@@ -20,13 +25,48 @@ body {
     border: 2px solid transparent;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .fill-button:hover {
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
     background-color: transparent;
+}
+
+.hover-btn span {
+    font-size: 20px;
+    color: #000;
+}
+
+.hover-btn {
+    background-color: white;
+    border: none;
+    outline: 1px solid #ddd;
+    box-shadow: var(--shadow);
+    padding: 6px 12px;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.hover-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.hover-btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.hover-btn.primary:hover {
+    background-color: var(--primary-overlay);
 }
 
 .hidden {

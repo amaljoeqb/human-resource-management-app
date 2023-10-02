@@ -1,42 +1,51 @@
 .table-container {
-    overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .emp-table {
     border-collapse: collapse;
-    min-width: 1600px;
     width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 .emp-table th {
-    border: 1px solid #ddd;
-    padding: 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
 }
 
 .emp-table td {
-    border: 1px solid #ddd;
-    padding: 8px 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 6px 8px;
     max-width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border-radius: 8px;
 }
 
 .header-container {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: stretch;
+}
+
+.checkbox-container {
+    align-items: start;
+    display: flex;
+    padding: 8px;
 }
 
 .column-title {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     width: 100%;
     text-align: start;
     margin: 0;
     display: flex;
-    align-items: center;
+    align-items: start;
     cursor: pointer;
     padding: 8px;
 }
@@ -44,6 +53,7 @@
 .column-title .up {
     margin-left: 8px;
     visibility: hidden;
+    font-size: 14px;
     transition: transform 0.2s ease-in-out;
     user-select: none;
 }
@@ -57,6 +67,22 @@
     visibility: visible;
 }
 
+.name-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.name-container .name {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.name-container .email {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
 
 .filter {
     font-weight: 400;
@@ -83,7 +109,7 @@
     border-radius: 8px;
     padding: 16px;
     background-color: white;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3), 0 4px 8px 3px rgba(0, 0, 0, .15);
+    box-shadow: var(--shadow);
 }
 
 .filter-form button {
@@ -101,4 +127,12 @@
 
 .highlight {
     background-color: rgba(80, 151, 255, 0.4);
+}
+
+.name:hover {
+    cursor: pointer;
+}
+
+.name:hover {
+    color: var(--text-overlay);
 }

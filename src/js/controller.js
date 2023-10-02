@@ -20,14 +20,25 @@ function renderTable() {
   filteredEmployees.forEach((employee) => {
     try {
       const row = document.createElement("tr");
+      row.classList.add("emp-row");
       row.innerHTML = `
                   <td><input type="checkbox" class="row-check"></td>
                   <td>${highlightSearchTerm(
                     employee.employeeId,
                     state.searchTerm
                   )}</td>
-                  <td>${highlightSearchTerm(employee.name, state.searchTerm)}</td>
-                  <td>${highlightSearchTerm(employee.email, state.searchTerm)}</td>
+                  <td>
+                    <div class="name-container">
+                    <a class="name">${highlightSearchTerm(
+                      employee.name,
+                      state.searchTerm
+                    )}</a>
+                    <p class="email">${highlightSearchTerm(
+                      employee.email,
+                      state.searchTerm
+                    )}</p>
+                    </div>
+                  </td>
                   <td>${highlightSearchTerm(
                     employee.designation,
                     state.searchTerm
@@ -37,20 +48,8 @@ function renderTable() {
                     state.searchTerm
                   )}</td>
                   <td>${highlightSearchTerm(employee.skills)}</td>
-                  <td>${highlightSearchTerm(
-                    employee.dateOfBirth,
-                    state.searchTerm
-                  )}</td>
-                  <td>${highlightSearchTerm(
-                    employee.joiningDate,
-                    state.searchTerm
-                  )}</td>
-                  <td>${highlightSearchTerm(
-                    getRupeesFormat(employee.salary),
-                    state.searchTerm
-                  )}</td>
               `;
-      row.addEventListener("click", () => {
+      row.querySelector(".name").addEventListener("click", () => {
         editEmployee(employee.employeeId);
       });
       row
