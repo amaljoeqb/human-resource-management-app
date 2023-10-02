@@ -30,4 +30,16 @@ function highlightSearchTerm(text, searchTerm) {
     }
 }
 
-export { getData, highlightSearchTerm };
+/**
+ * Get rupees format for a number
+ * @param {number} number - Number to format
+ */
+function getRupeesFormat(number) {
+    return new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        minimumFractionDigits: 0
+    }).format(number);
+}
+
+export { getData, highlightSearchTerm, getRupeesFormat };
