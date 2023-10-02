@@ -1,5 +1,7 @@
 import { getData } from "./helpers.js";
 
+let employees = {};
+
 /**
  * Function to sort employees array based on an attribute
  * @param {array} employees - Array of employees
@@ -70,10 +72,10 @@ function filterEmployees(employees, key, value) {
  * @param {array} employees - Array of employees
  * @param {string} searchTerm - Term to search for
  */
-function searchEmployees(employees, searchTerm) {
+function searchEmployees(searchTerm) {
   try {
     const lowerCaseValue = searchTerm.toLowerCase();
-    return employees.filter((employee) =>
+    return Object.values(employees).filter((employee) =>
       Object.values(employee).some(
         (value) =>
           (typeof value === "string" || typeof value === "number") &&
@@ -86,17 +88,17 @@ function searchEmployees(employees, searchTerm) {
 }
 
 /**
- * Function to get all employees
+ * Function to load data from local storage
  */
-function getAllEmployees() {
-  let employees = JSON.parse(localStorage.getItem("employees"));
+function loadData() {
+  employees = JSON.parse(localStorage.getItem("employees"));
   return employees;
 }
 
 /**
  * Function to get next employee ID
  */
-function getNextEmployeeId(employees) {
+function getNextEmployeeId() {
   const lastEmployeeId = Object.keys(employees)
     .sort((a, b) => a - b)
     .pop();
@@ -104,7 +106,7 @@ function getNextEmployeeId(employees) {
 }
 
 /**
- * Function to get sample data for employees
+ * Function to load sample data from json file
  */
 async function loadSampleData() {
   const sampleData = await getData("assets/json/employees.json");
@@ -115,7 +117,7 @@ async function loadSampleData() {
 /**
  * Function to set employee data
  */
-function setEmployee(employees, employee) {
+function setEmployee(employee) {
   employees[employee.employeeId] = employee;
   localStorage.setItem("employees", JSON.stringify(employees));
 }
@@ -124,8 +126,8 @@ export {
   sortEmployees,
   filterEmployees,
   searchEmployees,
-  getAllEmployees,
+  loadData,
   loadSampleData,
   setEmployee,
-  getNextEmployeeId
+  getNextEmployeeId,
 };
