@@ -1,11 +1,11 @@
+import { highlightSearchTerm, getRupeesFormat } from "./helpers.js";
 import {
-  getData,
-  highlightSearchTerm,
-  getRupeesFormat,
-  convertFromDate,
-  convertToDate,
-} from "./helpers.js";
-import { sortEmployees, searchEmployees } from "./data.js";
+  sortEmployees,
+  searchEmployees,
+  getAllEmployees,
+  loadSampleData,
+  setEmployee,
+} from "./data.js";
 
 const table = document.querySelector(".emp-table");
 const tableHeader = table.querySelector(".header-row");
@@ -64,27 +64,42 @@ function renderTable() {
   filteredEmployees = sortEmployees(filteredEmployees, sort.key, sort.asc);
   tableBody.innerHTML = "";
   filteredEmployees.forEach((employee) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-            <td><input type="checkbox" class="row-check"></td>
-            <td>${highlightSearchTerm(employee.employeeId, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.name, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.email, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.designation, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.department, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.skills.join(", "))}</td>
-            <td>${highlightSearchTerm(employee.dateOfBirth, searchTerm)}</td>
-            <td>${highlightSearchTerm(employee.joiningDate, searchTerm)}</td>
-            <td>${highlightSearchTerm(
-              getRupeesFormat(employee.salary),
-              searchTerm
-            )}</td>
-        `;
-    row.addEventListener("click", () => {
-      editEmployee(employee.employeeId);
-    });
-    row.querySelector(".row-check").addEventListener("click", onChangeRowCheck);
-    tableBody.appendChild(row);
+    try {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+                <td><input type="checkbox" class="row-check"></td>
+                <td>${highlightSearchTerm(employee.employeeId, searchTerm)}</td>
+                <td>${highlightSearchTerm(employee.name, searchTerm)}</td>
+                <td>${highlightSearchTerm(employee.email, searchTerm)}</td>
+                <td>${highlightSearchTerm(
+                  employee.designation,
+                  searchTerm
+                )}</td>
+                <td>${highlightSearchTerm(employee.department, searchTerm)}</td>
+                <td>${highlightSearchTerm(employee.skills)}</td>
+                <td>${highlightSearchTerm(
+                  employee.dateOfBirth,
+                  searchTerm
+                )}</td>
+                <td>${highlightSearchTerm(
+                  employee.joiningDate,
+                  searchTerm
+                )}</td>
+                <td>${highlightSearchTerm(
+                  getRupeesFormat(employee.salary),
+                  searchTerm
+                )}</td>
+            `;
+      row.addEventListener("click", () => {
+        editEmployee(employee.employeeId);
+      });
+      row
+        .querySelector(".row-check")
+        .addEventListener("click", onChangeRowCheck);
+      tableBody.appendChild(row);
+    } catch (e) {
+      console.log(e, employee);
+    }
   });
 }
 
@@ -92,9 +107,10 @@ function renderTable() {
  * Function to load employees from local storage or API
  */
 async function loadEmployees() {
-  const employeesData = await getData("assets/json/employees.json");
-  employees = employeesData.employees;
-  return employees;
+  employees = getAllEmployees();
+  if (employees === undefined || employees === null) {
+    employees = await loadSampleData();
+  }
 }
 
 /**
@@ -231,9 +247,8 @@ function onClickSave(event) {
   employee.designation = editForm.querySelector("#designation").value;
   employee.department = editForm.querySelector("#department").value;
   employee.employeeId = employeeId;
-  employee.skills = employee.skills || [];
-  employees[employeeId] = employee;
-  console.log(employees);
+  employee.skills = employee.skills ?? [];
+  setEmployee(employees, employee);
   // close popup
   closePopup();
   // render table
