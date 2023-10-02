@@ -1,307 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HR Management</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/form.css">
-    <link rel="stylesheet" href="css/table.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/table.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-</head>
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="emp-listing-header">
-        <div class="start-section">
-            <h2>
-                Employees
-            </h2>
-            <input type="text" name="key" class="search-input" placeholder="Search" />
-        </div>
-        <button class="fill-button add-employee">
-            <span class="material-symbols-outlined">
-                add_circle
-            </span>
-        </button>
+      <div class="start-section">
+        <h2>Employees</h2>
+        <input
+          type="text"
+          name="key"
+          class="search-input"
+          placeholder="Search"
+        />
+      </div>
+      <button class="fill-button add-employee">
+        <span class="material-symbols-outlined"> add_circle </span>
+      </button>
     </div>
     <div class="table-container">
-        <table class="emp-table">
-            <thead>
-                <tr class="header-row">
-                    <th>
-                        <input type="checkbox" class="all-check">
-                    </th>
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="employeeId">
-                                <a href="javascript:void(0)">Employee ID</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+      <table class="emp-table">
+        <thead>
+          <tr class="header-row">
+            <th>
+              <input type="checkbox" class="all-check" />
+            </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="employeeId">
+                  <a href="javascript:void(0)">Employee ID</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="name">
-                                <a href="javascript:void(0)">Name</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="name">
+                  <a href="javascript:void(0)">Name</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="email">
-                                <a href="javascript:void(0)">Email</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="email">
+                  <a href="javascript:void(0)">Email</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="designation">
-                                <a href="javascript:void(0)">Designation</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="designation">
+                  <a href="javascript:void(0)">Designation</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="department">
-                                <a href="javascript:void(0)">Department</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="department">
+                  <a href="javascript:void(0)">Department</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="skills">
-                                <a href="javascript:void(0)">Skills</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="skills">
+                  <a href="javascript:void(0)">Skills</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="dateOfBirth">
-                                <a href="javascript:void(0)">Date of Birth</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="dateOfBirth">
+                  <a href="javascript:void(0)">Date of Birth</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="joiningDate">
-                                <a href="javascript:void(0)">Joining Date</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="joiningDate">
+                  <a href="javascript:void(0)">Joining Date</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
 
-                    <th>
-                        <div class="header-container">
-                            <h3 class="column-title" data-key="salary">
-                                <a href="javascript:void(0)">Salary</a>
-                                <span class="material-symbols-outlined up">
-                                    north
-                                </span>
-                            </h3>
-                            <a href="javascript:void(0)" class="filter">
-                                <span class="material-symbols-outlined">
-                                    filter_alt
-                                </span>
-                            </a>
-                            <div class="filter-form-container">
-                                <form action="" class="filter-form hidden">
-                                    <input type="text" name="key" id="key" placeholder="Field contains..." />
-                                    <button type="submit" class="fill-button" on>Apply Filter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+            <th>
+              <div class="header-container">
+                <h3 class="column-title" data-key="salary">
+                  <a href="javascript:void(0)">Salary</a>
+                  <span class="material-symbols-outlined up"> north </span>
+                </h3>
+                <a href="javascript:void(0)" class="filter">
+                  <span class="material-symbols-outlined"> filter_alt </span>
+                </a>
+                <div class="filter-form-container">
+                  <form action="" class="filter-form hidden">
+                    <input
+                      type="text"
+                      name="key"
+                      id="key"
+                      placeholder="Field contains..."
+                    />
+                    <button type="submit" class="fill-button" on>
+                      Apply Filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <div id="edit-popup" class="popup">
-        <div class="popup-content">
-            <div class="form-header">
-                <h2>Edit Employee</h2>
-                <span class="material-symbols-outlined close-popup">
-                    close
-                </span>
+    <div class="popup emp-popup">
+      <div class="popup-content">
+        <div class="form-header">
+          <h2>
+            <div class="edit-heading">
+              <span class="material-symbols-outlined"> edit </span>
+              <span>Edit Employee</span>
             </div>
-            <form id="edit">
-                <div class="row">
-                    <div class="field">
-                        <label for="employee-id">Employee ID</label>
-                        <input type="number" name="employee-id" id="employee-id" required disabled>
-
-                    </div>
-                    <div class="field">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="field">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" required>
-                    </div>
-                    <div class="field">
-                        <label for="salary">Salary</label>
-                        <input type="number" name="salary" id="salary" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="field">
-                        <label for="designation">Designation</label>
-                        <input type="text" name="designation" id="designation" required>
-                    </div>
-                    <div class="field">
-                        <label for="department">Department</label>
-                        <input type="text" name="department" id="department" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="field">
-                        <label for="dob">Date of birth</label>
-                        <input type="date" name="dob" id="dob" required>
-                    </div>
-                    <div class="field">
-                        <label for="joining-date">Date of Joining</label>
-                        <input type="date" name="joining-date" id="joining-date" required>
-                    </div>
-                </div>
-                <input class="fill-button submit" type="submit" value="Save">
-            </form>
+            <div class="add-heading">
+              <span class="material-symbols-outlined"> add_circle </span>
+              <span>Add Employee</span>
+            </div>
+            <div class="view-heading">
+              <span class="material-symbols-outlined"> visibility </span>
+              <span>View Employee</span>
+            </div>
+          </h2>
+          <span class="material-symbols-outlined close-popup"> close </span>
         </div>
+        <form id="emp-form">
+          <div class="row">
+            <div class="field">
+              <label for="employee-id">Employee ID</label>
+              <input
+                type="number"
+                name="employee-id"
+                id="employee-id"
+                required
+                disabled
+              />
+            </div>
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required />
+            </div>
+            <div class="field">
+              <label for="salary">Salary</label>
+              <input type="number" name="salary" id="salary" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="designation">Designation</label>
+              <input type="text" name="designation" id="designation" required />
+            </div>
+            <div class="field">
+              <label for="department">Department</label>
+              <input type="text" name="department" id="department" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="dob">Date of birth</label>
+              <input type="date" name="dob" id="dob" required />
+            </div>
+            <div class="field">
+              <label for="joining-date">Date of Joining</label>
+              <input
+                type="date"
+                name="joining-date"
+                id="joining-date"
+                required
+              />
+            </div>
+          </div>
+          <input class="fill-button submit" type="submit" value="Save" />
+        </form>
+      </div>
     </div>
     <script src="js/constants.js" type="module"></script>
     <script src="js/helpers.js" type="module"></script>
     <script src="js/data.js" type="module"></script>
     <script src="js/index.js" type="module"></script>
-
-</body>
-
+  </body>
 </html>

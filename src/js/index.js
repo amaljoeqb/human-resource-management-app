@@ -179,7 +179,7 @@ function editEmployee(id) {
   // get student from students object
   const employee = employees[id];
   console.log(employees);
-  const editForm = document.querySelector("#edit");
+  const editForm = document.querySelector("#emp-form");
   // set edit form values
   editForm.querySelector("#name").value = employee.name;
   editForm.querySelector("#email").value = employee.email;
@@ -190,7 +190,7 @@ function editEmployee(id) {
   editForm.querySelector("#department").value = employee.department;
   editForm.querySelector("#employee-id").value = employee.employeeId;
   // show edit popup
-  document.querySelector(".popup").classList.add("show-popup");
+  document.querySelector(".popup").classList = "popup show-popup edit-popup";
 }
 
 /**
@@ -198,14 +198,14 @@ function editEmployee(id) {
  */
 function onClickAddEmployee() {
   // show add popup
-  document.querySelector(".popup").classList.add("show-popup");
+  document.querySelector(".popup").classList = "popup show-popup add-popup";
 }
 
 /**
  * Function to trigger on click of save button
  */
 function onClickSave() {
-  const editForm = document.querySelector("#edit");
+  const editForm = document.querySelector("#emp-form");
   const employeeId = editForm.querySelector("#employee-id").value;
   // get student from students object
   const employee = employees[employeeId];

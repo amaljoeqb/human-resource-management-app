@@ -1,3 +1,4 @@
 - make name clickable, open detailed view
 - actions - edit, delete, change status
 - cards with count - WFH, WFO, leaves
+- auto fill sample data button
