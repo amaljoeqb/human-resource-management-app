@@ -125,11 +125,10 @@ function onClickAddEmployee() {
  */
 function onClickSave(event) {
   event.preventDefault();
-  console.log("save button clicked");
   const editForm = document.querySelector("#emp-form");
   const employeeId = editForm.querySelector("#employee-id").value;
   // get student from students object
-  const employee = employees[employeeId] || {};
+  const employee = getEmployee(employeeId) || {};
   // set student values
   employee.name = editForm.querySelector("#name").value;
   employee.email = editForm.querySelector("#email").value;
