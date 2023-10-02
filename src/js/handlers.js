@@ -1,7 +1,8 @@
-import { setEmployee, getNextEmployeeId } from "./data.js";
+import { setEmployee, getNextEmployeeId, getEmployee } from "./data.js";
 import { state } from "./context.js";
 import { renderTable, closePopup } from "./controller.js";
 
+const columnTitles = document.querySelectorAll(".column-title");
 
 /**
  * Function to trigger on click of column title
@@ -91,8 +92,7 @@ function onChangeRowCheck(event) {
  * @param {string} id employee id
  */
 function editEmployee(id) {
-  const employee = employees[id];
-  console.log(employees);
+  const employee = getEmployee(id);
   const editForm = document.querySelector("#emp-form");
   // set edit form values
   editForm.querySelector("#name").value = employee.name;
@@ -114,7 +114,7 @@ function onClickAddEmployee() {
   // show add popup
   document.querySelector(".popup").classList = "popup show-popup add-popup";
   const empForm = document.querySelector("#emp-form");
-  empForm.querySelector("#employee-id").value = getNextEmployeeId(employees);
+  empForm.querySelector("#employee-id").value = getNextEmployeeId();
 }
 
 /**

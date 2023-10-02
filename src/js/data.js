@@ -96,6 +96,16 @@ function loadData() {
 }
 
 /**
+ * Function to load sample data from json file
+ */
+async function loadSampleData() {
+  const sampleData = await getData("assets/json/employees.json");
+  localStorage.setItem("employees", JSON.stringify(sampleData.employees));
+  return sampleData.employees;
+}
+
+
+/**
  * Function to get next employee ID
  */
 function getNextEmployeeId() {
@@ -106,12 +116,17 @@ function getNextEmployeeId() {
 }
 
 /**
- * Function to load sample data from json file
+ * Function to get all employees
  */
-async function loadSampleData() {
-  const sampleData = await getData("assets/json/employees.json");
-  localStorage.setItem("employees", JSON.stringify(sampleData.employees));
-  return sampleData.employees;
+function getAllEmployees() {
+  return employees;
+}
+
+/**
+ * Function to get employee by id
+ */
+function getEmployee(id) {
+  return employees[id];
 }
 
 /**
@@ -130,4 +145,6 @@ export {
   loadSampleData,
   setEmployee,
   getNextEmployeeId,
+  getAllEmployees,
+  getEmployee,
 };
