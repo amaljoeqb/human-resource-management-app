@@ -5,6 +5,7 @@ import {
   getAllEmployees,
   loadSampleData,
   setEmployee,
+  getNextEmployeeId,
 } from "./data.js";
 
 const table = document.querySelector(".emp-table");
@@ -225,7 +226,7 @@ function onClickAddEmployee() {
   // show add popup
   document.querySelector(".popup").classList = "popup show-popup add-popup";
   const empForm = document.querySelector("#emp-form");
-  empForm.querySelector("#employee-id").value = 44;
+  empForm.querySelector("#employee-id").value = getNextEmployeeId(employees);
 }
 
 /**

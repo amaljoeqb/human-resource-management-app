@@ -94,6 +94,16 @@ function getAllEmployees() {
 }
 
 /**
+ * Function to get next employee ID
+ */
+function getNextEmployeeId(employees) {
+  const lastEmployeeId = Object.keys(employees)
+    .sort((a, b) => a - b)
+    .pop();
+  return lastEmployeeId ? parseInt(lastEmployeeId) + 1 : 1;
+}
+
+/**
  * Function to get sample data for employees
  */
 async function loadSampleData() {
@@ -117,4 +127,5 @@ export {
   getAllEmployees,
   loadSampleData,
   setEmployee,
+  getNextEmployeeId
 };
