@@ -1,8 +1,10 @@
 import { setEmployee, getNextEmployeeId, getEmployee } from "./data.js";
 import { state } from "./context.js";
-import { renderTable, closePopup } from "./controller.js";
+import { renderTable, closePopup, setFormData } from "./controller.js";
 
-const columnTitles = document.querySelectorAll(".column-title");
+const table = document.querySelector(".emp-table");
+const tableBody = table.querySelector("tbody");
+const columnTitles = table.querySelectorAll(".column-title");
 
 /**
  * Function to trigger on click of column title
@@ -93,16 +95,7 @@ function onChangeRowCheck(event) {
  */
 function editEmployee(id) {
   const employee = getEmployee(id);
-  const editForm = document.querySelector("#emp-form");
-  // set edit form values
-  editForm.querySelector("#name").value = employee.name;
-  editForm.querySelector("#email").value = employee.email;
-  editForm.querySelector("#dob").value = employee.dateOfBirth;
-  editForm.querySelector("#joining-date").value = employee.joiningDate;
-  editForm.querySelector("#salary").value = employee.salary;
-  editForm.querySelector("#designation").value = employee.designation;
-  editForm.querySelector("#department").value = employee.department;
-  editForm.querySelector("#employee-id").value = employee.employeeId;
+  setFormData(employee);
   // show edit popup
   document.querySelector(".popup").classList = "popup show-popup edit-popup";
 }
@@ -111,10 +104,20 @@ function editEmployee(id) {
  * Function to trigger on click of add employee button
  */
 function onClickAddEmployee() {
+  const nextId = getNextEmployeeId();
+  const employee = {
+    name: "",
+    email: "",
+    dateOfBirth: "",
+    joiningDate: "",
+    salary: "",
+    designation: "",
+    department: "",
+    employeeId: nextId,
+  };
+  setFormData(employee);
   // show add popup
   document.querySelector(".popup").classList = "popup show-popup add-popup";
-  const empForm = document.querySelector("#emp-form");
-  empForm.querySelector("#employee-id").value = getNextEmployeeId();
 }
 
 /**

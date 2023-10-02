@@ -20,14 +20,25 @@ function renderTable() {
   filteredEmployees.forEach((employee) => {
     try {
       const row = document.createElement("tr");
+      row.classList.add("emp-row");
       row.innerHTML = `
                   <td><input type="checkbox" class="row-check"></td>
                   <td>${highlightSearchTerm(
                     employee.employeeId,
                     state.searchTerm
                   )}</td>
-                  <td>${highlightSearchTerm(employee.name, state.searchTerm)}</td>
-                  <td>${highlightSearchTerm(employee.email, state.searchTerm)}</td>
+                  <td>
+                    <div class="name-container">
+                    <a class="name">${highlightSearchTerm(
+                      employee.name,
+                      state.searchTerm
+                    )}</a>
+                    <p class="email">${highlightSearchTerm(
+                      employee.email,
+                      state.searchTerm
+                    )}</p>
+                    </div>
+                  </td>
                   <td>${highlightSearchTerm(
                     employee.designation,
                     state.searchTerm
@@ -37,20 +48,8 @@ function renderTable() {
                     state.searchTerm
                   )}</td>
                   <td>${highlightSearchTerm(employee.skills)}</td>
-                  <td>${highlightSearchTerm(
-                    employee.dateOfBirth,
-                    state.searchTerm
-                  )}</td>
-                  <td>${highlightSearchTerm(
-                    employee.joiningDate,
-                    state.searchTerm
-                  )}</td>
-                  <td>${highlightSearchTerm(
-                    getRupeesFormat(employee.salary),
-                    state.searchTerm
-                  )}</td>
               `;
-      row.addEventListener("click", () => {
+      row.querySelector(".name").addEventListener("click", () => {
         editEmployee(employee.employeeId);
       });
       row
@@ -70,4 +69,37 @@ function closePopup() {
   document.querySelector(".popup").classList.remove("show-popup");
 }
 
-export { renderTable, closePopup };
+/**
+ * Function to set employee data to form
+ * @param {object} employee employee object
+ */
+function setFormData(employee) {
+  const form = document.querySelector("#emp-form");
+  form.querySelector("#name").value = employee.name;
+  form.querySelector("#email").value = employee.email;
+  form.querySelector("#dob").value = employee.dateOfBirth;
+  form.querySelector("#joining-date").value = employee.joiningDate;
+  form.querySelector("#salary").value = employee.salary;
+  form.querySelector("#designation").value = employee.designation;
+  form.querySelector("#department").value = employee.department;
+  form.querySelector("#employee-id").value = employee.employeeId;
+}
+
+/**
+ * Function to get employee data from form
+ */
+function getFormData() {
+  const form = document.querySelector("#emp-form");
+  return {
+    name: form.querySelector("#name").value,
+    email: form.querySelector("#email").value,
+    dateOfBirth: form.querySelector("#dob").value,
+    joiningDate: form.querySelector("#joining-date").value,
+    salary: form.querySelector("#salary").value,
+    designation: form.querySelector("#designation").value,
+    department: form.querySelector("#department").value,
+    employeeId: form.querySelector("#employee-id").value,
+  };
+}
+
+export { renderTable, closePopup, setFormData, getFormData };

@@ -17,7 +17,7 @@ const searchInput = document.querySelector(".search-input");
 const allCheck = document.querySelector(".all-check");
 const popup = document.querySelector(".popup");
 const closePopupButton = document.querySelector(".close-popup");
-const addEmployeeButton = document.querySelector(".add-employee");
+const addEmployeeButton = document.querySelector(".add-btn");
 const saveButton = document.querySelector("#save-button");
 
 addEmployeeButton.addEventListener("click", onClickAddEmployee);
