@@ -1,4 +1,4 @@
-import { loadData, loadSampleData } from "./data.js";
+import { getAllDepartments, loadData, loadSampleData } from "./data.js";
 import {
   onClickColumnTitle,
   onClickFilterButton,
@@ -6,8 +6,9 @@ import {
   onClickAllCheck,
   onClickAddEmployee,
   onClickSave,
+  onChangeDepartmentInput,
 } from "./handlers.js";
-import { renderTable, closePopup } from "./controller.js";
+import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
 const tableHeader = table.querySelector(".header-row");
@@ -19,6 +20,7 @@ const popup = document.querySelector(".popup");
 const closePopupButton = document.querySelector(".close-popup");
 const addEmployeeButton = document.querySelector(".add-btn");
 const saveButton = document.querySelector("#save-button");
+const departmentInput = document.querySelector("#department");
 
 addEmployeeButton.addEventListener("click", onClickAddEmployee);
 
@@ -43,14 +45,17 @@ filterButtons.forEach((filterButton) => {
 
 saveButton.addEventListener("click", onClickSave);
 
+departmentInput.addEventListener("input", onChangeDepartmentInput);
+
 /**
  * Function to load employees from local storage or API
  */
 async function loadEmployees() {
-  const employees = loadData();
+  const employees = await loadData();
   if (employees === undefined || employees === null) {
     await loadSampleData();
   }
+  setDepartmentOptions(getAllDepartments());
   renderTable();
 }
 

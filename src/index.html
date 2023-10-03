@@ -144,9 +144,21 @@
               <label for="designation">Designation</label>
               <input type="text" name="designation" id="designation" required />
             </div>
-            <div class="field">
+            <div class="field dropdown">
               <label for="department">Department</label>
-              <input type="text" name="department" id="department" required />
+              <div class="input-container">
+                <input
+                  type="text"
+                  name="department"
+                  id="department"
+                  class="dropdown-input"
+                  required
+                />
+                <span class="material-symbols-outlined suffix-icon"> arrow_drop_down </span>
+              </div>
+              <div class="dropdown-content">
+                <ul id="department-options" class="dropdown-list"></ul>
+              </div>
             </div>
           </div>
           <div class="row">

@@ -1,6 +1,8 @@
 import { getData } from "./helpers.js";
 
 let employees = {};
+let skills = [];
+let departments = [];
 
 /**
  * Function to sort employees array based on an attribute
@@ -90,8 +92,10 @@ function searchEmployees(searchTerm) {
 /**
  * Function to load data from local storage
  */
-function loadData() {
+async function loadData() {
   employees = JSON.parse(localStorage.getItem("employees"));
+  skills = (await getData("assets/json/skills.json")).skills;
+  departments = (await getData("assets/json/departments.json")).departments;
   return employees;
 }
 
@@ -103,7 +107,6 @@ async function loadSampleData() {
   localStorage.setItem("employees", JSON.stringify(sampleData.employees));
   return sampleData.employees;
 }
-
 
 /**
  * Function to get next employee ID
@@ -137,6 +140,20 @@ function setEmployee(employee) {
   localStorage.setItem("employees", JSON.stringify(employees));
 }
 
+/**
+ * Function to get all skills
+ */
+function getAllSkills() {
+  return skills;
+}
+
+/**
+ * Function to get all departments
+ */
+function getAllDepartments() {
+  return departments;
+}
+
 export {
   sortEmployees,
   filterEmployees,
@@ -147,4 +164,6 @@ export {
   getNextEmployeeId,
   getAllEmployees,
   getEmployee,
+  getAllSkills,
+  getAllDepartments,
 };

@@ -1,6 +1,10 @@
 import { highlightSearchTerm, getRupeesFormat } from "./helpers.js";
-import { sortEmployees, searchEmployees } from "./data.js";
-import { onChangeRowCheck, editEmployee } from "./handlers.js";
+import { sortEmployees, searchEmployees, getAllDepartments } from "./data.js";
+import {
+  onChangeRowCheck,
+  editEmployee,
+  onClickDepartmentOption,
+} from "./handlers.js";
 import { state } from "./context.js";
 
 const table = document.querySelector(".emp-table");
@@ -44,10 +48,12 @@ function renderTable() {
                     state.searchTerm
                   )}</td>
                   <td>${highlightSearchTerm(
-                    employee.department,
+                    employee.department.department,
                     state.searchTerm
                   )}</td>
-                  <td>${highlightSearchTerm(employee.skills)}</td>
+                  <td>${highlightSearchTerm(
+                    employee.skills.map((skill) => skill.skill)
+                  )}</td>
               `;
       row.querySelector(".name").addEventListener("click", () => {
         editEmployee(employee.employeeId);
@@ -74,6 +80,7 @@ function closePopup() {
  * @param {object} employee employee object
  */
 function setFormData(employee) {
+  resetFormOptions();
   const form = document.querySelector("#emp-form");
   form.querySelector("#name").value = employee.name;
   form.querySelector("#email").value = employee.email;
@@ -81,8 +88,8 @@ function setFormData(employee) {
   form.querySelector("#joining-date").value = employee.joiningDate;
   form.querySelector("#salary").value = employee.salary;
   form.querySelector("#designation").value = employee.designation;
-  form.querySelector("#department").value = employee.department;
   form.querySelector("#employee-id").value = employee.employeeId;
+  employee.department && setDepartmentInput(employee.department);
 }
 
 /**
@@ -102,4 +109,45 @@ function getFormData() {
   };
 }
 
-export { renderTable, closePopup, setFormData, getFormData };
+/**
+ * Function to set dropdown options of department
+ */
+function setDepartmentOptions(departments) {
+  const departmentOptions = document.querySelector("#department-options");
+  departmentOptions.innerHTML = "";
+  departments.forEach((departmentItem) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `<a href="javascript:void(0)" data-id="${departmentItem.departmentId}">${departmentItem.department}</a>`;
+    listItem.addEventListener("click", (e) =>
+      onClickDepartmentOption(departmentItem)
+    );
+    departmentOptions.appendChild(listItem);
+  });
+}
+
+/**
+ * Function to set department input
+ */
+function setDepartmentInput(department) {
+  const departmentInput = document.querySelector("#department");
+  departmentInput.value = department.department;
+  departmentInput.dataset.id = department.departmentId;
+}
+
+/**
+ * Function to reset form options
+ */
+function resetFormOptions() {
+  const departmentOptions = document.querySelector("#department-options");
+  const departments = getAllDepartments();
+  setDepartmentOptions(departments);
+}
+
+export {
+  renderTable,
+  closePopup,
+  setFormData,
+  getFormData,
+  setDepartmentOptions,
+  setDepartmentInput,
+};

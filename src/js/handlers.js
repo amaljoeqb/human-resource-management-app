@@ -1,6 +1,18 @@
-import { setEmployee, getNextEmployeeId, getEmployee } from "./data.js";
+import {
+  setEmployee,
+  getNextEmployeeId,
+  getEmployee,
+  getAllSkills,
+  getAllDepartments,
+} from "./data.js";
 import { state } from "./context.js";
-import { renderTable, closePopup, setFormData } from "./controller.js";
+import {
+  renderTable,
+  closePopup,
+  setFormData,
+  setDepartmentOptions,
+  setDepartmentInput,
+} from "./controller.js";
 
 const table = document.querySelector(".emp-table");
 const tableBody = table.querySelector("tbody");
@@ -112,7 +124,8 @@ function onClickAddEmployee() {
     joiningDate: "",
     salary: "",
     designation: "",
-    department: "",
+    department: undefined,
+    skills: [],
     employeeId: nextId,
   };
   setFormData(employee);
@@ -146,6 +159,32 @@ function onClickSave(event) {
   renderTable();
 }
 
+/**
+ * Function to trigger on change of dropdown input
+ */
+function onChangeDepartmentInput(event) {
+  const dropdownInput = event.currentTarget;
+  const searchTerm = dropdownInput.value.trim().toLowerCase();
+  let departments = getAllDepartments();
+  departments = departments.filter((departmentItem) =>
+    departmentItem.department.toLowerCase().includes(searchTerm)
+  );
+  setDepartmentOptions(departments);
+}
+
+/**
+ * Function to trigger on click of dropdown list item
+ */
+function onClickDepartmentOption(department) {
+  const searchTerm = department.department.trim().toLowerCase();
+  let departments = getAllDepartments();
+  departments = departments.filter((departmentItem) =>
+    departmentItem.department.toLowerCase().includes(searchTerm)
+  );
+  setDepartmentOptions(departments);
+  setDepartmentInput(department);
+}
+
 export {
   onClickColumnTitle,
   onClickFilterButton,
@@ -155,4 +194,6 @@ export {
   editEmployee,
   onClickAddEmployee,
   onClickSave,
+  onChangeDepartmentInput,
+  onClickDepartmentOption,
 };
