@@ -100,8 +100,12 @@ function getFormData() {
     joiningDate: form.querySelector("#joining-date").value,
     salary: form.querySelector("#salary").value,
     designation: form.querySelector("#designation").value,
-    department: form.querySelector("#department").value,
+    department: {
+      departmentId: form.querySelector("#department").dataset.id,
+      department: form.querySelector("#department").value,
+    },
     employeeId: form.querySelector("#employee-id").value,
+    skills: [],
   };
 }
 

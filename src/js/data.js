@@ -130,14 +130,21 @@ function getAllEmployees() {
  * Function to get employee by id
  */
 function getEmployee(id) {
-  return employees.find((employee) => employee.employeeId === id);
+  return employees.find((employee) => employee.employeeId == id);
 }
 
 /**
  * Function to set employee data
  */
 function setEmployee(employee) {
-  employees[employee.employeeId] = employee;
+  const index = employees.findIndex(
+    (employeeItem) => employeeItem.employeeId == employee.employeeId
+  );
+  if (index === -1) {
+    employees.push(employee);
+  } else {
+    employees[index] = employee;
+  }
   localStorage.setItem("employees", JSON.stringify(employees));
 }
 

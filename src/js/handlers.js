@@ -4,6 +4,7 @@ import {
   getEmployee,
   getAllSkills,
   getAllDepartments,
+  getAllEmployees,
 } from "./data.js";
 import { state } from "./context.js";
 import {
@@ -12,6 +13,7 @@ import {
   setFormData,
   setDepartmentOptions,
   setDepartmentInput,
+  getFormData,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -140,22 +142,15 @@ function onClickSave(event) {
   event.preventDefault();
   const editForm = document.querySelector("#emp-form");
   const employeeId = editForm.querySelector("#employee-id").value;
-  // get student from students object
-  const employee = getEmployee(employeeId) || {};
-  // set student values
-  employee.name = editForm.querySelector("#name").value;
-  employee.email = editForm.querySelector("#email").value;
-  employee.dateOfBirth = editForm.querySelector("#dob").value;
-  employee.joiningDate = editForm.querySelector("#joining-date").value;
-  employee.salary = editForm.querySelector("#salary").value;
-  employee.designation = editForm.querySelector("#designation").value;
-  employee.department = editForm.querySelector("#department").value;
-  employee.employeeId = employeeId;
-  employee.skills = employee.skills ?? [];
-  setEmployee(employee);
-  // close popup
+  let existingEmployee = getEmployee(employeeId);
+  let modifiedEmployee = getFormData();
+  // TODO: remove this once skills is implemented
+  if (existingEmployee) {
+    modifiedEmployee.skills = existingEmployee.skills;
+  }
+  console.log(modifiedEmployee, existingEmployee);
+  setEmployee(modifiedEmployee);
   closePopup();
-  // render table
   renderTable();
 }
 
