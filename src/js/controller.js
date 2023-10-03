@@ -1,10 +1,6 @@
 import { highlightSearchTerm, getRupeesFormat } from "./helpers.js";
 import { sortEmployees, searchEmployees, getAllDepartments } from "./data.js";
-import {
-  onChangeRowCheck,
-  editEmployee,
-  onClickDepartmentOption,
-} from "./handlers.js";
+import { onChangeRowCheck, editEmployee } from "./handlers.js";
 import { state } from "./context.js";
 
 const table = document.querySelector(".emp-table");
@@ -119,7 +115,7 @@ function setDepartmentOptions(departments) {
     const listItem = document.createElement("li");
     listItem.innerHTML = `<a href="javascript:void(0)" data-id="${departmentItem.departmentId}">${departmentItem.department}</a>`;
     listItem.addEventListener("click", (e) =>
-      onClickDepartmentOption(departmentItem)
+      setDepartmentInput(departmentItem)
     );
     departmentOptions.appendChild(listItem);
   });
@@ -132,6 +128,13 @@ function setDepartmentInput(department) {
   const departmentInput = document.querySelector("#department");
   departmentInput.value = department.department;
   departmentInput.dataset.id = department.departmentId;
+  // set department options
+  const searchTerm = department.department.trim().toLowerCase();
+  let departments = getAllDepartments();
+  departments = departments.filter((departmentItem) =>
+    departmentItem.department.toLowerCase().includes(searchTerm)
+  );
+  setDepartmentOptions(departments);
 }
 
 /**

@@ -172,18 +172,6 @@ function onChangeDepartmentInput(event) {
   setDepartmentOptions(departments);
 }
 
-/**
- * Function to trigger on click of dropdown list item
- */
-function onClickDepartmentOption(department) {
-  const searchTerm = department.department.trim().toLowerCase();
-  let departments = getAllDepartments();
-  departments = departments.filter((departmentItem) =>
-    departmentItem.department.toLowerCase().includes(searchTerm)
-  );
-  setDepartmentOptions(departments);
-  setDepartmentInput(department);
-}
 
 export {
   onClickColumnTitle,
@@ -195,5 +183,4 @@ export {
   onClickAddEmployee,
   onClickSave,
   onChangeDepartmentInput,
-  onClickDepartmentOption,
 };
