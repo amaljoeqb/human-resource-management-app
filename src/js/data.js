@@ -1,6 +1,6 @@
 import { getData } from "./helpers.js";
 
-let employees = {};
+let employees = [];
 let skills = [];
 let departments = [];
 
@@ -105,7 +105,8 @@ async function loadData() {
 async function loadSampleData() {
   const sampleData = await getData("assets/json/employees.json");
   localStorage.setItem("employees", JSON.stringify(sampleData.employees));
-  return sampleData.employees;
+  employees = sampleData.employees;
+  return employees;
 }
 
 /**
@@ -129,7 +130,7 @@ function getAllEmployees() {
  * Function to get employee by id
  */
 function getEmployee(id) {
-  return employees[id];
+  return employees.find((employee) => employee.employeeId === id);
 }
 
 /**

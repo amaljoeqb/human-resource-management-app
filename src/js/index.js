@@ -55,7 +55,6 @@ async function loadEmployees() {
   if (employees === undefined || employees === null) {
     await loadSampleData();
   }
-  setDepartmentOptions(getAllDepartments());
   renderTable();
 }
 

@@ -172,7 +172,6 @@ function onChangeDepartmentInput(event) {
   setDepartmentOptions(departments);
 }
 
-
 export {
   onClickColumnTitle,
   onClickFilterButton,
