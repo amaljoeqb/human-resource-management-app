@@ -1,4 +1,4 @@
-const state = {
+export const state = {
   sort: {
     key: "employeeId",
     asc: true,
@@ -9,5 +9,3 @@ const state = {
     limit: 10,
   },
 };
-
-export { state };
