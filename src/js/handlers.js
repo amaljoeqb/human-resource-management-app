@@ -5,6 +5,7 @@ import {
   getAllSkills,
   getAllDepartments,
   getAllEmployees,
+  deleteEmployee,
 } from "./data.js";
 import { state } from "./context.js";
 import {
@@ -114,6 +115,13 @@ function editEmployee(id) {
   document.querySelector(".popup").classList = "popup show-popup edit-popup";
 }
 
+function onClickName(id) {
+  const employee = getEmployee(id);
+  setFormData(employee);
+  // show view popup
+  document.querySelector(".popup").classList = "popup show-popup view-popup";
+}
+
 /**
  * Function to trigger on click delete employee
  * @param {string} id employee id
@@ -121,8 +129,13 @@ function editEmployee(id) {
 function onClickDelete(id) {
   const employee = getEmployee(id);
   // show delete confirmation popup
-  document.querySelector(".confirmation-popup").classList =
-    "confirmation-popup popup show-popup delete";
+  const confirmationPopup = document.querySelector(".confirmation-popup");
+  confirmationPopup.classList = "confirmation-popup popup show-popup delete";
+  const confirmationMessage = confirmationPopup.querySelector(
+    ".confirmation-message"
+  );
+  confirmationMessage.innerHTML = `Are you sure you want to delete <strong>${employee.name}</strong>?`;
+  confirmationPopup.dataset.id = id;
 }
 
 /**
@@ -212,6 +225,24 @@ function onClickDocument(event) {
   }
 }
 
+/**
+ * On click yes of confirmation popup
+ */
+function onClickYes(e) {
+  const confirmationPopup = document.querySelector(".confirmation-popup");
+  const employeeId = confirmationPopup.dataset.id;
+  deleteEmployee(employeeId);
+  closePopup();
+  renderTable();
+}
+
+/**
+ * On click no of confirmation popup
+ */
+function onClickNo(e) {
+  closePopup();
+}
+
 export {
   onClickColumnTitle,
   onClickFilterButton,
@@ -225,4 +256,7 @@ export {
   onClickDelete,
   onClickActionButton,
   onClickDocument,
+  onClickYes,
+  onClickNo,
+  onClickName,
 };

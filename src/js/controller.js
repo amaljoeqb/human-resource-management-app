@@ -5,6 +5,7 @@ import {
   editEmployee,
   onClickDelete,
   onClickActionButton,
+  onClickName,
 } from "./handlers.js";
 import { state } from "./context.js";
 
@@ -76,7 +77,7 @@ function renderTable() {
             </td>
               `;
       row.querySelector(".name").addEventListener("click", () => {
-        editEmployee(employee.employeeId);
+        onClickName(employee.employeeId);
       });
       row
         .querySelector(".row-check")
@@ -103,7 +104,9 @@ function renderTable() {
  * Function to close popup
  */
 function closePopup() {
-  document.querySelector(".popup").classList.remove("show-popup");
+  document.querySelectorAll(".popup").forEach((popup) => {
+    popup.classList.remove("show-popup");
+  });
 }
 
 /**

@@ -136,9 +136,19 @@ function getAllEmployees() {
 
 /**
  * Function to get employee by id
+ * @param {string} id employee id
  */
 function getEmployee(id) {
   return employees.find((employee) => employee.employeeId == id);
+}
+
+/**
+ * Function to delete employee by id
+ * @param {string} id employee id
+ */
+function deleteEmployee(id) {
+  employees = employees.filter((employee) => employee.employeeId != id);
+  localStorage.setItem("employees", JSON.stringify(employees));
 }
 
 /**
@@ -182,4 +192,5 @@ export {
   getEmployee,
   getAllSkills,
   getAllDepartments,
+  deleteEmployee,
 };

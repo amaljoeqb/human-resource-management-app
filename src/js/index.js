@@ -8,6 +8,8 @@ import {
   onClickSave,
   onChangeDepartmentInput,
   onClickDocument,
+  onClickYes,
+  onClickNo,
 } from "./handlers.js";
 import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
@@ -17,19 +19,26 @@ const columnTitles = tableHeader.querySelectorAll(".column-title");
 const filterButtons = document.querySelectorAll(".filter");
 const searchInput = document.querySelector(".search-input");
 const allCheck = document.querySelector(".all-check");
-const popup = document.querySelector(".popup");
-const closePopupButton = document.querySelector(".close-popup");
+const popups = document.querySelectorAll(".popup");
+const closePopupButtons = document.querySelectorAll(".close-popup");
 const addEmployeeButton = document.querySelector(".add-btn");
 const saveButton = document.querySelector("#save-button");
 const departmentInput = document.querySelector("#department");
+const confirmButton = document.querySelector(".confirm");
+const cancelButton = document.querySelector(".cancel");
 
 addEmployeeButton.addEventListener("click", onClickAddEmployee);
 
-closePopupButton.addEventListener("click", closePopup);
-popup.addEventListener("click", (e) => {
-  if (e.target === popup) {
-    closePopup();
-  }
+closePopupButtons.forEach((closePopupButton) => {
+  closePopupButton.addEventListener("click", closePopup);
+});
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      closePopup();
+    }
+  });
 });
 
 allCheck.addEventListener("click", onClickAllCheck);
@@ -47,6 +56,9 @@ filterButtons.forEach((filterButton) => {
 saveButton.addEventListener("click", onClickSave);
 
 departmentInput.addEventListener("input", onChangeDepartmentInput);
+
+confirmButton.addEventListener("click", onClickYes);
+cancelButton.addEventListener("click", onClickNo);
 
 document.addEventListener("click", onClickDocument);
 

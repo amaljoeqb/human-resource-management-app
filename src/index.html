@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/form.css" />
     <link rel="stylesheet" href="css/table.css" />
+    <link rel="stylesheet" href="css/popup.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -186,6 +187,22 @@
             value="Save"
           />
         </form>
+      </div>
+    </div>
+    <div class="popup confirmation-popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <span class="material-symbols-outlined close-popup"> close </span>
+        </div>
+        <div class="confirmation-content">
+          <p class="confirmation-message">
+            Are you sure you want to delete this employee?
+          </p>
+          <div class="confirmation-btns">
+            <button class="hover-btn primary confirm">Yes</button>
+            <button class="hover-btn cancel">No</button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="js/index.js" type="module"></script>
