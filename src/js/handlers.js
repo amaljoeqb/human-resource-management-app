@@ -115,6 +115,17 @@ function editEmployee(id) {
 }
 
 /**
+ * Function to trigger on click delete employee
+ * @param {string} id employee id
+ */
+function onClickDelete(id) {
+  const employee = getEmployee(id);
+  // show delete confirmation popup
+  document.querySelector(".confirmation-popup").classList =
+    "confirmation-popup popup show-popup delete";
+}
+
+/**
  * Function to trigger on click of add employee button
  */
 function onClickAddEmployee() {
@@ -167,6 +178,40 @@ function onChangeDepartmentInput(event) {
   setDepartmentOptions(departments);
 }
 
+/**
+ * Function to trigger on click action button
+ */
+function onClickActionButton(event) {
+  const actionButton = event.currentTarget;
+  const actionMenu = actionButton.parentElement;
+  const isActive = actionMenu.classList.contains("active");
+  if (isActive) {
+    actionMenu.classList.remove("active");
+    state.activeMenu = undefined;
+  } else {
+    if (state.activeMenu) {
+      state.activeMenu.classList.remove("active");
+    }
+    actionMenu.classList.add("active");
+    state.activeMenu = actionMenu;
+  }
+}
+
+/**
+ * Function to trigger on click of document
+ */
+function onClickDocument(event) {
+  if (state.activeMenu === undefined) {
+    return;
+  }
+  const clickedElement = event.target;
+  console.log(state.activeMenu.contains(clickedElement));
+  if (!state.activeMenu.contains(clickedElement)) {
+    state.activeMenu.classList.remove("active");
+    state.activeMenu = undefined;
+  }
+}
+
 export {
   onClickColumnTitle,
   onClickFilterButton,
@@ -177,4 +222,7 @@ export {
   onClickAddEmployee,
   onClickSave,
   onChangeDepartmentInput,
+  onClickDelete,
+  onClickActionButton,
+  onClickDocument,
 };

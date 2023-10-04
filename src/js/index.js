@@ -7,6 +7,7 @@ import {
   onClickAddEmployee,
   onClickSave,
   onChangeDepartmentInput,
+  onClickDocument,
 } from "./handlers.js";
 import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
@@ -46,6 +47,8 @@ filterButtons.forEach((filterButton) => {
 saveButton.addEventListener("click", onClickSave);
 
 departmentInput.addEventListener("input", onChangeDepartmentInput);
+
+document.addEventListener("click", onClickDocument);
 
 /**
  * Function to load employees from local storage or API

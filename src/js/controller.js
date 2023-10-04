@@ -1,6 +1,11 @@
 import { highlightSearchTerm, getRupeesFormat } from "./helpers.js";
 import { sortEmployees, searchEmployees, getAllDepartments } from "./data.js";
-import { onChangeRowCheck, editEmployee } from "./handlers.js";
+import {
+  onChangeRowCheck,
+  editEmployee,
+  onClickDelete,
+  onClickActionButton,
+} from "./handlers.js";
 import { state } from "./context.js";
 
 const table = document.querySelector(".emp-table");
@@ -50,6 +55,25 @@ function renderTable() {
                   <td>${highlightSearchTerm(
                     employee.skills.map((skill) => skill.skill)
                   )}</td>
+                  <td>
+              <div class="action-container">
+                <a href="javascript:void(0)" class="action-btn">
+                  <span class="material-symbols-outlined"> more_horiz </span>
+                </a>
+                <div class="action-menu">
+                  <ul>
+                    <li>
+                      <a href="javascript:void(0)" class="edit-btn"> Edit </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" class="delete-btn" ">
+                        Delete
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
               `;
       row.querySelector(".name").addEventListener("click", () => {
         editEmployee(employee.employeeId);
@@ -57,6 +81,17 @@ function renderTable() {
       row
         .querySelector(".row-check")
         .addEventListener("click", onChangeRowCheck);
+
+      row.querySelector(".edit-btn").addEventListener("click", (e) => {
+        editEmployee(employee.employeeId);
+      });
+      row.querySelector(".delete-btn").addEventListener("click", (e) => {
+        onClickDelete(employee.employeeId);
+      });
+      row
+        .querySelector(".action-btn")
+        .addEventListener("click", onClickActionButton);
+
       tableBody.appendChild(row);
     } catch (e) {
       console.log(e, employee);
