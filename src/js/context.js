@@ -1,4 +1,4 @@
-let state = {
+const state = {
   sort: {
     key: "employeeId",
     asc: true,

@@ -51,11 +51,16 @@ departmentInput.addEventListener("input", onChangeDepartmentInput);
  * Function to load employees from local storage or API
  */
 async function loadEmployees() {
-  const employees = await loadData();
-  if (employees === undefined || employees === null) {
-    await loadSampleData();
+  try {
+    const employees = await loadData();
+    if (employees === undefined || employees === null) {
+      await loadSampleData();
+    }
+    renderTable();
+  } catch (e) {
+    // TODO: alert error
+    console.error(e);
   }
-  renderTable();
 }
 
 loadEmployees();

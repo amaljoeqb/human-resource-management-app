@@ -93,20 +93,28 @@ function searchEmployees(searchTerm) {
  * Function to load data from local storage
  */
 async function loadData() {
-  employees = JSON.parse(localStorage.getItem("employees"));
-  skills = (await getData("assets/json/skills.json")).skills;
-  departments = (await getData("assets/json/departments.json")).departments;
-  return employees;
+  try {
+    employees = JSON.parse(localStorage.getItem("employees"));
+    skills = (await getData("assets/json/skills.json")).skills;
+    departments = (await getData("assets/json/departments.json")).departments;
+    return employees;
+  } catch {
+    throw new Error("Error loading data from local storage");
+  }
 }
 
 /**
- * Function to load sample data from json file
+ * Function to load sample data from JSON file
  */
 async function loadSampleData() {
-  const sampleData = await getData("assets/json/employees.json");
-  localStorage.setItem("employees", JSON.stringify(sampleData.employees));
-  employees = sampleData.employees;
-  return employees;
+  try {
+    const sampleData = await getData("assets/json/employees.json");
+    localStorage.setItem("employees", JSON.stringify(sampleData.employees));
+    employees = sampleData.employees;
+    return employees;
+  } catch {
+    throw new Error("Error loading sample data");
+  }
 }
 
 /**

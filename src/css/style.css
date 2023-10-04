@@ -5,6 +5,7 @@
     --text-overlay: hsla(235, 50%, 29%, 0.9);
     --accent-color: hsl(240 4.8% 95.9%);
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
+    --light-grey: #e4e4e4;
 }
 
 body {
