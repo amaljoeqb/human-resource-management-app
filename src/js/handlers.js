@@ -243,6 +243,18 @@ function onClickNo(e) {
   closePopup();
 }
 
+/**
+ * on click of page next
+ */
+function onClickPageNext() {
+  const currentPageNumber = document.querySelector(".page-number.active");
+  const nextPageNumber = currentPageNumber.nextElementSibling;
+  currentPageNumber.classList.remove("active");
+  nextPageNumber.classList.add("active");
+  state.pagination.pageNumber = parseInt(nextPageNumber.textContent);
+  renderTable();
+}
+
 export {
   onClickColumnTitle,
   onClickFilterButton,

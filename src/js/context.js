@@ -5,8 +5,8 @@ export const state = {
   },
   searchTerm: "",
   pagination: {
-    page: 1,
-    limit: 10,
+    pageNumber: 1,
+    pageSize: 5,
   },
   activeMenu: undefined,
 };

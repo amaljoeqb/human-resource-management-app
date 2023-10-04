@@ -22,6 +22,10 @@ function renderTable() {
     state.sort.key,
     state.sort.asc
   );
+  const pagination = state.pagination;
+  const start = (pagination.pageNumber - 1) * pagination.pageSize;
+  const end = start + pagination.pageSize;
+  filteredEmployees = filteredEmployees.slice(start, end);
   tableBody.innerHTML = "";
   filteredEmployees.forEach((employee) => {
     try {
