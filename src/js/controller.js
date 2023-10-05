@@ -18,6 +18,7 @@ import {
   onClickName,
   onClickPageNumber,
   onClickSkillClose,
+  onClickFilterOption,
 } from "./handlers.js";
 import { state } from "./context.js";
 
@@ -333,6 +334,121 @@ function gotoPage(pageNumber) {
   pageElement.classList.add("active");
   renderTable();
 }
+/**
+ * Function to set skills filter options
+ */
+function setSkillsFilterOptions() {
+  const skills = getAllSkills();
+  const skillsFilterOptions = document.querySelector(
+    "#skills-filter .filtered-items"
+  );
+  const searchTerm = state.filterSearchTerms.skills;
+  const options = skills
+    .filter((skill) => {
+      return skill.skill.toLowerCase().includes(searchTerm);
+    })
+    .map((skill) => {
+      return {
+        id: skill.skillId,
+        name: skill.skill,
+        count: getAllEmployees().filter((employee) => {
+          return employee.skills.find((skillItem) => {
+            return skillItem.skillId === skill.skillId;
+          });
+        }).length,
+        checked: state.filters.skills.includes(skill.skillId),
+      };
+    })
+    .sort((a, b) => b.count - a.count);
+  setFilterOptions(skillsFilterOptions, options);
+}
+
+/**
+ * Function to set skills filter selected
+ */
+function setSkillsFilterSelected() {
+  const skills = getAllSkills();
+  const skillsFilterSelected = document.querySelector(
+    "#skills-filter .selected-items"
+  );
+  const selections = skills
+    .filter((skill) => {
+      return state.filters.skills.includes(skill.skillId);
+    })
+    .map((skill) => {
+      return {
+        id: skill.skillId,
+        name: skill.skill,
+      };
+    });
+  setFilterSelected(skillsFilterSelected, selections);
+}
+
+function setFilterSelected(itemsContainer, selections) {
+  itemsContainer.innerHTML = "";
+  selections.forEach((selection) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("selected-item");
+    listItem.dataset.id = selection.id;
+    listItem.innerHTML = `
+      <p>${selection.name}</p>
+      <span class="material-symbols-outlined">
+        close
+      </span>
+    `;
+    listItem.addEventListener("click", (e) => {
+      e.preventDefault();
+      removeSkillFilter(selection.id);
+    });
+    itemsContainer.appendChild(listItem);
+  });
+}
+
+/**
+ * Function to add skill filter
+ * @param {string} skillId skill id
+ */
+function addSkillFilter(skillId) {
+  state.filters.skills.push(skillId);
+  console.log(state.filters.skills);
+  setSkillsFilterSelected();
+  console.log(state.filters.skills);
+
+  setSkillsFilterOptions();
+}
+
+/**
+ * Function to remove skill filter
+ * @param {string} skillId skill id
+ */
+function removeSkillFilter(skillId) {
+  state.filters.skills = state.filters.skills.filter(
+    (skill) => skill !== skillId
+  );
+  setSkillsFilterSelected();
+  setSkillsFilterOptions();
+}
+
+/**
+ * Function to set filter options
+ * @param {object} itemsContainer container of filter options
+ * @param {array} options array of options containing id, name, count and checked status
+ */
+function setFilterOptions(itemsContainer, options) {
+  itemsContainer.innerHTML = "";
+  options.forEach((option) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("filtered-item");
+    listItem.dataset.id = option.id;
+    listItem.innerHTML = `
+      <input class="check" type="checkbox" ${option.checked ? "checked" : ""} />
+      <p class="name">${option.name}</p>
+      <p class="count">${option.count}</p>
+    `;
+    listItem.addEventListener("click", onClickFilterOption);
+    itemsContainer.appendChild(listItem);
+  });
+}
 
 export {
   renderTable,
@@ -344,4 +460,7 @@ export {
   toggleEditPopup,
   gotoPage,
   setSkillsOptions,
+  setSkillsFilterOptions,
+  addSkillFilter,
+  removeSkillFilter,
 };

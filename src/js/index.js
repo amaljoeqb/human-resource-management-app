@@ -17,6 +17,7 @@ import {
   onClickPageNumber,
   onChangeSkillsInput,
   onClickSkillsContainer,
+  onChangeFilterSearch,
 } from "./handlers.js";
 import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
@@ -41,6 +42,9 @@ const pageLast = document.querySelector(".page-last");
 const skillsInputContainer = document.querySelector(".skills-input-container");
 const skillInput = document.querySelector(".skill-input");
 const filterButton = document.querySelector(".filter-btn");
+const filterSearch = document.querySelector(".filter-search");
+
+filterSearch.addEventListener("input", onChangeFilterSearch);
 
 filterButton.addEventListener("click", onClickFilterButton);
 

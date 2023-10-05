@@ -132,12 +132,9 @@
   background-color: rgba(80, 151, 255, 0.4);
 }
 
-.name:hover {
-  cursor: pointer;
-}
-
-.name:hover {
+table .name:hover {
   color: var(--text-overlay);
+  cursor: pointer;
 }
 
 .action-container {

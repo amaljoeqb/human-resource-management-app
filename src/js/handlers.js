@@ -17,6 +17,9 @@ import {
   getFormData,
   gotoPage,
   setSkillsOptions,
+  setSkillsFilterOptions,
+  removeSkillFilter,
+  addSkillFilter,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -320,20 +323,37 @@ function onClickSkillsContainer(e) {
   skillInput.focus();
 }
 
+/**
+ * Function to trigger on click of filter button
+ */
 function onClickFilterButton(e) {
   const filterButton = e.currentTarget;
   const filterDropdown =
     filterButton.parentElement.querySelector(".filter-dropdown");
   filterDropdown.classList.toggle("show");
+  setSkillsFilterOptions();
 }
 
+/**
+ * Function to trigger on change of filter search
+ */
 function onChangeFilterSearch(e) {
-  const searchTerm = e.currentTarget.value.trim().toLowerCase();
-  let skills = getAllSkills();
-  skills = skills.filter((skillItem) =>
-    skillItem.skill.toLowerCase().includes(searchTerm)
-  );
-  setSkillsFilterOptions(skills);
+  state.filterSearchTerms.skills = e.currentTarget.value.trim().toLowerCase();
+  setSkillsFilterOptions();
+}
+
+/**
+ * Function to trigger on click of filter option
+ */
+function onClickFilterOption(e) {
+  const skillId = parseInt(e.currentTarget.dataset.id);
+  const isActive = state.filters.skills.includes(skillId);
+  if (isActive) {
+    removeSkillFilter(skillId);
+  } else {
+    addSkillFilter(skillId);
+  }
+  console.log(state.filters.skills, state.filterSearchTerms.skills, isActive);
 }
 
 export {
@@ -360,4 +380,6 @@ export {
   onClickSkillClose,
   onClickSkillsContainer,
   onClickFilterButton,
+  onChangeFilterSearch,
+  onClickFilterOption,
 };

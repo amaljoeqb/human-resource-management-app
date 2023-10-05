@@ -38,25 +38,13 @@
             name="key"
             class="search-input"
             placeholder="Search employees..."
+            autocomplete="off"
           />
-          <div class="filter-btn-container">
+          <div id="skills-filter" class="filter-btn-container">
             <button class="filter-btn hover-btn">
               <span class="material-symbols-outlined"> tune </span>
               <p>Skills</p>
-              <ul class="selected-items">
-                <li class="selected-item" data-id="1">
-                  <p>HTML</p>
-                  <span class="material-symbols-outlined"> close </span>
-                </li>
-                <li class="selected-item" data-id="2">
-                  <p>CSS</p>
-                  <span class="material-symbols-outlined"> close </span>
-                </li>
-                <li class="selected-item" data-id="3">
-                  <p>JavaScript</p>
-                  <span class="material-symbols-outlined"> close </span>
-                </li>
-              </ul>
+              <ul class="selected-items"></ul>
             </button>
             <div class="filter-dropdown">
               <form class="filter-form">
@@ -69,21 +57,11 @@
                   id="skill-filter"
                   name="skill-filter"
                   placeholder="Search Skills"
+                  autocomplete="off"
                 />
               </form>
               <hr />
-              <ul class="filtered-items">
-                <li class="filtered-item">
-                  <input class="check" type="checkbox" id="1" />
-                  <p class="name">HTML</p>
-                  <p class="count">21</p>
-                </li>
-                <li class="filtered-item">
-                  <input class="check" type="checkbox" id="1" />
-                  <p class="name">HTML</p>
-                  <p class="count">21</p>
-                </li>
-              </ul>
+              <ul class="filtered-items"></ul>
               <hr />
               <button class="clear-filter">
                 <p>Clear Filters</p>

@@ -3,6 +3,12 @@ export const state = {
     key: "employeeId",
     asc: true,
   },
+  filters: {
+    skills: [],
+  },
+  filterSearchTerms: {
+    skills: "",
+  },
   searchTerm: "",
   pagination: {
     pageNumber: 1,
