@@ -22,123 +22,131 @@
   </head>
 
   <body>
-    <div class="emp-listing-header">
-      <div class="start-section">
-        <h2>Employees</h2>
-        <input
-          type="text"
-          name="key"
-          class="search-input"
-          placeholder="Search employees..."
-        />
-      </div>
-      <button class="add-btn hover-btn">
-        <span class="material-symbols-outlined"> add_circle </span>
-      </button>
-    </div>
-    <div class="table-container">
-      <table class="emp-table">
-        <colgroup>
-          <col style="width: 12%" />
-          <col style="width: 20%" />
-          <col style="width: 15%" />
-          <col style="width: 15%" />
-          <col style="width: 35%" />
-          <col style="width: 3%" />
-        </colgroup>
-        <thead>
-          <tr class="header-row">
-            <th class="check-cell">
-              <div class="checkbox-container">
-                <input type="checkbox" class="all-check" />
-              </div>
-            </th>
-            <th>
-              <div class="header-container">
-                <h3 class="column-title" data-key="employeeId">
-                  <a href="javascript:void(0)">Employee ID</a>
-                  <span class="material-symbols-outlined up"> north </span>
-                </h3>
-              </div>
-            </th>
-
-            <th>
-              <div class="header-container">
-                <h3 class="column-title" data-key="name">
-                  <a href="javascript:void(0)">Name</a>
-                  <span class="material-symbols-outlined up"> north </span>
-                </h3>
-              </div>
-            </th>
-
-            <th>
-              <div class="header-container">
-                <h3 class="column-title" data-key="designation">
-                  <a href="javascript:void(0)">Designation</a>
-                  <span class="material-symbols-outlined up"> north </span>
-                </h3>
-              </div>
-            </th>
-
-            <th>
-              <div class="header-container">
-                <h3 class="column-title" data-key="department">
-                  <a href="javascript:void(0)">Department</a>
-                  <span class="material-symbols-outlined up"> north </span>
-                </h3>
-              </div>
-            </th>
-
-            <th>
-              <div class="header-container">
-                <h3 class="column-title" data-key="skills">
-                  <a href="javascript:void(0)">Skills</a>
-                  <span class="material-symbols-outlined up"> north </span>
-                </h3>
-              </div>
-            </th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-    <div class="pagination-container">
-      <div class="pagination">
-        <button class="hover-btn page-first">
-          <span class="material-symbols-outlined"> first_page </span>
-        </button>
-        <button class="hover-btn page-previous">
-          <span class="material-symbols-outlined"> navigate_before </span>
-        </button>
-        <ul class="page-numbers">
-          <li>
-            <a
-              id="page-1"
-              data-num="1"
-              class="page-number hover-btn active"
-              href="javascript:void(0)"
-              >1</a
-            >
-          </li>
-          <li>
-            <a
-              id="page-2"
-              data-num="2"
-              class="page-number hover-btn"
-              href="javascript:void(0)"
-              >2</a
-            >
-          </li>
-        </ul>
-        <button class="hover-btn page-next">
-          <span class="material-symbols-outlined"> navigate_next </span>
-        </button>
-        <button class="hover-btn page-last">
-          <span class="material-symbols-outlined"> last_page </span>
+    <header>
+      <a href="#" class="logo">
+        <img src="assets/img/logo.svg" alt="logo" />
+        <h1><span class="bold">The Q</span> Company</h1>
+      </a>
+    </header>
+    <main class="card">
+      <div class="emp-listing-header">
+        <div class="start-section">
+          <h2>Employees</h2>
+          <input
+            type="text"
+            name="key"
+            class="search-input"
+            placeholder="Search employees..."
+          />
+        </div>
+        <button class="add-btn hover-btn">
+          <span class="material-symbols-outlined"> add_circle </span>
         </button>
       </div>
-    </div>
+      <div class="table-container">
+        <table class="emp-table">
+          <colgroup>
+            <col style="width: 5%" />
+            <col style="width: 20%" />
+            <col style="width: 15%" />
+            <col style="width: 15%" />
+            <col style="width: 40%" />
+            <col style="width: 5%" />
+          </colgroup>
+          <thead>
+            <tr class="header-row">
+              <th class="check-cell">
+                <div class="checkbox-container">
+                  <input type="checkbox" class="all-check" />
+                </div>
+              </th>
+              <th>
+                <div class="header-container">
+                  <h3 class="column-title" data-key="employeeId">
+                    <a href="javascript:void(0)">ID</a>
+                    <span class="material-symbols-outlined up"> north </span>
+                  </h3>
+                </div>
+              </th>
+
+              <th>
+                <div class="header-container">
+                  <h3 class="column-title" data-key="name">
+                    <a href="javascript:void(0)">Name</a>
+                    <span class="material-symbols-outlined up"> north </span>
+                  </h3>
+                </div>
+              </th>
+
+              <th>
+                <div class="header-container">
+                  <h3 class="column-title" data-key="designation">
+                    <a href="javascript:void(0)">Designation</a>
+                    <span class="material-symbols-outlined up"> north </span>
+                  </h3>
+                </div>
+              </th>
+
+              <th>
+                <div class="header-container">
+                  <h3 class="column-title" data-key="department">
+                    <a href="javascript:void(0)">Department</a>
+                    <span class="material-symbols-outlined up"> north </span>
+                  </h3>
+                </div>
+              </th>
+
+              <th>
+                <div class="header-container">
+                  <h3 class="column-title" data-key="skills">
+                    <a href="javascript:void(0)">Skills</a>
+                    <span class="material-symbols-outlined up"> north </span>
+                  </h3>
+                </div>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="pagination-container">
+        <div class="pagination">
+          <button class="hover-btn page-first">
+            <span class="material-symbols-outlined"> first_page </span>
+          </button>
+          <button class="hover-btn page-previous">
+            <span class="material-symbols-outlined"> navigate_before </span>
+          </button>
+          <ul class="page-numbers">
+            <li>
+              <a
+                id="page-1"
+                data-num="1"
+                class="page-number hover-btn active"
+                href="javascript:void(0)"
+                >1</a
+              >
+            </li>
+            <li>
+              <a
+                id="page-2"
+                data-num="2"
+                class="page-number hover-btn"
+                href="javascript:void(0)"
+                >2</a
+              >
+            </li>
+          </ul>
+          <button class="hover-btn page-next">
+            <span class="material-symbols-outlined"> navigate_next </span>
+          </button>
+          <button class="hover-btn page-last">
+            <span class="material-symbols-outlined"> last_page </span>
+          </button>
+        </div>
+      </div>
+    </main>
     <div class="popup emp-popup">
       <div class="popup-content">
         <div class="form-header">
@@ -268,6 +276,12 @@
         </div>
       </div>
     </div>
+    <footer>
+      <hr />
+      <div class="lower">
+        <p>Copyright @ 2020 Gardener. All Rights Reserved</p>
+      </div>
+    </footer>
     <script src="js/index.js" type="module"></script>
   </body>
 </html>
