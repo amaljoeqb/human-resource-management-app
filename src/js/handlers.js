@@ -54,15 +54,6 @@ function onClickColumnTitle(event) {
 }
 
 /**
- * Function to trigger on click of filter button
- */
-function onClickFilterButton(event) {
-  const filterForm =
-    event.currentTarget.parentElement.querySelector(".filter-form");
-  filterForm.classList.toggle("hidden");
-}
-
-/**
  * Function to trigger on change of search input
  */
 function onChangeSearchInput(event) {
@@ -329,9 +320,24 @@ function onClickSkillsContainer(e) {
   skillInput.focus();
 }
 
+function onClickFilterButton(e) {
+  const filterButton = e.currentTarget;
+  const filterDropdown =
+    filterButton.parentElement.querySelector(".filter-dropdown");
+  filterDropdown.classList.toggle("show");
+}
+
+function onChangeFilterSearch(e) {
+  const searchTerm = e.currentTarget.value.trim().toLowerCase();
+  let skills = getAllSkills();
+  skills = skills.filter((skillItem) =>
+    skillItem.skill.toLowerCase().includes(searchTerm)
+  );
+  setSkillsFilterOptions(skills);
+}
+
 export {
   onClickColumnTitle,
-  onClickFilterButton,
   onChangeSearchInput,
   onClickAllCheck,
   onChangeRowCheck,
@@ -353,4 +359,5 @@ export {
   onClickPageNumber,
   onClickSkillClose,
   onClickSkillsContainer,
+  onClickFilterButton,
 };

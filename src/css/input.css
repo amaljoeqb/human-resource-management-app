@@ -6,7 +6,7 @@
   margin-top: 4px;
   top: 100%;
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   background-color: white;
   padding: 0;
@@ -71,6 +71,7 @@ input.filter-search:focus {
 .filtered-item .check {
   margin: 0;
   width: 12px;
+  pointer-events: none;
 }
 
 .filtered-item:hover {
@@ -111,12 +112,9 @@ input.filter-search:focus {
   font-weight: 400;
 }
 
-.vr {
-  height: 24px;
-  border-left: 1px solid #ddd;
-}
-
 .filter-btn .selected-items {
+  padding-left: 6px;
+  border-left: 1px solid #ddd;
   display: flex;
   flex-direction: row;
   column-gap: 4px;

@@ -40,6 +40,9 @@ const pageFirst = document.querySelector(".page-first");
 const pageLast = document.querySelector(".page-last");
 const skillsInputContainer = document.querySelector(".skills-input-container");
 const skillInput = document.querySelector(".skill-input");
+const filterButton = document.querySelector(".filter-btn");
+
+filterButton.addEventListener("click", onClickFilterButton);
 
 addEmployeeButton.addEventListener("click", onClickAddEmployee);
 
