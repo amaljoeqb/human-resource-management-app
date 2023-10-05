@@ -1,4 +1,7 @@
-- make name clickable, open detailed view
-- actions - edit, delete, change status
-- cards with count - WFH, WFO, leaves
-- auto fill sample data button
+- view to edit
+- pagination
+- skills - chips and input
+- header and footer
+- status and change status
+
+- developer mode - autofill create and list
