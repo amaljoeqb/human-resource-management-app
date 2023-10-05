@@ -170,10 +170,6 @@ function onClickSave(event) {
   const employeeId = editForm.querySelector("#employee-id").value;
   let existingEmployee = getEmployee(employeeId);
   let modifiedEmployee = getFormData();
-  // TODO: remove this once skills is implemented
-  if (existingEmployee) {
-    modifiedEmployee.skills = existingEmployee.skills;
-  }
   console.log(modifiedEmployee, existingEmployee);
   setEmployee(modifiedEmployee);
   closePopup();
@@ -319,9 +315,18 @@ function onClickPageNumber(e) {
  * Function to trigger on click of skill close button
  */
 function onClickSkillClose(e) {
+  e.stopPropagation();
   const skillsInput = document.querySelector("#skills");
   const chipElement = e.target.parentNode;
   skillsInput.removeChild(chipElement);
+}
+
+/**
+ * Function to trigger on click of skills container
+ */
+function onClickSkillsContainer(e) {
+  const skillInput = document.querySelector("#skill-input");
+  skillInput.focus();
 }
 
 export {
@@ -347,4 +352,5 @@ export {
   onClickPageLast,
   onClickPageNumber,
   onClickSkillClose,
+  onClickSkillsContainer,
 };
