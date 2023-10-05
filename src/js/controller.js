@@ -32,8 +32,13 @@ function renderTable() {
   const pagination = state.pagination;
   const start = (pagination.pageNumber - 1) * pagination.pageSize;
   const end = start + pagination.pageSize;
-  pagination.lastPage = Math.ceil(filteredEmployees.length / pagination.pageSize);
-  console.log(start, end);
+  pagination.lastPage = Math.ceil(
+    filteredEmployees.length / pagination.pageSize
+  );
+  if (pagination.pageNumber > pagination.lastPage) {
+    gotoPage(pagination.lastPage);
+    return;
+  }
   filteredEmployees = filteredEmployees.slice(start, end);
   tableBody.innerHTML = "";
   filteredEmployees.forEach((employee) => {

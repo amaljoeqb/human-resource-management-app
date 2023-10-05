@@ -130,7 +130,8 @@ async function loadSampleData() {
  * Function to get next employee ID
  */
 function getNextEmployeeId() {
-  const lastEmployeeId = Object.keys(employees)
+  const lastEmployeeId = employees
+    .map((employee) => employee.employeeId)
     .sort((a, b) => a - b)
     .pop();
   return lastEmployeeId ? parseInt(lastEmployeeId) + 1 : 1;
