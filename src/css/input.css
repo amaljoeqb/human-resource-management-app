@@ -126,7 +126,27 @@ input.filter-search:focus {
   font-size: 10px;
   color: var(--text-color);
   font-weight: 400;
-  background-color: #ddd;
-  padding: 4px 4px;
+  background-color: #eee;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.filter-btn .selected-item p {
+  padding: 4px 4px;
+  font-size: 10px;
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+.filter-btn .selected-item span {
+  font-size: 10px;
+  color: var(--text-color);
+  font-weight: 400;
+  padding: 4px 4px 4px 0;
+}
+
+.filter-btn .selected-item:hover {
+  background-color: #ddd;
 }
