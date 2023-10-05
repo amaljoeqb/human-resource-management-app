@@ -38,9 +38,8 @@ function renderTable() {
   const pagination = state.pagination;
   const start = (pagination.pageNumber - 1) * pagination.pageSize;
   const end = start + pagination.pageSize;
-  pagination.lastPage = Math.ceil(
-    filteredEmployees.length / pagination.pageSize
-  );
+  pagination.lastPage =
+    Math.ceil(filteredEmployees.length / pagination.pageSize) || 1;
   if (pagination.pageNumber > pagination.lastPage) {
     gotoPage(pagination.lastPage);
     return;

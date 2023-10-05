@@ -1,5 +1,4 @@
 - skill filtering
-- header and footer
 - form validation and api error handling
 
 - status and change status

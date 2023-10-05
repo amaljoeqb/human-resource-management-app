@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/form.css" />
     <link rel="stylesheet" href="css/table.css" />
     <link rel="stylesheet" href="css/popup.css" />
+    <link rel="stylesheet" href="css/input.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,9 +39,53 @@
             class="search-input"
             placeholder="Search employees..."
           />
+          <div class="filter-btn-container">
+            <button class="filter-btn hover-btn">
+              <span class="material-symbols-outlined"> tune </span>
+              <p>Skills</p>
+              <div class="vr"></div>
+              <ul class="selected-items">
+                <li class="selected-item">HTML</li>
+                <li class="selected-item">CSS</li>
+                <li class="selected-item">JavaScript</li>
+              </ul>
+            </button>
+            <div class="filter-dropdown">
+              <form class="filter-form">
+                <span class="material-symbols-outlined search-icon">
+                  search
+                </span>
+                <input
+                  class="filter-search"
+                  type="text"
+                  id="skill-filter"
+                  name="skill-filter"
+                  placeholder="Search Skills"
+                />
+              </form>
+              <hr />
+              <ul class="filtered-items">
+                <li class="filtered-item">
+                  <input class="check" type="checkbox" id="1" />
+                  <p class="name">HTML</p>
+                  <p class="count">21</p>
+                </li>
+                <li class="filtered-item">
+                  <input class="check" type="checkbox" id="1" />
+                  <p class="name">HTML</p>
+                  <p class="count">21</p>
+                </li>
+              </ul>
+              <hr />
+              <button class="clear-filter">
+                <p>Clear Filters</p>
+              </button>
+            </div>
+          </div>
         </div>
         <button class="add-btn hover-btn">
           <span class="material-symbols-outlined"> add_circle </span>
+          <p>Create</p>
         </button>
       </div>
       <div class="table-container">

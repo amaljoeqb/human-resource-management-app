@@ -6,7 +6,9 @@
   --text-overlay: hsla(235, 50%, 29%, 0.9);
   --accent-color: hsl(240 4.8% 95.9%);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  --light-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
   --light-grey: #e4e4e4;
+  --text-color: rgb(24, 24, 27);
 }
 
 body {
@@ -36,19 +38,24 @@ body {
 }
 
 .hover-btn span {
-  font-size: 20px;
+  font-size: 16px;
   color: #000;
+}
+
+.hover-btn p {
+  font-size: 14px;
 }
 
 .hover-btn {
   background-color: white;
   border: none;
   outline: 1px solid #ddd;
-  box-shadow: var(--shadow);
+  box-shadow: var(--light-shadow);
   padding: 6px 12px;
   font-weight: bold;
   font-size: 16px;
   display: flex;
+  column-gap: 6px;
   color: #000;
   align-items: center;
   justify-content: center;
@@ -85,11 +92,10 @@ body {
 .emp-listing-header .start-section {
   display: flex;
   align-items: center;
-  column-gap: 32px;
+  column-gap: 12px;
 }
 
 .emp-listing-header h2 {
-  margin: 0;
   font-size: 24px;
   font-weight: 600;
 }
