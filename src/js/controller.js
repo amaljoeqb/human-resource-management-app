@@ -8,6 +8,7 @@ import {
   searchEmployees,
   getAllDepartments,
   getAllEmployees,
+  getAllSkills,
 } from "./data.js";
 import {
   onChangeRowCheck,
@@ -16,6 +17,7 @@ import {
   onClickActionButton,
   onClickName,
   onClickPageNumber,
+  onClickSkillClose,
 } from "./handlers.js";
 import { state } from "./context.js";
 
@@ -75,7 +77,9 @@ function renderTable() {
                     employee.department.department,
                     state.searchTerm
                   )}</td>
-                  <td class="skills-cell">${transformSkills(employee.skills)}</td>
+                  <td class="skills-cell">${transformSkills(
+                    employee.skills
+                  )}</td>
                   <td class="overflow">
               <div class="action-container">
                 <a href="javascript:void(0)" class="action-btn">
@@ -119,18 +123,6 @@ function renderTable() {
   });
   renderPagination();
 }
-
-/*
-<li>
-            <a
-              id="page-1"
-              data-num="1"
-              class="page-number hover-btn active"
-              href="javascript:void(0)"
-              >1</a
-            >
-          </li>
-          */
 
 /**
  * Function to render pagination buttons
@@ -185,6 +177,7 @@ function setFormData(employee) {
   form.querySelector("#designation").value = employee.designation;
   form.querySelector("#employee-id").value = employee.employeeId;
   employee.department && setDepartmentInput(employee.department);
+  employee.skills && setSkillsInput(employee.skills);
 }
 
 /**
@@ -225,6 +218,36 @@ function setDepartmentOptions(departments) {
 }
 
 /**
+ * Function to set skills options
+ */
+function setSkillsOptions(skills) {
+  const skillInput = document.querySelector("#skill-input");
+  const skillsOptions = document.querySelector("#skills-options");
+  skillsOptions.innerHTML = "";
+  skills.forEach((skill) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `<a href="javascript:void(0)" data-id="${skill.skillId}">${skill.skill}</a>`;
+    listItem.addEventListener("click", (e) => {
+      addSkill(skill);
+      clearSkillInput();
+      skillInput.focus();
+      const skills = getAllSkills();
+      setSkillsOptions(skills);
+    });
+    skillsOptions.appendChild(listItem);
+  });
+}
+
+/**
+ * Function to clear skill input
+ */
+function clearSkillInput() {
+  const skillInput = document.querySelector("#skill-input");
+  skillInput.value = "";
+  skillInput.size = skillInput.value.length + 1;
+}
+
+/**
  * Function to set department input
  */
 function setDepartmentInput(department) {
@@ -241,12 +264,48 @@ function setDepartmentInput(department) {
 }
 
 /**
+ * Function to set skills input
+ */
+function setSkillsInput(skills) {
+  const skillsInput = document.querySelector("#skills");
+  skillsInput.innerHTML = "";
+  skills.forEach((skill) => {
+    addSkill(skill);
+  });
+}
+
+/**
+ * Function to add a skill to skills input
+ */
+function addSkill(skill) {
+  const skillsInput = document.querySelector("#skills");
+  if (skillsInput.querySelector(`.chip[data-id="${skill.skillId}"]`)) {
+    return;
+  }
+  const chipElement = document.createElement("span");
+  chipElement.classList.add("chip");
+  chipElement.dataset.id = skill.skillId;
+  chipElement.innerHTML = `
+  ${skill.skill}
+  <span class="material-symbols-outlined close-chip">
+    close
+  </span>`;
+  chipElement
+    .querySelector(".close-chip")
+    .addEventListener("click", onClickSkillClose);
+  skillsInput.appendChild(chipElement);
+}
+
+/**
  * Function to reset form options
  */
 function resetFormOptions() {
   const departmentOptions = document.querySelector("#department-options");
   const departments = getAllDepartments();
   setDepartmentOptions(departments);
+  const skills = getAllSkills();
+  setSkillsOptions(skills);
+  clearSkillInput();
 }
 
 /**
@@ -270,4 +329,5 @@ export {
   setDepartmentInput,
   toggleEditPopup,
   gotoPage,
+  setSkillsOptions,
 };

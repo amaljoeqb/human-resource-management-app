@@ -15,6 +15,7 @@ import {
   onClickPageFirst,
   onClickPageLast,
   onClickPageNumber,
+  onChangeSkillsInput,
 } from "./handlers.js";
 import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
@@ -36,6 +37,8 @@ const pageNext = document.querySelector(".page-next");
 const pagePrevious = document.querySelector(".page-previous");
 const pageFirst = document.querySelector(".page-first");
 const pageLast = document.querySelector(".page-last");
+const skillsInputContainer = document.querySelector(".skills-input-container");
+const skillInput = document.querySelector(".skill-input");
 
 addEmployeeButton.addEventListener("click", onClickAddEmployee);
 
@@ -66,6 +69,7 @@ filterButtons.forEach((filterButton) => {
 saveButton.addEventListener("click", onClickSave);
 
 departmentInput.addEventListener("input", onChangeDepartmentInput);
+skillInput.addEventListener("input", onChangeSkillsInput);
 
 confirmButton.addEventListener("click", onClickYes);
 cancelButton.addEventListener("click", onClickNo);
@@ -97,10 +101,7 @@ async function loadEmployees() {
   }
 }
 
-const skillsInputContainer = document.querySelector('.skills-input-container');
-const skillInput = document.querySelector('.skill-input');
-
-skillsInputContainer.addEventListener('click', () => {
+skillsInputContainer.addEventListener("click", () => {
   skillInput.focus();
 });
 

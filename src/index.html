@@ -198,13 +198,14 @@
                   name="department"
                   id="department"
                   class="dropdown-input"
+                  autocomplete="off"
                   required
                 />
                 <span class="material-symbols-outlined suffix-icon">
                   arrow_drop_down
                 </span>
               </div>
-              <div class="dropdown-content">
+              <div class="dropdown-content department">
                 <ul id="department-options" class="dropdown-list"></ul>
               </div>
             </div>
@@ -228,21 +229,17 @@
             <div class="field">
               <label for="skills">Skills</label>
               <div class="skills-input-container">
-                <span class="skills-list">
-                  <span class="chip">HTML</span>
-                  <span class="chip">CSS</span>
-                  <span class="chip">Javascript</span>
-                  <span class="chip">HTML</span>
-                  <span class="chip">CSS</span>
-                  <span class="chip">Javascript</span>
-                  <span class="chip">HTML</span>
-                </span>
+                <span id="skills" class="skills-list"> </span>
                 <input
                   type="text"
                   name="skill-input"
                   id="skill-input"
                   class="skill-input"
+                  autocomplete="off"
                 />
+              </div>
+              <div class="dropdown-content skills-dropdown">
+                <ul id="skills-options" class="dropdown-list"></ul>
               </div>
             </div>
           </div>

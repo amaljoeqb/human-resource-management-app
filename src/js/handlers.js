@@ -16,6 +16,7 @@ import {
   setDepartmentInput,
   getFormData,
   gotoPage,
+  setSkillsOptions,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -193,6 +194,20 @@ function onChangeDepartmentInput(event) {
 }
 
 /**
+ * Function to trigger on change of skills input
+ */
+function onChangeSkillsInput(event) {
+  const skillsInput = event.currentTarget;
+  skillsInput.size = skillsInput.value.length + 1;
+  const searchTerm = skillsInput.value.trim().toLowerCase();
+  let skills = getAllSkills();
+  skills = skills.filter((skillItem) =>
+    skillItem.skill.toLowerCase().includes(searchTerm)
+  );
+  setSkillsOptions(skills);
+}
+
+/**
  * Function to trigger on click action button
  */
 function onClickActionButton(event) {
@@ -219,7 +234,6 @@ function onClickDocument(event) {
     return;
   }
   const clickedElement = event.target;
-  console.log(state.activeMenu.contains(clickedElement));
   if (!state.activeMenu.contains(clickedElement)) {
     state.activeMenu.classList.remove("active");
     state.activeMenu = undefined;
@@ -301,6 +315,15 @@ function onClickPageNumber(e) {
   gotoPage(clickedPageNumber);
 }
 
+/**
+ * Function to trigger on click of skill close button
+ */
+function onClickSkillClose(e) {
+  const skillsInput = document.querySelector("#skills");
+  const chipElement = e.target.parentNode;
+  skillsInput.removeChild(chipElement);
+}
+
 export {
   onClickColumnTitle,
   onClickFilterButton,
@@ -311,6 +334,7 @@ export {
   onClickAddEmployee,
   onClickSave,
   onChangeDepartmentInput,
+  onChangeSkillsInput,
   onClickDelete,
   onClickActionButton,
   onClickDocument,
@@ -322,4 +346,5 @@ export {
   onClickPageFirst,
   onClickPageLast,
   onClickPageNumber,
+  onClickSkillClose,
 };

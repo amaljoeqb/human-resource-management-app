@@ -73,7 +73,10 @@ function convertToDate(dateString) {
  */
 function transformSkills(skills) {
   return skills
-    .map((skill) => `<span class="chip">${skill.skill}</span>`)
+    .map(
+      (skill) =>
+        `<span class="chip" data-id="${skill.id}">${skill.skill}</span>`
+    )
     .join("");
 }
 
