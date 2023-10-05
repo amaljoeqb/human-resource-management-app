@@ -35,7 +35,7 @@ function renderTable() {
     return employee.skills.find((skill) => {
       return (
         state.filters.skills.length === 0 ||
-        state.filters.skills.includes(skill.skillId)
+        state.filters.skills.includes(parseInt(skill.skillId))
       );
     });
   });
@@ -360,7 +360,7 @@ function setSkillsFilterOptions() {
         name: skill.skill,
         count: getAllEmployees().filter((employee) => {
           return employee.skills.find((skillItem) => {
-            return skillItem.skillId === skill.skillId;
+            return skillItem.skillId == skill.skillId;
           });
         }).length,
         checked: state.filters.skills.includes(skill.skillId),
