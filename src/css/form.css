@@ -150,7 +150,6 @@ form textarea:focus {
 
 .skills-input-container {
   padding: 8px 16px;
-  padding: 8px 16px;
   border-radius: 8px;
   border: 1px solid var(--light-grey);
   font-size: 16px;
@@ -164,11 +163,6 @@ form textarea:focus {
 }
 
 .skills-input-container:has(input:focus) {
-.skills-input-container .chip {
-  margin: 3px 6px 3px 0;
-}
-
-.skills-input-container:has(input:focus) {
   border: 1px solid var(--primary-color);
 }
 
@@ -176,7 +170,6 @@ form textarea:focus {
 
 input.skill-input {
   border: none;
-  padding: 10px 0;
   padding: 10px 0;
   font-size: 16px;
   color: black;
@@ -201,31 +194,7 @@ span.close-chip {
   font-size: 14px;
   margin-left: 4px;
   padding: 2px;
-  margin-left: 4px;
-  padding: 2px;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
-    background-color 0.1s ease-in-out;
-  border-radius: 50%;
-}
-
-span.close-chip:hover {
-  background-color: #ddd;
-}
-
-.chip p {
-  margin: 0;
-  font-size: 12px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.view-popup span.close-chip {
-  opacity: 0;
-  transform: scale(0);
-}
-
-.view-popup p {
-  transform: translateX(10px);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
     background-color 0.1s ease-in-out;
   border-radius: 50%;
