@@ -1,5 +1,5 @@
 - view to edit
-- skills - chips and input
+- skills - input
 - header and footer
 - status and change status
 

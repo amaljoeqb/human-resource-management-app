@@ -97,4 +97,11 @@ async function loadEmployees() {
   }
 }
 
+const skillsInputContainer = document.querySelector('.skills-input-container');
+const skillInput = document.querySelector('.skill-input');
+
+skillsInputContainer.addEventListener('click', () => {
+  skillInput.focus();
+});
+
 loadEmployees();

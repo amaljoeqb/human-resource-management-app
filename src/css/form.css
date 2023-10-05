@@ -143,3 +143,30 @@ form textarea:focus {
 .popup .submit {
   transition: all 0.3s ease-in-out;
 }
+
+.skills-input-container {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--light-grey);
+  font-size: 16px;
+  color: black;
+  align-items: center;
+  cursor: text;
+}
+
+.skills-input-container:focus-within {
+  border: 1px solid var(--primary-color);
+}
+
+.skill-input {
+  border: none;
+  padding: 4px 0;
+  font-size: 16px;
+  color: black;
+  display: inline-block;
+}
+
+.skill-input:focus {
+  outline: none;
+  border: none;
+}
