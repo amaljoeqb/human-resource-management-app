@@ -31,6 +31,14 @@ const pageNumbers = document.querySelector(".page-numbers");
  */
 function renderTable() {
   let filteredEmployees = searchEmployees(state.searchTerm);
+  filteredEmployees = filteredEmployees.filter((employee) => {
+    return employee.skills.find((skill) => {
+      return (
+        state.filters.skills.length === 0 ||
+        state.filters.skills.includes(skill.skillId)
+      );
+    });
+  });
   filteredEmployees = sortEmployees(
     filteredEmployees,
     state.sort.key,
@@ -412,9 +420,8 @@ function addSkillFilter(skillId) {
   state.filters.skills.push(skillId);
   console.log(state.filters.skills);
   setSkillsFilterSelected();
-  console.log(state.filters.skills);
-
   setSkillsFilterOptions();
+  renderTable();
 }
 
 /**
@@ -427,6 +434,7 @@ function removeSkillFilter(skillId) {
   );
   setSkillsFilterSelected();
   setSkillsFilterOptions();
+  renderTable();
 }
 
 /**
