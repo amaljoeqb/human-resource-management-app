@@ -158,6 +158,9 @@ form textarea:focus {
   cursor: text;
 }
 
+.skills-input-container .chip {
+  margin: 3px 6px 3px 0;
+}
 .skills-input-container:focus-within {
   border: 1px solid var(--primary-color);
 }
@@ -176,7 +179,13 @@ form textarea:focus {
   border: none;
 }
 
-.skills-input-container:has(input:focus) + .dropdown-content {
+.skills-input-container:has(input:focus),
+.skills-input-container:has(.dropdown-content:hover) {
+  border: 1px solid var(--primary-color);
+}
+
+
+.skills-input-container:has(input:focus) .dropdown-content {
   display: block;
 }
 
