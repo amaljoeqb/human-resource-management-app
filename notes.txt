@@ -1,7 +1,8 @@
 - skill filtering
 - header and footer
-- status and change status
+- form validation and api error handling
 
+- status and change status
 - view to edit
 - edit cancel flip - save reset slide
 - developer mode - autofill create and list

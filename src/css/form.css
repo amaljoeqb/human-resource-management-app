@@ -125,7 +125,8 @@ form textarea:focus {
 }
 
 .view-popup input,
-.view-popup textarea {
+.view-popup textarea,
+.view-popup .skills-input-container {
   border: 1px solid transparent;
   background-color: transparent;
   padding: 4px 0;
@@ -144,7 +145,8 @@ form textarea:focus {
 
 .popup input,
 .popup textarea,
-.popup .submit {
+.popup .submit,
+.popup .skills-input-container {
   transition: all 0.3s ease-in-out;
 }
 
@@ -165,8 +167,6 @@ form textarea:focus {
 .skills-input-container:has(input:focus) {
   border: 1px solid var(--primary-color);
 }
-
-
 
 input.skill-input {
   border: none;
