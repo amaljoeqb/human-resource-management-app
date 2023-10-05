@@ -114,6 +114,16 @@ function closePopup() {
 }
 
 /**
+ * Function to toggle edit popup
+ */
+function toggleEditPopup() {
+  document.querySelectorAll(".popup").forEach((popup) => {
+    popup.classList.toggle("view-popup");
+    popup.classList.toggle("edit-popup");
+  });
+}
+
+/**
  * Function to set employee data to form
  * @param {object} employee employee object
  */
@@ -199,4 +209,5 @@ export {
   getFormData,
   setDepartmentOptions,
   setDepartmentInput,
+  toggleEditPopup,
 };
