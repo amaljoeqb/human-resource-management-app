@@ -7,6 +7,7 @@ export const state = {
   pagination: {
     pageNumber: 1,
     pageSize: 5,
+    lastPage: 1,
   },
   activeMenu: undefined,
 };

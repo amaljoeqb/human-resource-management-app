@@ -95,8 +95,8 @@
         <tbody></tbody>
       </table>
     </div>
-    <div class="pagination">
-      <div class="pagination-container">
+    <div class="pagination-container">
+      <div class="pagination">
         <button class="hover-btn page-first">
           <span class="material-symbols-outlined"> first_page </span>
         </button>
@@ -104,11 +104,23 @@
           <span class="material-symbols-outlined"> navigate_before </span>
         </button>
         <ul class="page-numbers">
-          <li class="page-number hover-btn active">
-            <a href="javascript:void(0)">1</a>
+          <li>
+            <a
+              id="page-1"
+              data-num="1"
+              class="page-number hover-btn active"
+              href="javascript:void(0)"
+              >1</a
+            >
           </li>
-          <li class="page-number hover-btn">
-            <a href="javascript:void(0)">2</a>
+          <li>
+            <a
+              id="page-2"
+              data-num="2"
+              class="page-number hover-btn"
+              href="javascript:void(0)"
+              >2</a
+            >
           </li>
         </ul>
         <button class="hover-btn page-next">

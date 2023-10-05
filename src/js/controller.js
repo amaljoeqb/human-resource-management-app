@@ -1,16 +1,23 @@
 import { highlightSearchTerm, getRupeesFormat } from "./helpers.js";
-import { sortEmployees, searchEmployees, getAllDepartments } from "./data.js";
+import {
+  sortEmployees,
+  searchEmployees,
+  getAllDepartments,
+  getAllEmployees,
+} from "./data.js";
 import {
   onChangeRowCheck,
   editEmployee,
   onClickDelete,
   onClickActionButton,
   onClickName,
+  onClickPageNumber,
 } from "./handlers.js";
 import { state } from "./context.js";
 
 const table = document.querySelector(".emp-table");
 const tableBody = table.querySelector("tbody");
+const pageNumbers = document.querySelector(".page-numbers");
 
 /**
  * Function to render rows of the table
@@ -25,6 +32,8 @@ function renderTable() {
   const pagination = state.pagination;
   const start = (pagination.pageNumber - 1) * pagination.pageSize;
   const end = start + pagination.pageSize;
+  pagination.lastPage = Math.ceil(filteredEmployees.length / pagination.pageSize);
+  console.log(start, end);
   filteredEmployees = filteredEmployees.slice(start, end);
   tableBody.innerHTML = "";
   filteredEmployees.forEach((employee) => {
@@ -60,7 +69,7 @@ function renderTable() {
                   <td>${highlightSearchTerm(
                     employee.skills.map((skill) => skill.skill)
                   )}</td>
-                  <td>
+                  <td class="action-cell">
               <div class="action-container">
                 <a href="javascript:void(0)" class="action-btn">
                   <span class="material-symbols-outlined"> more_horiz </span>
@@ -96,12 +105,43 @@ function renderTable() {
       row
         .querySelector(".action-btn")
         .addEventListener("click", onClickActionButton);
-
       tableBody.appendChild(row);
     } catch (e) {
       console.log(e, employee);
     }
   });
+  renderPagination();
+}
+
+/*
+<li>
+            <a
+              id="page-1"
+              data-num="1"
+              class="page-number hover-btn active"
+              href="javascript:void(0)"
+              >1</a
+            >
+          </li>
+          */
+
+/**
+ * Function to render pagination buttons
+ */
+function renderPagination() {
+  const pagination = state.pagination;
+  const totalPages = pagination.lastPage;
+  pageNumbers.innerHTML = "";
+  for (let i = 1; i <= totalPages; i++) {
+    const pageNumber = document.createElement("li");
+    if (i === pagination.pageNumber) {
+      pageNumber.innerHTML = `<a id="page-${i}" data-num="${i}" class="page-number hover-btn active" href="javascript:void(0)">${i}</a>`;
+    } else {
+      pageNumber.innerHTML = `<a id="page-${i}" data-num="${i}" class="page-number hover-btn" href="javascript:void(0)">${i}</a>`;
+    }
+    pageNumber.querySelector("a").addEventListener("click", onClickPageNumber);
+    pageNumbers.appendChild(pageNumber);
+  }
 }
 
 /**
@@ -202,6 +242,18 @@ function resetFormOptions() {
   setDepartmentOptions(departments);
 }
 
+/**
+ * Function to goto a page
+ */
+function gotoPage(pageNumber) {
+  state.pagination.pageNumber = pageNumber;
+  const activePageElement = document.querySelector(".page-number.active");
+  activePageElement.classList.remove("active");
+  const pageElement = document.querySelector(`#page-${pageNumber}`);
+  pageElement.classList.add("active");
+  renderTable();
+}
+
 export {
   renderTable,
   closePopup,
@@ -210,4 +262,5 @@ export {
   setDepartmentOptions,
   setDepartmentInput,
   toggleEditPopup,
+  gotoPage,
 };

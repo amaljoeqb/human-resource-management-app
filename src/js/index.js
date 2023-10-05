@@ -10,6 +10,11 @@ import {
   onClickDocument,
   onClickYes,
   onClickNo,
+  onClickPageNext,
+  onClickPagePrevious,
+  onClickPageFirst,
+  onClickPageLast,
+  onClickPageNumber,
 } from "./handlers.js";
 import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
@@ -66,49 +71,13 @@ confirmButton.addEventListener("click", onClickYes);
 cancelButton.addEventListener("click", onClickNo);
 
 pageNumbers.forEach((pageNumber) => {
-  pageNumber.addEventListener("click", (e) => {
-    const clickedPageNumber = e.currentTarget;
-    const currentPageNumber = document.querySelector(".page-number.active");
-    currentPageNumber.classList.remove("active");
-    clickedPageNumber.classList.add("active");
-    state.pagination.pageNumber = parseInt(clickedPageNumber.textContent);
-    renderTable();
-  });
+  pageNumber.addEventListener("click", onClickPageNumber);
 });
 
-pageFirst.addEventListener("click", (e) => {
-  const currentPageNumber = document.querySelector(".page-number.active");
-  currentPageNumber.classList.remove("active");
-  pageNumbers[0].classList.add("active");
-  state.pagination.pageNumber = 1;
-  renderTable();
-});
-
-pageLast.addEventListener("click", (e) => {
-  const currentPageNumber = document.querySelector(".page-number.active");
-  currentPageNumber.classList.remove("active");
-  pageNumbers[pageNumbers.length - 1].classList.add("active");
-  state.pagination.pageNumber = pageNumbers.length;
-  renderTable();
-});
-
-pageNext.addEventListener("click", (e) => {
-  const currentPageNumber = document.querySelector(".page-number.active");
-  const nextPageNumber = currentPageNumber.nextElementSibling;
-  currentPageNumber.classList.remove("active");
-  nextPageNumber.classList.add("active");
-  state.pagination.pageNumber = parseInt(nextPageNumber.textContent);
-  renderTable();
-});
-
-pagePrevious.addEventListener("click", (e) => {
-  const currentPageNumber = document.querySelector(".page-number.active");
-  const previousPageNumber = currentPageNumber.previousElementSibling;
-  currentPageNumber.classList.remove("active");
-  previousPageNumber.classList.add("active");
-  state.pagination.pageNumber = parseInt(previousPageNumber.textContent);
-  renderTable();
-});
+pageNext.addEventListener("click", onClickPageNext);
+pagePrevious.addEventListener("click", onClickPagePrevious);
+pageFirst.addEventListener("click", onClickPageFirst);
+pageLast.addEventListener("click", onClickPageLast);
 
 document.addEventListener("click", onClickDocument);
 

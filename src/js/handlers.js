@@ -15,6 +15,7 @@ import {
   setDepartmentOptions,
   setDepartmentInput,
   getFormData,
+  gotoPage,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -48,7 +49,7 @@ function onClickColumnTitle(event) {
     // By default, sort employeeId column in ascending order
     state.sort.key = "employeeId";
   }
-  renderTable();
+  gotoPage(1);
 }
 
 /**
@@ -67,7 +68,7 @@ function onChangeSearchInput(event) {
   event.preventDefault();
   const searchInput = event.currentTarget;
   state.searchTerm = searchInput.value.trim().toLowerCase();
-  renderTable();
+  gotoPage(1);
 }
 
 /**
@@ -246,13 +247,58 @@ function onClickNo(e) {
 /**
  * on click of page next
  */
-function onClickPageNext() {
-  const currentPageNumber = document.querySelector(".page-number.active");
-  const nextPageNumber = currentPageNumber.nextElementSibling;
-  currentPageNumber.classList.remove("active");
-  nextPageNumber.classList.add("active");
-  state.pagination.pageNumber = parseInt(nextPageNumber.textContent);
-  renderTable();
+function onClickPageNext(e) {
+  const currentPageNumber = state.pagination.pageNumber;
+  const lastPageNumber = state.pagination.lastPage;
+  if (currentPageNumber === lastPageNumber) {
+    return;
+  }
+  const nextPageNumber = currentPageNumber + 1;
+  gotoPage(nextPageNumber);
+}
+
+/**
+ * on click of page previous
+ */
+function onClickPagePrevious(e) {
+  const currentPageNumber = state.pagination.pageNumber;
+  if (currentPageNumber === 1) {
+    return;
+  }
+  const previousPageNumber = currentPageNumber - 1;
+  gotoPage(previousPageNumber);
+}
+
+/**
+ * on click of page first
+ */
+function onClickPageFirst(e) {
+  const currentPageNumber = state.pagination.pageNumber;
+  if (currentPageNumber === 1) {
+    return;
+  }
+  gotoPage(1);
+}
+
+/**
+ * on click of page last
+ */
+function onClickPageLast(e) {
+  const currentPageNumber = state.pagination.pageNumber;
+  const lastPageNumber = state.pagination.lastPage;
+  if (currentPageNumber === lastPageNumber) {
+    return;
+  }
+  gotoPage(lastPageNumber);
+}
+
+/**
+ * on click of page number
+ */
+function onClickPageNumber(e) {
+  const clickedPageElement = e.currentTarget;
+  const clickedPageNumber = parseInt(clickedPageElement.dataset.num);
+  gotoPage(clickedPageNumber);
 }
 
 export {
@@ -271,4 +317,9 @@ export {
   onClickYes,
   onClickNo,
   onClickName,
+  onClickPageNext,
+  onClickPagePrevious,
+  onClickPageFirst,
+  onClickPageLast,
+  onClickPageNumber,
 };
