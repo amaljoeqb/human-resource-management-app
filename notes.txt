@@ -1,5 +1,4 @@
 - view to edit
-- pagination
 - skills - chips and input
 - header and footer
 - status and change status

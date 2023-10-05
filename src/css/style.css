@@ -1,10 +1,11 @@
 :root {
   --primary-color: hsl(240 5.9% 10%);
+  --secondary-color: hsl(0, 0%, 22%);
   --primary-overlay: hsl(240 5.9% 10% / 0.9);
   --text-color: hsl(240 5.9% 10%);
   --text-overlay: hsla(235, 50%, 29%, 0.9);
   --accent-color: hsl(240 4.8% 95.9%);
-  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
   --light-grey: #e4e4e4;
 }
 
@@ -117,3 +118,13 @@ body {
   cursor: pointer;
 }
 
+.chip {
+  display: inline-block;
+  padding: 8px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: var(--light-grey);
+  margin-right: 8px;
+  margin-bottom: 8px;
+}

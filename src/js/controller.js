@@ -1,4 +1,8 @@
-import { highlightSearchTerm, getRupeesFormat } from "./helpers.js";
+import {
+  highlightSearchTerm,
+  getRupeesFormat,
+  transformSkills,
+} from "./helpers.js";
 import {
   sortEmployees,
   searchEmployees,
@@ -71,10 +75,8 @@ function renderTable() {
                     employee.department.department,
                     state.searchTerm
                   )}</td>
-                  <td>${highlightSearchTerm(
-                    employee.skills.map((skill) => skill.skill)
-                  )}</td>
-                  <td class="action-cell">
+                  <td class="skills-cell">${transformSkills(employee.skills)}</td>
+                  <td class="overflow">
               <div class="action-container">
                 <a href="javascript:void(0)" class="action-btn">
                   <span class="material-symbols-outlined"> more_horiz </span>

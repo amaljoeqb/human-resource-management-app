@@ -20,7 +20,7 @@
   white-space: nowrap;
 }
 
-.emp-table td:not(.action-cell) {
+.emp-table td:not(.overflow) {
   overflow: hidden;
 }
 
@@ -151,7 +151,7 @@
   border-radius: 8px;
 }
 .action-btn span {
-  font-size: 18px;
+  font-size: 16px;
 }
 .action-btn:hover {
   background-color: #f5f5f5;
@@ -168,6 +168,7 @@
   box-shadow: var(--shadow);
   z-index: 60;
   overflow: hidden;
+  padding: 4px;
 }
 
 .action-container.active .action-menu {
@@ -181,14 +182,15 @@
 }
 
 .action-menu li a {
-  padding: 12px;
+  padding: 8px;
   display: flex;
   align-items: center;
   font-weight: 400;
   min-width: 120px;
+  border-radius: 4px;
 }
 
-.action-menu li:hover {
+.action-menu li a:hover {
   background-color: #f5f5f5;
 }
 
@@ -230,4 +232,10 @@
 
 .check-cell {
   display: none;
+}
+
+.skills-cell {
+  font-size: 16px;
+  max-lines: 2;
+  text-wrap: wrap;
 }

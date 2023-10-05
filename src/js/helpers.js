@@ -68,6 +68,14 @@ function convertToDate(dateString) {
   return new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
 }
 
+/**
+ * Transform skills list to span elements
+ */
+function transformSkills(skills) {
+  return skills
+    .map((skill) => `<span class="chip">${skill.skill}</span>`)
+    .join("");
+}
 
 export {
   getData,
@@ -75,4 +83,5 @@ export {
   getRupeesFormat,
   convertFromDate,
   convertToDate,
+  transformSkills,
 };
