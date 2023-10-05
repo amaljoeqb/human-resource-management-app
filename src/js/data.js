@@ -27,6 +27,14 @@ function sortEmployees(employees, key, asc = true) {
     }
   };
 
+  const departmentSort = (a, b) => {
+    if (asc) {
+      return a[key].department.localeCompare(b[key].department);
+    } else {
+      return b[key].department.localeCompare(a[key].department);
+    }
+  };
+
   const dateSort = (a, b) => {
     if (asc) {
       return new Date(a[key]) - new Date(b[key]);
@@ -42,8 +50,9 @@ function sortEmployees(employees, key, asc = true) {
     case "name":
     case "email":
     case "designation":
-    case "department":
       return employees.sort(alphaNumericSort);
+    case "department":
+      return employees.sort(departmentSort);
     case "dateOfBirth":
     case "joiningDate":
       return employees.sort(dateSort);

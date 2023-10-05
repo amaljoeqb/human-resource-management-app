@@ -4,4 +4,5 @@
 - header and footer
 - status and change status
 
+- edit cancel flip - save reset slide
 - developer mode - autofill create and list
