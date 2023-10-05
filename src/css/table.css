@@ -227,3 +227,7 @@
 .pagination .hover-btn span {
   font-size: 12px;
 }
+
+.check-cell {
+  display: none;
+}

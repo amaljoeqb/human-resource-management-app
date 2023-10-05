@@ -6,7 +6,7 @@ export const state = {
   searchTerm: "",
   pagination: {
     pageNumber: 1,
-    pageSize: 5,
+    pageSize: 10,
     lastPage: 1,
   },
   activeMenu: undefined,

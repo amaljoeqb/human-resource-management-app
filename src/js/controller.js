@@ -41,7 +41,7 @@ function renderTable() {
       const row = document.createElement("tr");
       row.classList.add("emp-row");
       row.innerHTML = `
-                  <td><input type="checkbox" class="row-check"></td>
+                  <td class="check-cell"><input type="checkbox" class="row-check"></td>
                   <td>${highlightSearchTerm(
                     employee.employeeId,
                     state.searchTerm
