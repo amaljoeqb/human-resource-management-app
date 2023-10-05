@@ -180,7 +180,6 @@ function setFormData(employee) {
   form.querySelector("#name").value = employee.name;
   form.querySelector("#email").value = employee.email;
   form.querySelector("#dob").value = employee.dateOfBirth;
-  console.log(employee.dateOfBirth);
   form.querySelector("#joining-date").value = employee.joiningDate;
   form.querySelector("#salary").value = employee.salary;
   form.querySelector("#designation").value = employee.designation;
@@ -405,7 +404,6 @@ function setFilterSelected(itemsContainer, selections) {
       </span>
     `;
     listItem.addEventListener("click", (e) => {
-      e.preventDefault();
       removeSkillFilter(selection.id);
     });
     itemsContainer.appendChild(listItem);
@@ -418,10 +416,9 @@ function setFilterSelected(itemsContainer, selections) {
  */
 function addSkillFilter(skillId) {
   state.filters.skills.push(skillId);
-  console.log(state.filters.skills);
   setSkillsFilterSelected();
   setSkillsFilterOptions();
-  renderTable();
+  gotoPage(1);
 }
 
 /**
@@ -434,7 +431,7 @@ function removeSkillFilter(skillId) {
   );
   setSkillsFilterSelected();
   setSkillsFilterOptions();
-  renderTable();
+  gotoPage(1);
 }
 
 /**
@@ -469,6 +466,7 @@ export {
   gotoPage,
   setSkillsOptions,
   setSkillsFilterOptions,
+  setSkillsFilterSelected,
   addSkillFilter,
   removeSkillFilter,
 };

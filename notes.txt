@@ -1,4 +1,3 @@
-- skill filtering
 - form validation and api error handling
 
 - status and change status

@@ -17,7 +17,7 @@
   z-index: 60;
 }
 
-.filter-dropdown.show {
+.filter-btn-container.active .filter-dropdown {
   display: flex;
 }
 

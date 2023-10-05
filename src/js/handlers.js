@@ -20,6 +20,7 @@ import {
   setSkillsFilterOptions,
   removeSkillFilter,
   addSkillFilter,
+  setSkillsFilterSelected,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -224,10 +225,12 @@ function onClickDocument(event) {
     return;
   }
   const clickedElement = event.target;
-  if (!state.activeMenu.contains(clickedElement)) {
-    state.activeMenu.classList.remove("active");
-    state.activeMenu = undefined;
+  const isActive = state.activeMenu.contains(clickedElement);
+  if (isActive) {
+    return;
   }
+  state.activeMenu.classList.remove("active");
+  state.activeMenu = undefined;
 }
 
 /**
@@ -328,10 +331,19 @@ function onClickSkillsContainer(e) {
  */
 function onClickFilterButton(e) {
   const filterButton = e.currentTarget;
-  const filterDropdown =
-    filterButton.parentElement.querySelector(".filter-dropdown");
-  filterDropdown.classList.toggle("show");
-  setSkillsFilterOptions();
+  const filterMenu = filterButton.parentElement;
+  const isActive = filterMenu.classList.contains("active");
+  if (isActive) {
+    filterMenu.classList.remove("active");
+    state.activeMenu = undefined;
+  } else {
+    if (state.activeMenu) {
+      state.activeMenu.classList.remove("active");
+    }
+    filterMenu.classList.add("active");
+    state.activeMenu = filterMenu;
+    setSkillsFilterOptions();
+  }
 }
 
 /**
@@ -346,6 +358,7 @@ function onChangeFilterSearch(e) {
  * Function to trigger on click of filter option
  */
 function onClickFilterOption(e) {
+  e.stopPropagation();
   const skillId = parseInt(e.currentTarget.dataset.id);
   const isActive = state.filters.skills.includes(skillId);
   if (isActive) {
@@ -353,7 +366,16 @@ function onClickFilterOption(e) {
   } else {
     addSkillFilter(skillId);
   }
-  console.log(state.filters.skills, state.filterSearchTerms.skills, isActive);
+}
+
+/**
+ * Function to trigger on click of clear filters
+ */
+function onClickClearFilters(e) {
+  state.filters.skills = [];
+  setSkillsFilterOptions();
+  setSkillsFilterSelected();
+  gotoPage(1);
 }
 
 export {
@@ -382,4 +404,5 @@ export {
   onClickFilterButton,
   onChangeFilterSearch,
   onClickFilterOption,
+  onClickClearFilters,
 };
