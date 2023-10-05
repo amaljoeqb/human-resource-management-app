@@ -1,7 +1,7 @@
-- view to edit
-- skills - input
+- skill filtering
 - header and footer
 - status and change status
 
+- view to edit
 - edit cancel flip - save reset slide
 - developer mode - autofill create and list
