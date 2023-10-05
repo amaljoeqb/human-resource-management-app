@@ -197,23 +197,8 @@ function getFormData() {
       department: form.querySelector("#department").value,
     },
     employeeId: form.querySelector("#employee-id").value,
-    skills: getSkillsFromInput(),
+    skills: [],
   };
-}
-
-/**
- * Function to get skills from skills input
- */
-function getSkillsFromInput() {
-  const skillsInput = document.querySelector("#skills");
-  const skills = [];
-  skillsInput.querySelectorAll(".chip").forEach((chip) => {
-    skills.push({
-      skillId: chip.dataset.id,
-      skill: chip.querySelector("p").innerText,
-    });
-  });
-  return skills;
 }
 
 /**
@@ -301,7 +286,7 @@ function addSkill(skill) {
   chipElement.classList.add("chip");
   chipElement.dataset.id = skill.skillId;
   chipElement.innerHTML = `
-  <p>${skill.skill}</p>
+  ${skill.skill}
   <span class="material-symbols-outlined close-chip">
     close
   </span>`;
@@ -315,6 +300,7 @@ function addSkill(skill) {
  * Function to reset form options
  */
 function resetFormOptions() {
+  const departmentOptions = document.querySelector("#department-options");
   const departments = getAllDepartments();
   setDepartmentOptions(departments);
   const skills = getAllSkills();

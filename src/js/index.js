@@ -16,7 +16,6 @@ import {
   onClickPageLast,
   onClickPageNumber,
   onChangeSkillsInput,
-  onClickSkillsContainer,
 } from "./handlers.js";
 import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
@@ -102,6 +101,8 @@ async function loadEmployees() {
   }
 }
 
-skillsInputContainer.addEventListener("click", onClickSkillsContainer);
+skillsInputContainer.addEventListener("click", () => {
+  skillInput.focus();
+});
 
 loadEmployees();
