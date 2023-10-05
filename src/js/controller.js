@@ -172,6 +172,7 @@ function setFormData(employee) {
   form.querySelector("#name").value = employee.name;
   form.querySelector("#email").value = employee.email;
   form.querySelector("#dob").value = employee.dateOfBirth;
+  console.log(employee.dateOfBirth);
   form.querySelector("#joining-date").value = employee.joiningDate;
   form.querySelector("#salary").value = employee.salary;
   form.querySelector("#designation").value = employee.designation;
