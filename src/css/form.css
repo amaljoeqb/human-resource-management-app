@@ -162,10 +162,6 @@ form textarea:focus {
   margin: 3px 6px 3px 0;
 }
 
-.skills-input-container:has(input:focus) {
-  border: 1px solid var(--primary-color);
-}
-
 input.skill-input {
   border: none;
   padding: 10px 0;
@@ -180,7 +176,13 @@ input.skill-input {
   border: none;
 }
 
-.skills-input-container:has(input:focus) + .dropdown-content {
+.skills-input-container:has(input:focus),
+.skills-input-container:has(.dropdown-content:hover) {
+  border: 1px solid var(--primary-color);
+}
+
+
+.skills-input-container:has(input:focus) .dropdown-content {
   display: block;
 }
 
