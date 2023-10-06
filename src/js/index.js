@@ -19,6 +19,7 @@ import {
   onClickSkillsContainer,
   onChangeFilterSearch,
   onClickClearFilters,
+  onChangeFormInput,
 } from "./handlers.js";
 import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
 
@@ -45,6 +46,11 @@ const skillInput = document.querySelector(".skill-input");
 const filterButton = document.querySelector(".filter-btn");
 const filterSearch = document.querySelector(".filter-search");
 const clearFilter = document.querySelector(".clear-filter");
+const formInputs = document.querySelectorAll("form input");
+
+formInputs.forEach((formInput) => {
+  formInput.addEventListener("input", onChangeFormInput);
+});
 
 clearFilter.addEventListener("click", onClickClearFilters);
 filterSearch.addEventListener("input", onChangeFilterSearch);

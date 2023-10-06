@@ -189,7 +189,8 @@ form textarea:focus,
 .popup textarea,
 .popup .submit,
 .popup .skills-input-container,
-.popup .field {
+.popup .field,
+.popup .error-msg {
   transition: all 0.3s ease-in-out;
 }
 
@@ -253,4 +254,8 @@ span.close-chip:hover {
 
 .view-popup p {
   transform: translateX(10px);
+}
+
+.view-popup .field.error .error-msg {
+  opacity: 0;
 }

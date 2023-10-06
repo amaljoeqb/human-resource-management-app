@@ -385,9 +385,7 @@ function onClickClearFilters(e) {
  */
 function onChangeFormInput(e) {
   const name = e.currentTarget.name;
-  if (state.formErrors[name]) {
-    clearFormError(name);
-  }
+  clearFormError(name);
 }
 
 export {

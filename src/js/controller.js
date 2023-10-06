@@ -236,6 +236,12 @@ function validateEmployeeForm(employee) {
     noError = false;
   }
 
+  // salary validation
+  if (!employee.salary) {
+    setFormError("salary", "Salary is required");
+    noError = false;
+  }
+
   // designation validation
   if (!employee.designation) {
     setFormError("designation", "Designation is required");
@@ -243,13 +249,14 @@ function validateEmployeeForm(employee) {
   }
 
   // department validation
-  if (!employee.department) {
+  if (!employee.department || !employee.department.department) {
     setFormError("department", "Department is required");
     noError = false;
   } else {
     const departments = getAllDepartments();
     const department = departments.find(
-      (department) => department.id === employee.department
+      (department) =>
+        department.departmentId == employee.department.departmentId
     );
     if (
       !department ||
@@ -261,22 +268,18 @@ function validateEmployeeForm(employee) {
   }
 
   // dob validation
-  if (!employee.dob) {
+  if (!employee.dateOfBirth) {
     setFormError("dob", "Date of birth is required");
     noError = false;
-  } else if (new Date(employee.dob) > new Date()) {
+  } else if (new Date(employee.dateOfBirth) > new Date()) {
     setFormError("dob", "Date of birth must be in the past");
     noError = false;
   }
-
   // joining date validation
-  if (!employee["joining-date"]) {
+  if (!employee.joiningDate) {
     setFormError("joining-date", "Joining date is required");
     noError = false;
-  } else if (new Date(employee["joining-date"]) > new Date()) {
-    setFormError("joining-date", "Joining date must be in the past");
-    noError = false;
-  } else if (new Date(employee["joining-date"]) < new Date(employee.dob)) {
+  } else if (new Date(employee.joiningDate) < new Date(employee.dateOfBirth)) {
     setFormError("joining-date", "Joining date must be after date of birth");
     noError = false;
   }
@@ -313,9 +316,10 @@ function setDepartmentOptions(departments) {
   departments.forEach((departmentItem) => {
     const listItem = document.createElement("li");
     listItem.innerHTML = `<a href="javascript:void(0)" data-id="${departmentItem.departmentId}">${departmentItem.department}</a>`;
-    listItem.addEventListener("click", (e) =>
-      setDepartmentInput(departmentItem)
-    );
+    listItem.addEventListener("click", (e) => {
+      setDepartmentInput(departmentItem);
+      clearFormError("department");
+    });
     departmentOptions.appendChild(listItem);
   });
 }
@@ -336,6 +340,7 @@ function setSkillsOptions(skills) {
       skillInput.focus();
       const skills = getAllSkills();
       setSkillsOptions(skills);
+      clearFormError("skills");
     });
     skillsOptions.appendChild(listItem);
   });
@@ -559,6 +564,9 @@ function setFormError(name, error) {
  * @param {string} name name of the form field
  */
 function clearFormError(name) {
+  if (!state.formErrors[name]) {
+    return;
+  }
   const form = document.querySelector("#emp-form");
   const formField = form.querySelector(`#${name}-field`);
   formField.classList.remove("error");
