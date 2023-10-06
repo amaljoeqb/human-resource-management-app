@@ -12,6 +12,23 @@ form .field {
   row-gap: 4px;
   position: relative;
   width: 100%;
+  margin-bottom: 24px;
+}
+
+form .field .error-msg {
+  position: absolute;
+  top: 100%;
+  margin: 4px;
+  font-size: 12px;
+  color: var(--error-color);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+form .field.error .error-msg {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 form .row {
@@ -29,6 +46,16 @@ form textarea {
   border: 1px solid var(--light-grey);
   font-size: 16px;
   color: black;
+}
+
+.field.error input,
+.field.error textarea {
+  border: 1px solid var(--error-color);
+}
+
+.field.error input:focus,
+.field.error textarea:focus {
+  border: 1px solid var(--error-color);
 }
 
 form input:focus,
@@ -175,6 +202,18 @@ input.skill-input {
   color: black;
   display: inline-block;
   pointer-events: none;
+}
+
+.field.error .skills-input-container {
+  border: 1px solid var(--error-color);
+}
+
+.field.error .skills-input-container:has(input:focus) {
+  border: 1px solid var(--error-color);
+}
+
+.field.error input.skill-input {
+  border: none;
 }
 
 .skill-input:focus {

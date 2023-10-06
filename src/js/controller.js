@@ -455,6 +455,19 @@ function setFilterOptions(itemsContainer, options) {
   });
 }
 
+/**
+ * Function to set error message of a form field
+ * @param {string} name name of the form field
+ * @param {*} error error message
+ */
+function setFormError(name, error) {
+  const form = document.querySelector("#emp-form");
+  const formField = form.querySelector(`#${name}`);
+  const errorElement = form.querySelector(`#${name}-error`);
+  errorElement.innerText = error;
+  formField.classList.add("error");
+}
+
 export {
   renderTable,
   closePopup,
