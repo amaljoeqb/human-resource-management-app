@@ -108,6 +108,9 @@ async function loadData() {
     departments = (await getData("assets/json/departments.json")).departments;
     return employees;
   } catch {
+    employees = [];
+    skills = [];
+    departments = [];
     throw new Error("Error loading data from local storage");
   }
 }

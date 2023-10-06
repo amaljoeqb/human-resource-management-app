@@ -63,7 +63,6 @@ function renderTable() {
       </tr>
     `;
     tableBody.appendChild(row);
-    return;
   }
   filteredEmployees.forEach((employee) => {
     try {

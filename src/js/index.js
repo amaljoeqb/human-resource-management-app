@@ -119,12 +119,13 @@ async function loadEmployees() {
     if (employees === undefined || employees === null) {
       await loadSampleData();
     }
-    renderTable();
   } catch (e) {
     showToast(
       "There was an error loading data from cache. Try clearing the cache and try again.",
       true
     );
+  } finally {
+    renderTable();
   }
 }
 
