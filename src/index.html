@@ -223,6 +223,7 @@
             <div id="email-field" class="field">
               <label for="email">Email</label>
               <input type="email" name="email" id="email" required />
+              <p class="error-msg"></p>
             </div>
             <div class="field">
               <label for="salary">Salary</label>
@@ -230,13 +231,13 @@
               <p class="error-msg"></p>
             </div>
           </div>
-          <div id="desig" class="row">
+          <div id="designation-field" class="row">
             <div class="field">
               <label for="designation">Designation</label>
               <input type="text" name="designation" id="designation" required />
               <p class="error-msg"></p>
             </div>
-            <div class="field dropdown">
+            <div id="department-field" class="field dropdown">
               <label for="department">Department</label>
               <div class="input-container">
                 <input
@@ -258,12 +259,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="field">
+            <div id="dob-field" class="field">
               <label for="dob">Date of birth</label>
               <input type="date" name="dob" id="dob" required />
               <p class="error-msg"></p>
             </div>
-            <div class="field">
+            <div id="joining-date-field" class="field">
               <label for="joining-date">Date of Joining</label>
               <input
                 type="date"
@@ -275,13 +276,13 @@
             </div>
           </div>
           <div class="row">
-            <div class="field">
+            <div id="skills-field" class="field">
               <label for="skills">Skills</label>
               <div class="skills-input-container">
                 <span id="skills" class="skills-list"> </span>
                 <input
                   type="text"
-                  name="skill-input"
+                  name="skills"
                   id="skill-input"
                   class="skill-input"
                   autocomplete="off"

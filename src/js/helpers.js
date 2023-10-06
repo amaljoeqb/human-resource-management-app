@@ -80,6 +80,20 @@ function transformSkills(skills) {
     .join("");
 }
 
+/*
+formErrors: {
+    name: undefined,
+    email: undefined,
+    designation: undefined,
+    department: undefined,
+    dob: undefined,
+    "joining-date": undefined,
+    skills: undefined,
+  },
+  */
+
+
+
 export {
   getData,
   highlightSearchTerm,

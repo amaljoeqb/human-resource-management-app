@@ -16,4 +16,13 @@ export const state = {
     lastPage: 1,
   },
   activeMenu: undefined,
+  formErrors: {
+    name: undefined,
+    email: undefined,
+    designation: undefined,
+    department: undefined,
+    dob: undefined,
+    "joining-date": undefined,
+    skills: undefined,
+  },
 };

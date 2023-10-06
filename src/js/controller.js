@@ -193,7 +193,7 @@ function setFormData(employee) {
  */
 function getFormData() {
   const form = document.querySelector("#emp-form");
-  return {
+  const employee = {
     name: form.querySelector("#name").value,
     email: form.querySelector("#email").value,
     dateOfBirth: form.querySelector("#dob").value,
@@ -207,6 +207,86 @@ function getFormData() {
     employeeId: form.querySelector("#employee-id").value,
     skills: getSkillsFromInput(),
   };
+  if (validateEmployeeForm(employee)) {
+    return employee;
+  } else {
+    return undefined;
+  }
+}
+
+/**
+ * Function to validate employee form
+ * @param {object} employee - Form data
+ */
+function validateEmployeeForm(employee) {
+  let noError = true;
+
+  // name validation
+  if (!employee.name) {
+    setFormError("name", "Name is required");
+    noError = false;
+  }
+
+  // email validation
+  if (!employee.email) {
+    setFormError("email", "Email is required");
+    noError = false;
+  } else if (!employee.email.includes("@")) {
+    setFormError("email", "Email is invalid");
+    noError = false;
+  }
+
+  // designation validation
+  if (!employee.designation) {
+    setFormError("designation", "Designation is required");
+    noError = false;
+  }
+
+  // department validation
+  if (!employee.department) {
+    setFormError("department", "Department is required");
+    noError = false;
+  } else {
+    const departments = getAllDepartments();
+    const department = departments.find(
+      (department) => department.id === employee.department
+    );
+    if (
+      !department ||
+      department.department !== employee.department.department
+    ) {
+      setFormError("department", "Department is invalid");
+      noError = false;
+    }
+  }
+
+  // dob validation
+  if (!employee.dob) {
+    setFormError("dob", "Date of birth is required");
+    noError = false;
+  } else if (new Date(employee.dob) > new Date()) {
+    setFormError("dob", "Date of birth must be in the past");
+    noError = false;
+  }
+
+  // joining date validation
+  if (!employee["joining-date"]) {
+    setFormError("joining-date", "Joining date is required");
+    noError = false;
+  } else if (new Date(employee["joining-date"]) > new Date()) {
+    setFormError("joining-date", "Joining date must be in the past");
+    noError = false;
+  } else if (new Date(employee["joining-date"]) < new Date(employee.dob)) {
+    setFormError("joining-date", "Joining date must be after date of birth");
+    noError = false;
+  }
+
+  // skills validation
+  if (!employee.skills || employee.skills.length === 0) {
+    setFormError("skills", "Skills are required");
+    noError = false;
+  }
+  return noError;
 }
 
 /**
@@ -320,7 +400,7 @@ function addSkill(skill) {
 }
 
 /**
- * Function to reset form options
+ * Function to reset form options and errors
  */
 function resetFormOptions() {
   const departments = getAllDepartments();
@@ -328,6 +408,11 @@ function resetFormOptions() {
   const skills = getAllSkills();
   setSkillsOptions(skills);
   clearSkillInput();
+  Object.keys(state.formErrors).forEach((name) => {
+    if (state.formErrors[name]) {
+      clearFormError(name);
+    }
+  });
 }
 
 /**
@@ -462,10 +547,22 @@ function setFilterOptions(itemsContainer, options) {
  */
 function setFormError(name, error) {
   const form = document.querySelector("#emp-form");
-  const formField = form.querySelector(`#${name}`);
-  const errorElement = form.querySelector(`#${name}-error`);
-  errorElement.innerText = error;
+  const formField = form.querySelector(`#${name}-field`);
+  const errorMsg = formField.querySelector(".error-msg");
   formField.classList.add("error");
+  errorMsg.innerText = error;
+  state.formErrors[name] = error;
+}
+
+/**
+ * Function to clear error message of a form field
+ * @param {string} name name of the form field
+ */
+function clearFormError(name) {
+  const form = document.querySelector("#emp-form");
+  const formField = form.querySelector(`#${name}-field`);
+  formField.classList.remove("error");
+  state.formErrors[name] = undefined;
 }
 
 export {
@@ -482,4 +579,6 @@ export {
   setSkillsFilterSelected,
   addSkillFilter,
   removeSkillFilter,
+  setFormError,
+  clearFormError,
 };

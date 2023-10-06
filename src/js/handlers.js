@@ -21,6 +21,7 @@ import {
   removeSkillFilter,
   addSkillFilter,
   setSkillsFilterSelected,
+  clearFormError,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -163,10 +164,11 @@ function onClickSave(event) {
   event.preventDefault();
   const editForm = document.querySelector("#emp-form");
   const employeeId = editForm.querySelector("#employee-id").value;
-  let existingEmployee = getEmployee(employeeId);
-  let modifiedEmployee = getFormData();
-  console.log(modifiedEmployee, existingEmployee);
-  setEmployee(modifiedEmployee);
+  let employee = getFormData();
+  if (!employee) {
+    return;
+  }
+  setEmployee(employee);
   closePopup();
   renderTable();
 }
@@ -378,6 +380,16 @@ function onClickClearFilters(e) {
   gotoPage(1);
 }
 
+/**
+ * Function to trigger on change form input
+ */
+function onChangeFormInput(e) {
+  const name = e.currentTarget.name;
+  if (state.formErrors[name]) {
+    clearFormError(name);
+  }
+}
+
 export {
   onClickColumnTitle,
   onChangeSearchInput,
@@ -405,4 +417,5 @@ export {
   onChangeFilterSearch,
   onClickFilterOption,
   onClickClearFilters,
+  onChangeFormInput,
 };
