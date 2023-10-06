@@ -241,3 +241,13 @@ table .name:hover {
   max-lines: 2;
   text-wrap: wrap;
 }
+
+@media screen and (max-width: 480px) {
+  .page-number:not(.active) {
+    display: none;
+  }
+
+  .page-numbers {
+    column-gap: 0;
+  }
+}

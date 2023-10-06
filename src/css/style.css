@@ -84,15 +84,22 @@ body {
 .emp-listing-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  column-gap: 32px;
+  column-gap: 12px;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .emp-listing-header .start-section {
   display: flex;
   align-items: center;
   column-gap: 12px;
+}
+
+.emp-listing-header .next-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .emp-listing-header h2 {
@@ -188,4 +195,28 @@ header {
 
 .bold {
   font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+  .emp-listing-header {
+    flex-direction: column;
+    row-gap: 16px;
+    align-items: start;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .emp-listing-header .start-section {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .emp-listing-header h2 {
+    margin: 12px 0;
+  }
+
+  .emp-listing-header .search-input {
+    width: 100%;
+  }
 }

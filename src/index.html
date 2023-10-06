@@ -40,39 +40,43 @@
             placeholder="Search employees..."
             autocomplete="off"
           />
-          <div id="skills-filter" class="filter-btn-container">
-            <button class="filter-btn hover-btn">
-              <span class="material-symbols-outlined"> tune </span>
-              <p>Skills</p>
-              <ul class="selected-items"></ul>
-            </button>
-            <div class="filter-dropdown">
-              <form class="filter-form">
-                <span class="material-symbols-outlined search-icon">
-                  search
-                </span>
-                <input
-                  class="filter-search"
-                  type="text"
-                  id="skill-filter"
-                  name="skill-filter"
-                  placeholder="Search Skills"
-                  autocomplete="off"
-                />
-              </form>
-              <hr />
-              <ul class="filtered-items"></ul>
-              <hr />
-              <button class="clear-filter">
-                <p>Clear Filters</p>
+        </div>
+        <div class="next-section">
+          <div class="filters-section">
+            <div id="skills-filter" class="filter-btn-container">
+              <button class="filter-btn hover-btn">
+                <span class="material-symbols-outlined"> tune </span>
+                <p>Skills</p>
+                <ul class="selected-items"></ul>
               </button>
+              <div class="filter-dropdown">
+                <form class="filter-form">
+                  <span class="material-symbols-outlined search-icon">
+                    search
+                  </span>
+                  <input
+                    class="filter-search"
+                    type="text"
+                    id="skill-filter"
+                    name="skill-filter"
+                    placeholder="Search Skills"
+                    autocomplete="off"
+                  />
+                </form>
+                <hr />
+                <ul class="filtered-items"></ul>
+                <hr />
+                <button class="clear-filter">
+                  <p>Clear Filters</p>
+                </button>
+              </div>
             </div>
           </div>
+          <button class="add-btn hover-btn">
+            <span class="material-symbols-outlined"> add_circle </span>
+            <p>Create</p>
+          </button>
         </div>
-        <button class="add-btn hover-btn">
-          <span class="material-symbols-outlined"> add_circle </span>
-          <p>Create</p>
-        </button>
       </div>
       <div class="table-container">
         <table class="emp-table">
