@@ -8,6 +8,7 @@
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
   --light-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
   --light-grey: #e4e4e4;
+  --dark-grey: #a5a5a5;
   --text-color: rgb(24, 24, 27);
   --error-color: rgb(255, 33, 33);
 }
@@ -141,6 +142,7 @@ body {
   margin-right: 8px;
   margin-bottom: 8px;
   align-items: center;
+  box-shadow: var(--shadow);
 }
 
 footer {

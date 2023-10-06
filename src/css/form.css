@@ -40,12 +40,24 @@ form .row {
 }
 
 form input,
-form textarea {
-  padding: 16px;
+form textarea,
+.skills-input-container {
+  padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid var(--light-grey);
   font-size: 16px;
   color: black;
+  box-shadow: var(--light-shadow);
+}
+
+input.skill-input {
+  border: none;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  display: inline-block;
+  pointer-events: none;
+  box-shadow: none;
 }
 
 .field.error input,
@@ -59,9 +71,10 @@ form textarea {
 }
 
 form input:focus,
-form textarea:focus {
+form textarea:focus,
+.skills-input-container:has(input:focus) {
   outline: none;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--dark-grey);
 }
 
 .form-header {
@@ -151,7 +164,7 @@ form textarea:focus {
   display: none;
 }
 
-.view-popup input,
+.view-popup input:not(.skill-input),
 .view-popup textarea,
 .view-popup .skills-input-container {
   border: 1px solid transparent;
@@ -159,10 +172,12 @@ form textarea:focus {
   padding: 4px 0;
   font-size: 16px;
   color: black;
+  box-shadow: none;
 }
 
 .view-popup .field {
   pointer-events: none;
+  margin-bottom: 12px;
 }
 
 .view-popup .submit {
@@ -173,35 +188,17 @@ form textarea:focus {
 .popup input,
 .popup textarea,
 .popup .submit,
-.popup .skills-input-container {
+.popup .skills-input-container,
+.popup .field {
   transition: all 0.3s ease-in-out;
 }
 
 .skills-input-container {
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--light-grey);
-  font-size: 16px;
-  color: black;
-  align-items: center;
   cursor: text;
 }
 
 .skills-input-container .chip {
   margin: 3px 6px 3px 0;
-}
-
-.skills-input-container:has(input:focus) {
-  border: 1px solid var(--primary-color);
-}
-
-input.skill-input {
-  border: none;
-  padding: 10px 0;
-  font-size: 16px;
-  color: black;
-  display: inline-block;
-  pointer-events: none;
 }
 
 .field.error .skills-input-container {
