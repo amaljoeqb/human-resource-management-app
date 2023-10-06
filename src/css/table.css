@@ -242,6 +242,10 @@ table .name:hover {
   text-wrap: wrap;
 }
 
+.no-data {
+  text-align: center;
+}
+
 @media screen and (max-width: 480px) {
   .page-number:not(.active) {
     display: none;

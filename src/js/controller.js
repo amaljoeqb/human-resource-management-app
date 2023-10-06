@@ -55,6 +55,16 @@ function renderTable() {
   }
   filteredEmployees = filteredEmployees.slice(start, end);
   tableBody.innerHTML = "";
+  if (filteredEmployees.length === 0) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+     <tr>
+     <td colspan="7" class="no-data">No data</td>
+      </tr>
+    `;
+    tableBody.appendChild(row);
+    return;
+  }
   filteredEmployees.forEach((employee) => {
     try {
       const row = document.createElement("tr");

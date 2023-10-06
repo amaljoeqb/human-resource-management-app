@@ -1,6 +1,5 @@
-- form validation and api error handling
-
 - status and change status
 - view to edit
 - edit cancel flip - save reset slide
 - developer mode - autofill create and list
+- auto recover / clear cache button
