@@ -20,8 +20,14 @@ import {
   onChangeFilterSearch,
   onClickClearFilters,
   onChangeFormInput,
+  onClickCloseToast,
 } from "./handlers.js";
-import { renderTable, closePopup, setDepartmentOptions } from "./controller.js";
+import {
+  renderTable,
+  closePopup,
+  setDepartmentOptions,
+  showToast,
+} from "./controller.js";
 
 const table = document.querySelector(".emp-table");
 const tableHeader = table.querySelector(".header-row");
@@ -47,6 +53,9 @@ const filterButton = document.querySelector(".filter-btn");
 const filterSearch = document.querySelector(".filter-search");
 const clearFilter = document.querySelector(".clear-filter");
 const formInputs = document.querySelectorAll("form input");
+const closeToast = document.querySelector(".close-toast");
+
+closeToast.addEventListener("click", onClickCloseToast);
 
 formInputs.forEach((formInput) => {
   formInput.addEventListener("input", onChangeFormInput);
@@ -112,8 +121,10 @@ async function loadEmployees() {
     }
     renderTable();
   } catch (e) {
-    // TODO: alert error
-    console.error(e);
+    showToast(
+      "There was an error loading data from cache. Try clearing the cache and try again.",
+      true
+    );
   }
 }
 

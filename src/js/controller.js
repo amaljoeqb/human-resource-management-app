@@ -573,7 +573,24 @@ function clearFormError(name) {
   state.formErrors[name] = undefined;
 }
 
+/**
+ * Function to show a toast
+ * @param {string} message message to show
+ * @param {boolean} isError  error toast
+ */
+function showToast(message, isError) {
+  const toast = document.querySelector(".toast");
+  toast.querySelector("p").innerText = message;
+  toast.classList.add("show");
+  if (isError) {
+    toast.classList.add("error");
+  } else {
+    toast.classList.remove("error");
+  }
+}
+
 export {
+  showToast,
   renderTable,
   closePopup,
   setFormData,

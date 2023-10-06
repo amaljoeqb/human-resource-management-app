@@ -388,7 +388,16 @@ function onChangeFormInput(e) {
   clearFormError(name);
 }
 
+/**
+ * Function to trigger on click of close toast
+ */
+function onClickCloseToast(e) {
+  const toast = document.querySelector(".toast");
+  toast.classList.remove("show");
+}
+
 export {
+  onClickCloseToast,
   onClickColumnTitle,
   onChangeSearchInput,
   onClickAllCheck,
