@@ -75,6 +75,7 @@ input.filter-search:focus {
   margin: 0;
   width: 12px;
   pointer-events: none;
+  accent-color: black;
 }
 
 .filtered-item:hover {
