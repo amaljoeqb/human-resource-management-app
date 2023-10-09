@@ -49,8 +49,11 @@
   margin: 0;
   display: flex;
   align-items: start;
-  cursor: pointer;
   padding: 8px;
+}
+
+.column-title:not(.no-click) {
+  cursor: pointer;
 }
 
 .column-title .up {
@@ -152,12 +155,15 @@ table .name:hover {
   cursor: pointer;
   border-radius: 8px;
 }
+
 .action-btn span {
   font-size: 16px;
 }
+
 .action-btn:hover {
   background-color: #f5f5f5;
 }
+
 .action-menu {
   position: absolute;
   background-color: #fff;

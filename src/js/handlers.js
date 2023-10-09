@@ -33,9 +33,14 @@ const columnTitles = table.querySelectorAll(".column-title");
  */
 function onClickColumnTitle(event) {
   const clickedTitle = event.currentTarget;
+  const key = clickedTitle.dataset.key;
+  if (key === "skills") {
+    return;
+  }
+
   const isAsc = clickedTitle.classList.contains("asc");
   const isDesc = clickedTitle.classList.contains("desc");
-  state.sort.key = event.currentTarget.dataset.key;
+  state.sort.key = key;
   state.sort.asc = true;
 
   // Remove asc and desc classes from all column titles
