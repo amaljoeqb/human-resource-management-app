@@ -3,3 +3,6 @@
 - edit cancel flip - save reset slide
 - developer mode - autofill create and list
 - auto recover / clear cache button
+
+- Add/Edit title
+- Skills on hover

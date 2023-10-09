@@ -48,14 +48,20 @@
 .confirmation-message {
   font-size: 16px;
   font-weight: 400;
-  margin: 32px 12px;
+  margin: 24px 12px;
 }
 
 .popup-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
+}
+
+.popup-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .delete .popup-content {

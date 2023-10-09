@@ -200,15 +200,14 @@ header {
   font-weight: 700;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 480px) {
   .emp-listing-header {
     flex-direction: column;
     row-gap: 16px;
     align-items: start;
   }
-}
 
-@media screen and (max-width: 480px) {
   .emp-listing-header .start-section {
     flex-direction: column;
     align-items: stretch;
