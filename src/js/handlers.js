@@ -394,6 +394,20 @@ function onChangeFormInput(e) {
 }
 
 /**
+ * Function to trigger on click of edit button
+ */
+function onClickEditButton(e) {
+  document.querySelector(".popup").classList = "popup show-popup edit-popup"
+}
+
+/**
+ * Function to trigger on click of cancel button
+ */
+function onClickCancelButton(e) {
+  document.querySelector(".popup").classList = "popup show-popup view-popup"
+}
+
+/**
  * Function to trigger on click of close toast
  */
 function onClickCloseToast(e) {
@@ -430,4 +444,6 @@ export {
   onClickFilterOption,
   onClickClearFilters,
   onChangeFormInput,
+  onClickEditButton,
+  onClickCancelButton,
 };

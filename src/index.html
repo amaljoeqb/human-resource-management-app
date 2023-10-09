@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/table.css" />
   <link rel="stylesheet" href="css/popup.css" />
   <link rel="stylesheet" href="css/input.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -251,7 +252,14 @@
             <p class="error-msg"></p>
           </div>
         </div>
-        <input id="save-button" class="hover-btn primary submit" type="submit" value="Save" />
+        <div class="flip-container">
+          <div class="front">
+            <input id="save-button" class="hover-btn primary submit" type="submit" value="Save" />
+          </div>
+          <div class="back">
+            <button id="edit-button" class="hover-btn" type="button">Edit</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
