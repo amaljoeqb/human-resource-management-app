@@ -175,20 +175,21 @@ main {
 
 header {
   display: flex;
-  background-color: var(--primary-color);
+  background-color: white;
+  border-bottom: 1px solid var(--light-grey);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--primary-color);
   padding: 16px 32px;
   column-gap: 16px;
 }
 
 .logo img {
   width: 40px;
-  color: white;
+  color: var(--primary-color);
 }
 
 .logo h1 {
