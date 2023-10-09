@@ -113,6 +113,7 @@ form textarea:focus,
   z-index: 1;
   max-height: 240px;
   overflow-y: auto;
+  font-size: 14px;
 }
 
 .dropdown-content a {
@@ -122,7 +123,7 @@ form textarea:focus,
   display: block;
 }
 
-.input-container:has(input:focus) + .dropdown-content {
+.input-container:has(input:focus)+.dropdown-content {
   display: block;
 }
 
