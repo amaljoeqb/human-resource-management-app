@@ -64,6 +64,7 @@ closeToast.addEventListener("click", onClickCloseToast);
 
 formInputs.forEach((formInput) => {
   formInput.addEventListener("input", onChangeFormInput);
+  
 });
 
 clearFilter.addEventListener("click", onClickClearFilters);

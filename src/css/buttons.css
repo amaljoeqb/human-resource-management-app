@@ -20,7 +20,7 @@
 }
 
 .back {
-    transform: rotateY(-180deg);
+    transform: rotateX(180deg);
     position: absolute;
     top: 0;
     left: 0;
@@ -30,11 +30,11 @@
 }
 
 .view-popup .front {
-    transform: rotateY(180deg);
+    transform: rotateX(-180deg);
 }
 
 .view-popup .back {
-    transform: rotateY(0deg);
+    transform: rotateX(0deg);
 }
 
 #save-button {
