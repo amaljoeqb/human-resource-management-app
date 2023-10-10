@@ -190,6 +190,24 @@ function getAllSkills() {
 }
 
 /**
+ * Function to create new skill
+ * @param {string} skillName skill name
+ */
+export function createNewSkill(skillName) {
+  const lastId = skills
+    .map((skill) => skill.skillId)
+    .sort((a, b) => a - b)
+    .pop();
+  const newSkill = {
+    skillId: parseInt(lastId) + 1,
+    skill: skillName,
+  };
+  skills.push(newSkill);
+  localStorage.setItem("skills", JSON.stringify(skills));
+  return newSkill.skillId;
+}
+
+/**
  * Function to get all departments
  */
 function getAllDepartments() {

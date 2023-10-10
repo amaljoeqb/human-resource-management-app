@@ -196,7 +196,9 @@ function setFormData(employee) {
   employee.department && setDepartmentInput(employee.department);
   if (employee.skills) {
     setSkillsInput(employee.skills);
-    const selectedSkills = employee.skills.map((skill) => parseInt(skill.skillId));
+    const selectedSkills = employee.skills.map((skill) =>
+      parseInt(skill.skillId)
+    );
     let skills = getAllSkills();
     skills = skills.filter(
       (skillItem) => !selectedSkills.includes(skillItem.skillId)
@@ -352,15 +354,30 @@ function setSkillsOptions(skills) {
     const listItem = document.createElement("li");
     listItem.innerHTML = `<a href="javascript:void(0)" data-id="${skill.skillId}">${skill.skill}</a>`;
     listItem.addEventListener("click", (e) => {
-      addSkill(skill);
-      clearSkillInput();
-      skillInput.focus();
-      const skills = getAllSkills();
-      setSkillsOptions(skills);
-      clearFormError("skills");
+      selectSkill(skill.skillId);
     });
     skillsOptions.appendChild(listItem);
   });
+}
+
+function selectSkill(skillId) {
+  const skillInput = document.querySelector("#skill-input");
+  let skills = getAllSkills();
+  const skill = skills.find((skill) => skill.skillId == skillId);
+  if (!skill) {
+    return;
+  }
+  addSkill(skill);
+  clearSkillInput();
+  skillInput.focus();
+  const selectedSkills = getSkillsFromInput().map((skill) =>
+    parseInt(skill.skillId)
+  );
+  skills = skills.filter(
+    (skillItem) => !selectedSkills.includes(skillItem.skillId)
+  );
+  setSkillsOptions(skills);
+  clearFormError("skills");
 }
 
 /**
@@ -624,4 +641,6 @@ export {
   removeSkillFilter,
   setFormError,
   clearFormError,
+  clearSkillInput,
+  selectSkill,
 };

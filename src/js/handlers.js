@@ -6,6 +6,7 @@ import {
   getAllDepartments,
   getAllEmployees,
   deleteEmployee,
+  createNewSkill,
 } from "./data.js";
 import { state } from "./context.js";
 import {
@@ -23,6 +24,8 @@ import {
   setSkillsFilterSelected,
   clearFormError,
   getSkillsFromInput,
+  clearSkillInput,
+  selectSkill,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -208,7 +211,6 @@ function onChangeSkillsInput(event) {
   const selectedSkills = getSkillsFromInput().map((skill) =>
     parseInt(skill.skillId)
   );
-  console.log(selectedSkills);
   skills = skills.filter(
     (skillItem) =>
       skillItem.skill.toLowerCase().includes(searchTerm) &&
@@ -221,6 +223,23 @@ function onChangeSkillsInput(event) {
       a.skill.length - b.skill.length
   );
   setSkillsOptions(skills);
+}
+
+/**
+ * Function to handle keydown event on skills input
+ * @param {Event} e keydown event
+ */
+export function onKeyDownSkillsInput(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    const skillInput = document.querySelector("#skill-input");
+    const skillsInput = e.currentTarget;
+    const skillName = skillsInput.value.trim();
+    if (skillName) {
+      const skillId = createNewSkill(skillName);
+      selectSkill(skillId);
+    }
+  }
 }
 
 /**

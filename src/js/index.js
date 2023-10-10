@@ -23,6 +23,7 @@ import {
   onClickCloseToast,
   onClickEditButton,
   onClickCancelButton,
+  onKeyDownSkillsInput,
 } from "./handlers.js";
 import {
   renderTable,
@@ -64,7 +65,6 @@ closeToast.addEventListener("click", onClickCloseToast);
 
 formInputs.forEach((formInput) => {
   formInput.addEventListener("input", onChangeFormInput);
-  
 });
 
 clearFilter.addEventListener("click", onClickClearFilters);
@@ -101,6 +101,7 @@ saveButton.addEventListener("click", onClickSave);
 
 departmentInput.addEventListener("input", onChangeDepartmentInput);
 skillInput.addEventListener("input", onChangeSkillsInput);
+skillInput.addEventListener("keydown", onKeyDownSkillsInput);
 
 confirmButton.addEventListener("click", onClickYes);
 cancelButton.addEventListener("click", onClickNo);
