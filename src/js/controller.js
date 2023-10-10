@@ -492,6 +492,7 @@ function setSkillsFilterOptions() {
         checked: state.filters.skills.includes(skill.skillId),
       };
     })
+    .filter((option) => option.count > 0)
     .sort((a, b) => b.count - a.count);
   setFilterOptions(skillsFilterOptions, options);
 }
