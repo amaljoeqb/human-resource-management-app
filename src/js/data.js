@@ -197,10 +197,14 @@ export function createNewSkill(skillName) {
   if (!skillName) {
     return;
   }
-  skillName = skillName.toLowerCase();
-  if (skills.find((skill) => skill.skill.toLowerCase() === skillName)) {
-    return skills.find((skill) => skill.skill.toLowerCase() === skillName)
-      .skillId;
+  if (
+    skills.find(
+      (skill) => skill.skill.toLowerCase() === skillName.toLowerCase()
+    )
+  ) {
+    return skills.find(
+      (skill) => skill.skill.toLowerCase() === skillName.toLowerCase()
+    ).skillId;
   }
   const lastId = skills
     .map((skill) => skill.skillId)
