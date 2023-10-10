@@ -104,7 +104,10 @@ function searchEmployees(searchTerm) {
 async function loadData() {
   try {
     employees = JSON.parse(localStorage.getItem("employees"));
-    skills = (await getData("assets/json/skills.json")).skills;
+    skills = JSON.parse(localStorage.getItem("skills"));
+    if (skills === null) {
+      skills = (await getData("assets/json/skills.json")).skills;
+    }
     departments = (await getData("assets/json/departments.json")).departments;
     return employees;
   } catch {

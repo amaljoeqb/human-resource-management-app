@@ -22,6 +22,7 @@ import {
   addSkillFilter,
   setSkillsFilterSelected,
   clearFormError,
+  getSkillsFromInput,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -204,8 +205,20 @@ function onChangeSkillsInput(event) {
   skillsInput.size = skillsInput.value.length + 1;
   const searchTerm = skillsInput.value.trim().toLowerCase();
   let skills = getAllSkills();
-  skills = skills.filter((skillItem) =>
-    skillItem.skill.toLowerCase().includes(searchTerm)
+  const selectedSkills = getSkillsFromInput().map((skill) =>
+    parseInt(skill.skillId)
+  );
+  console.log(selectedSkills);
+  skills = skills.filter(
+    (skillItem) =>
+      skillItem.skill.toLowerCase().includes(searchTerm) &&
+      !selectedSkills.includes(skillItem.skillId)
+  );
+  skills.sort(
+    (a, b) =>
+      a.skill.toLowerCase().indexOf(searchTerm) -
+        b.skill.toLowerCase().indexOf(searchTerm) ||
+      a.skill.length - b.skill.length
   );
   setSkillsOptions(skills);
 }
@@ -402,14 +415,15 @@ function onChangeFormInput(e) {
  * Function to trigger on click of edit button
  */
 function onClickEditButton(e) {
-  document.querySelector(".popup").classList = "popup show-popup edit-popup from-view-popup"
+  document.querySelector(".popup").classList =
+    "popup show-popup edit-popup from-view-popup";
 }
 
 /**
  * Function to trigger on click of cancel button
  */
 function onClickCancelButton(e) {
-  document.querySelector(".popup").classList = "popup show-popup view-popup"
+  document.querySelector(".popup").classList = "popup show-popup view-popup";
 }
 
 /**

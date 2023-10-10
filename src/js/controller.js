@@ -194,7 +194,15 @@ function setFormData(employee) {
   form.querySelector("#designation").value = employee.designation;
   form.querySelector("#employee-id").value = employee.employeeId;
   employee.department && setDepartmentInput(employee.department);
-  employee.skills && setSkillsInput(employee.skills);
+  if (employee.skills) {
+    setSkillsInput(employee.skills);
+    const selectedSkills = employee.skills.map((skill) => parseInt(skill.skillId));
+    let skills = getAllSkills();
+    skills = skills.filter(
+      (skillItem) => !selectedSkills.includes(skillItem.skillId)
+    );
+    setSkillsOptions(skills);
+  }
 }
 
 /**
@@ -610,6 +618,7 @@ export {
   gotoPage,
   setSkillsOptions,
   setSkillsFilterOptions,
+  getSkillsFromInput,
   setSkillsFilterSelected,
   addSkillFilter,
   removeSkillFilter,
