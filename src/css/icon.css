@@ -1,0 +1,45 @@
+:root {
+  --path-octagon: polygon(
+    37.5% 25%,
+    62.5% 25%,
+    75% 37.5%,
+    75% 62.5%,
+    62.5% 75%,
+    37.5% 75%,
+    25% 62.5%,
+    25% 37.5%
+  );
+  --path-star: polygon(
+    50% 0%,
+    58% 42%,
+    100% 50%,
+    58% 58%,
+    50% 100%,
+    42% 58%,
+    0% 50%,
+    42% 42%
+  );
+  --path-pencil: polygon(84% 0, 100% 17%, 19% 100%, 0 100%, 0 78%);
+}
+
+.morph-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: white;
+  clip-path: var(--path-pencil);
+  background-color: var(--primary-color);
+  /* animation: 3s morph ease-in-out infinite; */
+}
+
+@keyframes morph {
+  0% {
+    clip-path: var(--path-octagon);
+  }
+  50% {
+    clip-path: var(--path-star);
+  }
+  100% {
+    clip-path: var(--path-octagon);
+  }
+}

@@ -165,20 +165,25 @@ form textarea:focus,
 }
 
 .popup .add-heading,
-.popup .edit-heading,
-.popup .view-heading {
+.popup .view-edit-heading {
   display: none;
+}
+
+.view-edit-heading.flip-container,
+.view-edit-heading.flip-container .back,
+.view-edit-heading.flip-container .front {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
 }
 
 .add-popup .add-heading {
   display: block;
 }
 
-.edit-popup .edit-heading {
-  display: block;
-}
-
-.view-popup .view-heading {
+.edit-popup .view-edit-heading,
+.view-popup .view-edit-heading {
   display: block;
 }
 
