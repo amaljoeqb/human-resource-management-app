@@ -174,7 +174,12 @@ function onClickSave(event) {
     return;
   }
   setEmployee(employee);
-  closePopup();
+  const popup = document.querySelector(".popup");
+  if (popup.classList.contains("from-view-popup")) {
+    popup.classList = "popup show-popup view-popup";
+  } else {
+    closePopup();
+  }
   renderTable();
 }
 
@@ -397,7 +402,7 @@ function onChangeFormInput(e) {
  * Function to trigger on click of edit button
  */
 function onClickEditButton(e) {
-  document.querySelector(".popup").classList = "popup show-popup edit-popup"
+  document.querySelector(".popup").classList = "popup show-popup edit-popup from-view-popup"
 }
 
 /**
