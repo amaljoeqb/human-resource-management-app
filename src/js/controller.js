@@ -447,6 +447,8 @@ function resetFormOptions() {
   const skills = getAllSkills();
   setSkillsOptions(skills);
   clearSkillInput();
+  const departmentInput = document.querySelector("#department");
+  departmentInput.value = "";
   Object.keys(state.formErrors).forEach((name) => {
     if (state.formErrors[name]) {
       clearFormError(name);
