@@ -79,7 +79,9 @@ function renderTable() {
                     <a class="name">${highlightSearchTerm(
                       employee.name,
                       state.searchTerm
-                    )}</a>
+                    )}
+                    <span class="material-symbols-outlined"> visibility </span>
+                    </a>
                     <p class="email">${highlightSearchTerm(
                       employee.email,
                       state.searchTerm

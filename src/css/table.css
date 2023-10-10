@@ -82,6 +82,13 @@
 .name-container .name {
   font-weight: 600;
   color: var(--text-color);
+  display: flex;
+  align-items: center;
+}
+
+.name-container .name span {
+  font-size: 16px;
+  margin-left: 4px;
 }
 
 .name-container .email {
