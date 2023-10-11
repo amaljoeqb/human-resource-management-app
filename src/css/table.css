@@ -75,7 +75,7 @@
   line-height: 0.45;
   font-size: 14px;
   color: #666;
-  transition: color 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
   user-select: none;
 }
 
