@@ -255,6 +255,21 @@ table .name:hover {
   text-wrap: wrap;
 }
 
+.skills-cell .skills-tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  border-radius: 4px;
+  text-wrap: wrap;
+  z-index: 60;
+  margin-right: 120px;
+  padding: 8px;
+  margin-left: -4px;
+  box-shadow: var(--shadow);
+  display: none;
+}
+
 .no-data {
   text-align: center;
 }

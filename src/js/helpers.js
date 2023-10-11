@@ -80,6 +80,13 @@ function transformSkills(skills) {
     .join("");
 }
 
+/**
+ * Transform skills list to span elements
+ */
+function skillsToString(skills) {
+  return skills.map((skill) => skill.skill).join(", ");
+}
+
 /*
 formErrors: {
     name: undefined,
@@ -92,8 +99,6 @@ formErrors: {
   },
   */
 
-
-
 export {
   getData,
   highlightSearchTerm,
@@ -101,4 +106,5 @@ export {
   convertFromDate,
   convertToDate,
   transformSkills,
+  skillsToString,
 };
