@@ -119,6 +119,7 @@ form textarea:focus,
   max-height: 240px;
   overflow-y: auto;
   font-size: 14px;
+  border-radius: 8px;
 }
 
 .dropdown-content a {
@@ -137,7 +138,7 @@ form textarea:focus,
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: var(--hover-color);
 }
 
 .input-container {
@@ -157,7 +158,8 @@ form textarea:focus,
   opacity: 0;
   position: absolute;
   margin-right: 8px;
-  color: var(--text-overlay);
+  font-weight: 400;
+  color: var(--dark-grey);
 }
 
 .input-container:hover .suffix-icon {
