@@ -44,33 +44,58 @@
 .column-title {
   font-weight: 500;
   font-size: 14px;
-  width: 100%;
   text-align: start;
-  margin: 0;
+  margin: 4px 0;
   display: flex;
-  align-items: start;
-  padding: 8px;
+  align-items: center;
+  padding: 8px 8px;
+  border-radius: 8px;
+  user-select: none;
+}
+
+.column-title a,
+.column-title {
+  color: #666;
 }
 
 .column-title:not(.no-click) {
   cursor: pointer;
 }
 
-.column-title .up {
-  margin-left: 8px;
-  visibility: hidden;
+.sort-icon {
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.8, 0.8);
+}
+
+.sort-icon .up,
+.sort-icon .down {
+  padding: 0;
+  margin-left: 0.5rem;
+  line-height: 0.45;
   font-size: 14px;
-  transition: transform 0.2s ease-in-out;
+  color: #666;
+  transition: color 0.1s ease-in-out;
   user-select: none;
 }
 
-.column-title.desc .up {
-  visibility: visible;
-  transform: rotate(180deg);
+.column-title:not(.no-click):hover {
+  background-color: #f1f1f1;
 }
 
-.column-title.asc .up {
-  visibility: visible;
+.column-title.asc .down {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.column-title.desc .up {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.column-title.asc a,
+.column-title.desc a {
+  color: var(--primary-color);
 }
 
 .name-container {

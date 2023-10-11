@@ -241,6 +241,9 @@ header {
   transform: scale(1.1);
 }
 
+.material-symbols-outlined {
+  user-select: none;
+}
 
 @media screen and (max-width: 480px) {
   .emp-listing-header {
