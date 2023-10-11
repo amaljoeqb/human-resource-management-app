@@ -1,0 +1,28 @@
+{
+    "departments": [
+        {
+            "departmentId": 1,
+            "department": "Development"
+        },
+        {
+            "departmentId": 2,
+            "department": "Design"
+        },
+        {
+            "departmentId": 3,
+            "department": "Human Resources"
+        },
+        {
+            "departmentId": 4,
+            "department": "Sales"
+        },
+        {
+            "departmentId": 5,
+            "department": "Finance"
+        },
+        {
+            "departmentId": 6,
+            "department": "Quality Analysis"
+        }
+    ]
+}
