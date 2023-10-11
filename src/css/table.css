@@ -8,6 +8,7 @@
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 8px;
+  position: relative;
 }
 
 .emp-table th {
