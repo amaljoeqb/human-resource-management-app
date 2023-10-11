@@ -292,7 +292,7 @@ table .name:hover {
   margin-right: 120px;
   padding: 8px;
   margin-left: -4px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--light-shadow);
   display: none;
 }
 
