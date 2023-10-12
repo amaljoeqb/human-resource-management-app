@@ -11,6 +11,7 @@
   --dark-grey: #a5a5a5;
   --text-color: rgb(24, 24, 27);
   --error-color: rgb(255, 33, 33);
+  --hover-color: #f1f1f1;
 }
 
 body {
@@ -241,6 +242,9 @@ header {
   transform: scale(1.1);
 }
 
+.material-symbols-outlined {
+  user-select: none;
+}
 
 @media screen and (max-width: 480px) {
   .emp-listing-header {

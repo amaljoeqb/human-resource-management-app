@@ -1,7 +1,7 @@
 import {
   highlightSearchTerm,
-  getRupeesFormat,
   transformSkills,
+  skillsToString,
 } from "./helpers.js";
 import {
   sortEmployees,
@@ -96,9 +96,12 @@ function renderTable() {
                     employee.department.department,
                     state.searchTerm
                   )}</td>
-                  <td class="skills-cell">${transformSkills(
+                  <td class="skills-cell">
+                  ${transformSkills(employee.skills)}
+                  <div class="skills-tooltip">${skillsToString(
                     employee.skills
-                  )}</td>
+                  )}</div>
+                  </td>
                   <td class="overflow">
               <div class="action-container">
                 <a href="javascript:void(0)" class="action-btn">
@@ -135,12 +138,29 @@ function renderTable() {
       row
         .querySelector(".action-btn")
         .addEventListener("click", onClickActionButton);
+      addSkillCellListeners(row.querySelector(".skills-cell"));
       tableBody.appendChild(row);
     } catch (e) {
       console.log(e, employee);
     }
   });
   renderPagination();
+}
+
+/**
+ * Function to add mouse listeners on skills cell
+ * @param {object} cell cell element
+ */
+function addSkillCellListeners(cell) {
+  const tooltip = cell.querySelector(".skills-tooltip");
+  cell.addEventListener("mouseenter", (e) => {
+    if (e.target.clientWidth < e.target.scrollWidth) {
+      tooltip.style.display = "block";
+    }
+  });
+  cell.addEventListener("mouseleave", () => {
+    tooltip.style.display = "none";
+  });
 }
 
 /**
