@@ -179,13 +179,48 @@ function setEmployee(employee) {
     employees.push(employee);
     localStorage.setItem("employees", JSON.stringify(employees));
     return "new";
-  } else if (JSON.stringify(employees[index]) !== JSON.stringify(employee)) {
+  } else if (!isEmployeeEqual(employees[index], employee)) {
     employees[index] = employee;
     localStorage.setItem("employees", JSON.stringify(employees));
     return "updated";
   } else {
     return "nochange";
   }
+}
+
+/**
+ * Function to check if two employee objects are equal
+ * @param {object} employee1 employee object
+ * @param {object} employee2 employee object
+ */
+function isEmployeeEqual(employee1, employee2) {
+  if (!employee1 || !employee2) {
+    return false;
+  }
+  if (
+    employee1.employeeId != employee2.employeeId ||
+    employee1.name != employee2.name ||
+    employee1.email != employee2.email ||
+    employee1.designation != employee2.designation ||
+    employee1.department.departmentId != employee2.department.departmentId ||
+    employee1.salary != employee2.salary ||
+    employee1.dateOfBirth != employee2.dateOfBirth ||
+    employee1.joiningDate != employee2.joiningDate ||
+    employee1.skills.length != employee2.skills.length
+  ) {
+    return false;
+  }
+  employee1.skills.forEach((skill1) => {
+    if (!employee2.skills.find((skill2) => skill1.skillId == skill2.skillId)) {
+      return false;
+    }
+  });
+  employee2.skills.forEach((skill2) => {
+    if (!employee1.skills.find((skill1) => skill1.skillId == skill2.skillId)) {
+      return false;
+    }
+  });
+  return true;
 }
 
 /**

@@ -240,13 +240,13 @@ function getFormData() {
     email: form.querySelector("#email").value,
     dateOfBirth: form.querySelector("#dob").value,
     joiningDate: form.querySelector("#joining-date").value,
-    salary: form.querySelector("#salary").value,
+    salary: parseInt(form.querySelector("#salary").value),
     designation: form.querySelector("#designation").value,
     department: {
-      departmentId: form.querySelector("#department").dataset.id,
+      departmentId: parseInt(form.querySelector("#department").dataset.id),
       department: form.querySelector("#department").value,
     },
-    employeeId: form.querySelector("#employee-id").value,
+    employeeId: parseInt(form.querySelector("#employee-id").value),
     skills: getSkillsFromInput(),
   };
   if (validateEmployeeForm(employee)) {
@@ -342,7 +342,7 @@ function getSkillsFromInput() {
   const skills = [];
   skillsInput.querySelectorAll(".chip").forEach((chip) => {
     skills.push({
-      skillId: chip.dataset.id,
+      skillId: parseInt(chip.dataset.id),
       skill: chip.querySelector("p").innerText,
     });
   });
