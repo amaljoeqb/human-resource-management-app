@@ -1,0 +1,334 @@
+{
+    "skills": [
+        {
+            "skillId": 1,
+            "skill": "JavaScript",
+            "departmentId": 1
+        },
+        {
+            "skillId": 2,
+            "skill": "React",
+            "departmentId": 1
+        },
+        {
+            "skillId": 3,
+            "skill": "Node.js",
+            "departmentId": 1
+        },
+        {
+            "skillId": 4,
+            "skill": "UI/UX Design",
+            "departmentId": 2
+        },
+        {
+            "skillId": 5,
+            "skill": "Graphic Design",
+            "departmentId": 2
+        },
+        {
+            "skillId": 6,
+            "skill": "Angular",
+            "departmentId": 1
+        },
+        {
+            "skillId": 7,
+            "skill": "Vue.js",
+            "departmentId": 1
+        },
+        {
+            "skillId": 8,
+            "skill": "TypeScript",
+            "departmentId": 1
+        },
+        {
+            "skillId": 9,
+            "skill": "Python",
+            "departmentId": 1
+        },
+        {
+            "skillId": 10,
+            "skill": "Django",
+            "departmentId": 1
+        },
+        {
+            "skillId": 11,
+            "skill": "Flask",
+            "departmentId": 1
+        },
+        {
+            "skillId": 12,
+            "skill": "Ruby on Rails",
+            "departmentId": 1
+        },
+        {
+            "skillId": 13,
+            "skill": "Java",
+            "departmentId": 1
+        },
+        {
+            "skillId": 14,
+            "skill": "Spring Boot",
+            "departmentId": 1
+        },
+        {
+            "skillId": 15,
+            "skill": "PHP",
+            "departmentId": 1
+        },
+        {
+            "skillId": 16,
+            "skill": "Adobe Photoshop",
+            "departmentId": 2
+        },
+        {
+            "skillId": 17,
+            "skill": "Adobe Illustrator",
+            "departmentId": 2
+        },
+        {
+            "skillId": 18,
+            "skill": "Sketch",
+            "departmentId": 2
+        },
+        {
+            "skillId": 19,
+            "skill": "Figma",
+            "departmentId": 2
+        },
+        {
+            "skillId": 20,
+            "skill": "InVision",
+            "departmentId": 2
+        },
+        {
+            "skillId": 21,
+            "skill": "User Research",
+            "departmentId": 2
+        },
+        {
+            "skillId": 22,
+            "skill": "Wireframing",
+            "departmentId": 2
+        },
+        {
+            "skillId": 23,
+            "skill": "Prototyping",
+            "departmentId": 2
+        },
+        {
+            "skillId": 24,
+            "skill": "Interaction Design",
+            "departmentId": 2
+        },
+        {
+            "skillId": 25,
+            "skill": "Design Thinking",
+            "departmentId": 2
+        },
+        {
+            "skillId": 26,
+            "skill": "Recruitment",
+            "departmentId": 3
+        },
+        {
+            "skillId": 27,
+            "skill": "Onboarding",
+            "departmentId": 3
+        },
+        {
+            "skillId": 28,
+            "skill": "Employee Relations",
+            "departmentId": 3
+        },
+        {
+            "skillId": 29,
+            "skill": "Performance Management",
+            "departmentId": 3
+        },
+        {
+            "skillId": 30,
+            "skill": "Compensation and Benefits",
+            "departmentId": 3
+        },
+        {
+            "skillId": 31,
+            "skill": "Training and Development",
+            "departmentId": 3
+        },
+        {
+            "skillId": 32,
+            "skill": "HR Analytics",
+            "departmentId": 3
+        },
+        {
+            "skillId": 33,
+            "skill": "HR Information Systems",
+            "departmentId": 3
+        },
+        {
+            "skillId": 34,
+            "skill": "Diversity and Inclusion",
+            "departmentId": 3
+        },
+        {
+            "skillId": 35,
+            "skill": "Employee Engagement",
+            "departmentId": 3
+        },
+        {
+            "skillId": 36,
+            "skill": "Lead Generation",
+            "departmentId": 4
+        },
+        {
+            "skillId": 37,
+            "skill": "Sales Pipeline Management",
+            "departmentId": 4
+        },
+        {
+            "skillId": 38,
+            "skill": "Account Management",
+            "departmentId": 4
+        },
+        {
+            "skillId": 39,
+            "skill": "Sales Forecasting",
+            "departmentId": 4
+        },
+        {
+            "skillId": 40,
+            "skill": "Sales Analytics",
+            "departmentId": 4
+        },
+        {
+            "skillId": 41,
+            "skill": "Negotiation",
+            "departmentId": 4
+        },
+        {
+            "skillId": 42,
+            "skill": "Customer Relationship Management (CRM)",
+            "departmentId": 4
+        },
+        {
+            "skillId": 43,
+            "skill": "Sales Enablement",
+            "departmentId": 4
+        },
+        {
+            "skillId": 44,
+            "skill": "Sales Operations",
+            "departmentId": 4
+        },
+        {
+            "skillId": 45,
+            "skill": "Sales Training",
+            "departmentId": 4
+        },
+        {
+            "skillId": 46,
+            "skill": "Financial Analysis",
+            "departmentId": 5
+        },
+        {
+            "skillId": 47,
+            "skill": "Financial Reporting",
+            "departmentId": 5
+        },
+        {
+            "skillId": 48,
+            "skill": "Budgeting and Forecasting",
+            "departmentId": 5
+        },
+        {
+            "skillId": 49,
+            "skill": "Taxation",
+            "departmentId": 5
+        },
+        {
+            "skillId": 50,
+            "skill": "Auditing",
+            "departmentId": 5
+        },
+        {
+            "skillId": 51,
+            "skill": "Risk Management",
+            "departmentId": 5
+        },
+        {
+            "skillId": 52,
+            "skill": "Treasury Management",
+            "departmentId": 5
+        },
+        {
+            "skillId": 53,
+            "skill": "Financial Planning and Strategy",
+            "departmentId": 5
+        },
+        {
+            "skillId": 54,
+            "skill": "Cost Accounting",
+            "departmentId": 5
+        },
+        {
+            "skillId": 55,
+            "skill": "Financial Modelling",
+            "departmentId": 5
+        },
+        {
+            "skillId": 56,
+            "skill": "Test Planning",
+            "departmentId": 6
+        },
+        {
+            "skillId": 57,
+            "skill": "Test Automation",
+            "departmentId": 6
+        },
+        {
+            "skillId": 58,
+            "skill": "Manual Testing",
+            "departmentId": 6
+        },
+        {
+            "skillId": 59,
+            "skill": "Regression Testing",
+            "departmentId": 6
+        },
+        {
+            "skillId": 60,
+            "skill": "Performance Testing",
+            "departmentId": 6
+        },
+        {
+            "skillId": 61,
+            "skill": "User Acceptance Testing (UAT)",
+            "departmentId": 6
+        },
+        {
+            "skillId": 62,
+            "skill": "Test Case Design",
+            "departmentId": 6
+        },
+        {
+            "skillId": 63,
+            "skill": "Defect Tracking",
+            "departmentId": 6
+        },
+        {
+            "skillId": 64,
+            "skill": "Test Reporting",
+            "departmentId": 6
+        },
+        {
+            "skillId": 65,
+            "skill": "Continuous Integration (CI)",
+            "departmentId": 6
+        },
+        {
+            "skillId": 66,
+            "skill": "HTML",
+            "departmentId": 1
+        }
+    ]
+}
