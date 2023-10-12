@@ -56,12 +56,9 @@ const filterButton = document.querySelector(".filter-btn");
 const filterSearch = document.querySelector(".filter-search");
 const clearFilter = document.querySelector(".clear-filter");
 const formInputs = document.querySelectorAll("form input");
-const closeToast = document.querySelector(".close-toast");
 const editButton = document.querySelector("#edit-button");
 
 editButton.addEventListener("click", onClickEditButton);
-
-closeToast.addEventListener("click", onClickCloseToast);
 
 formInputs.forEach((formInput) => {
   formInput.addEventListener("input", onChangeFormInput);

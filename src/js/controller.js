@@ -19,6 +19,7 @@ import {
   onClickPageNumber,
   onClickSkillClose,
   onClickFilterOption,
+  onClickCloseToast,
 } from "./handlers.js";
 import { state } from "./context.js";
 
@@ -636,16 +637,43 @@ function clearFormError(name) {
  * Function to show a toast
  * @param {string} message message to show
  * @param {boolean} isError  error toast
+ * @param {number} timeout timeout in milliseconds
  */
-function showToast(message, isError) {
-  const toast = document.querySelector(".toast");
+function showToast(message, isError, timeout) {
+  const toastContainer = document.querySelector(".toast-container");
+  const toast = document.createElement("div");
+  toast.classList = "toast error";
+  toast.innerHTML = `
+  <p class="toast-message">
+    This is an error message
+  </p>
+  `;
+
   toast.querySelector("p").innerText = message;
-  toast.classList.add("show");
   if (isError) {
     toast.classList.add("error");
   } else {
     toast.classList.remove("error");
   }
+  if (timeout) {
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => {
+        toastContainer.removeChild(toast);
+      }, 300);
+    }, timeout);
+  } else {
+    toast.innerHTML += `
+  <span class="material-symbols-outlined close-toast"> close </span>`;
+    toast
+      .querySelector(".close-toast")
+      .addEventListener("click", onClickCloseToast);
+  }
+  toastContainer.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 100);
 }
 
 export {
