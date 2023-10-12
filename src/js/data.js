@@ -169,6 +169,7 @@ function deleteEmployee(id) {
 
 /**
  * Function to set employee data
+ * @returns {string} new/updated/nochange
  */
 function setEmployee(employee) {
   const index = employees.findIndex(
@@ -176,10 +177,15 @@ function setEmployee(employee) {
   );
   if (index === -1) {
     employees.push(employee);
-  } else {
+    localStorage.setItem("employees", JSON.stringify(employees));
+    return "new";
+  } else if (JSON.stringify(employees[index]) !== JSON.stringify(employee)) {
     employees[index] = employee;
+    localStorage.setItem("employees", JSON.stringify(employees));
+    return "updated";
+  } else {
+    return "nochange";
   }
-  localStorage.setItem("employees", JSON.stringify(employees));
 }
 
 /**

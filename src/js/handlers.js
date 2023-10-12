@@ -26,6 +26,7 @@ import {
   getSkillsFromInput,
   clearSkillInput,
   selectSkill,
+  showToast,
 } from "./controller.js";
 
 const table = document.querySelector(".emp-table");
@@ -177,7 +178,7 @@ function onClickSave(event) {
   if (!employee) {
     return;
   }
-  setEmployee(employee);
+  const status = setEmployee(employee);
   const popup = document.querySelector(".popup");
   if (popup.classList.contains("from-view-popup")) {
     popup.classList = "popup show-popup view-popup";
@@ -185,6 +186,11 @@ function onClickSave(event) {
     closePopup();
   }
   renderTable();
+  if (status === "new") {
+    showToast("Employee created successfully", false, 1800);
+  } else if (status === "updated") {
+    showToast("Employee updated successfully", false, 1800);
+  }
 }
 
 /**
@@ -284,6 +290,7 @@ function onClickYes(e) {
   const confirmationPopup = document.querySelector(".confirmation-popup");
   const employeeId = confirmationPopup.dataset.id;
   deleteEmployee(employeeId);
+  showToast("Employee deleted successfully", false, 1800);
   closePopup();
   renderTable();
 }
@@ -449,8 +456,12 @@ function onClickCancelButton(e) {
  * Function to trigger on click of close toast
  */
 function onClickCloseToast(e) {
-  const toast = document.querySelector(".toast");
+  const toastContainer = document.querySelector(".toast-container");
+  const toast = e.currentTarget.parentElement;
   toast.classList.remove("show");
+  setTimeout(() => {
+    toastContainer.removeChild(toast);
+  }, 300);
 }
 
 export {
