@@ -8,6 +8,25 @@ async function getData(url) {
 }
 
 /**
+ * Post data to url
+ */
+export async function postData(url, data) {
+  return fetch(url, {
+    method: "POST",
+    body: JSON.stringify(data),
+  }).then((response) => response.json());
+}
+
+/**
+ * Delete data from url
+ */
+export async function deleteData(url) {
+  return fetch(url, {
+    method: "DELETE",
+  }).then((response) => response.json());
+}
+
+/**
  * Function to add span for search term in a string
  */
 function highlightSearchTerm(text, searchTerm) {

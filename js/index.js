@@ -1,4 +1,4 @@
-import { getAllDepartments, loadData, loadSampleData } from "./data.js";
+import { loadData } from "./data.js";
 import {
   onClickColumnTitle,
   onClickFilterButton,
@@ -20,15 +20,12 @@ import {
   onChangeFilterSearch,
   onClickClearFilters,
   onChangeFormInput,
-  onClickCloseToast,
   onClickEditButton,
-  onClickCancelButton,
   onKeyDownSkillsInput,
 } from "./handlers.js";
 import {
   renderTable,
   closePopup,
-  setDepartmentOptions,
   showToast,
 } from "./controller.js";
 
@@ -119,10 +116,7 @@ document.addEventListener("click", onClickDocument);
  */
 async function loadEmployees() {
   try {
-    const employees = await loadData();
-    if (employees === undefined || employees === null) {
-      await loadSampleData();
-    }
+    await loadData();
   } catch (e) {
     showToast(
       "There was an error loading data from cache. Try clearing the cache and try again.",

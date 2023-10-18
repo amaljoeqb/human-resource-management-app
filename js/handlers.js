@@ -178,18 +178,24 @@ function onClickSave(event) {
   if (!employee) {
     return;
   }
-  const status = setEmployee(employee);
-  const popup = document.querySelector(".popup");
-  if (popup.classList.contains("from-view-popup")) {
-    popup.classList = "popup show-popup view-popup";
-  } else {
-    closePopup();
-  }
-  renderTable();
-  if (status === "new") {
-    showToast("Employee created successfully", false, 1800);
-  } else if (status === "updated") {
-    showToast("Employee updated successfully", false, 1800);
+  try {
+    const status = setEmployee(employee).then((status) => {
+      renderTable();
+      if (status === "new") {
+        showToast("Employee created successfully", false, 1800);
+      } else if (status === "updated") {
+        showToast("Employee updated successfully", false, 1800);
+      }
+    });
+    const popup = document.querySelector(".popup");
+    if (popup.classList.contains("from-view-popup")) {
+      popup.classList = "popup show-popup view-popup";
+    } else {
+      closePopup();
+    }
+  } catch (error) {
+    console.log(error);
+    showToast("Error saving employee data", true, 1800);
   }
 }
 

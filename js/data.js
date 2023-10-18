@@ -1,4 +1,5 @@
-import { getData } from "./helpers.js";
+import { serverUri } from "./config.js";
+import { getData, postData } from "./helpers.js";
 
 let employees = [];
 let skills = [];
@@ -103,7 +104,7 @@ function searchEmployees(searchTerm) {
  */
 async function loadData() {
   try {
-    employees = JSON.parse(localStorage.getItem("employees"));
+    employees = await getData(serverUri + "/employees");
     skills = JSON.parse(localStorage.getItem("skills"));
     if (skills === null) {
       skills = (await getData("assets/json/skills.json")).skills;
@@ -115,20 +116,6 @@ async function loadData() {
     skills = [];
     departments = [];
     throw new Error("Error loading data from local storage");
-  }
-}
-
-/**
- * Function to load sample data from JSON file
- */
-async function loadSampleData() {
-  try {
-    const sampleData = await getData("assets/json/employees.json");
-    localStorage.setItem("employees", JSON.stringify(sampleData.employees));
-    employees = sampleData.employees;
-    return employees;
-  } catch {
-    throw new Error("Error loading sample data");
   }
 }
 
@@ -162,65 +149,31 @@ function getEmployee(id) {
  * Function to delete employee by id
  * @param {string} id employee id
  */
-function deleteEmployee(id) {
-  employees = employees.filter((employee) => employee.employeeId != id);
-  localStorage.setItem("employees", JSON.stringify(employees));
+async function deleteEmployee(id) {
+  try {
+    await deleteData(serverUri + "/employees/" + id);
+    employees = await getData(serverUri + "/employees");
+  } catch (e) {
+    console.log(e);
+    throw new Error("Error deleting employee");
+  }
 }
 
 /**
  * Function to set employee data
  * @returns {string} new/updated/nochange
  */
-function setEmployee(employee) {
-  const index = employees.findIndex(
-    (employeeItem) => employeeItem.employeeId == employee.employeeId
-  );
-  if (index === -1) {
-    employees.push(employee);
-    localStorage.setItem("employees", JSON.stringify(employees));
-    return "new";
-  } else if (!isEmployeeEqual(employees[index], employee)) {
-    employees[index] = employee;
-    localStorage.setItem("employees", JSON.stringify(employees));
-    return "updated";
-  } else {
-    return "nochange";
-  }
-}
-
-/**
- * Function to check if two employee objects are equal
- * @param {object} employee1 employee object
- * @param {object} employee2 employee object
- */
-function isEmployeeEqual(employee1, employee2) {
-  if (!employee1 || !employee2) {
-    return false;
-  }
-  if (
-    employee1.employeeId != employee2.employeeId ||
-    employee1.name != employee2.name ||
-    employee1.email != employee2.email ||
-    employee1.designation != employee2.designation ||
-    employee1.department.departmentId != employee2.department.departmentId ||
-    employee1.salary != employee2.salary ||
-    employee1.dateOfBirth != employee2.dateOfBirth ||
-    employee1.joiningDate != employee2.joiningDate ||
-    employee1.skills.length != employee2.skills.length
-  ) {
-    return false;
-  }
-  employee1.skills.forEach((skill1) => {
-    if (!employee2.skills.find((skill2) => skill1.skillId == skill2.skillId)) {
-      return false;
+async function setEmployee(employee) {
+  try {
+    const {status} = await postData(serverUri + "/employees", employee);
+    if (status !== "nochange") {
+      employees = await getData(serverUri + "/employees");
     }
-  });
-  employee2.skills.forEach((skill2) => {
-    if (!employee1.skills.find((skill1) => skill1.skillId == skill2.skillId)) {
-      return false;
-    }
-  });
-  return true;
+    return status;
+  } catch (e) {
+    console.log(e);
+    throw new Error("Error saving employee data");
+  }
 }
 
 /**
@@ -272,7 +225,6 @@ export {
   filterEmployees,
   searchEmployees,
   loadData,
-  loadSampleData,
   setEmployee,
   getNextEmployeeId,
   getAllEmployees,
