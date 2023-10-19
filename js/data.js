@@ -150,13 +150,8 @@ function getEmployee(id) {
  * @param {string} id employee id
  */
 async function deleteEmployee(id) {
-  try {
-    await deleteData(serverUri + "/employees/" + id);
-    employees = await getData(serverUri + "/employees");
-  } catch (e) {
-    console.log(e);
-    throw new Error("Error deleting employee");
-  }
+  await deleteData(serverUri + "/employees/" + id);
+  employees = await getData(serverUri + "/employees");
 }
 
 /**
@@ -164,16 +159,11 @@ async function deleteEmployee(id) {
  * @returns {string} new/updated/nochange
  */
 async function setEmployee(employee) {
-  try {
-    const {status} = await postData(serverUri + "/employees", employee);
-    if (status !== "nochange") {
-      employees = await getData(serverUri + "/employees");
-    }
-    return status;
-  } catch (e) {
-    console.log(e);
-    throw new Error("Error saving employee data");
+  const { status } = await postData(serverUri + "/employees", employee);
+  if (status !== "nochange") {
+    employees = await getData(serverUri + "/employees");
   }
+  return status;
 }
 
 /**

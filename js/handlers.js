@@ -178,24 +178,26 @@ function onClickSave(event) {
   if (!employee) {
     return;
   }
-  try {
-    const status = setEmployee(employee).then((status) => {
+  setEmployee(employee)
+    .then((status) => {
       renderTable();
       if (status === "new") {
         showToast("Employee created successfully", false, 1800);
       } else if (status === "updated") {
         showToast("Employee updated successfully", false, 1800);
       }
+    })
+    .catch((error) => {
+      console.log(error);
+      const employee = getEmployee(employeeId);
+      setFormData(employee);
+      showToast("Error saving employee data", true, 1800);
     });
-    const popup = document.querySelector(".popup");
-    if (popup.classList.contains("from-view-popup")) {
-      popup.classList = "popup show-popup view-popup";
-    } else {
-      closePopup();
-    }
-  } catch (error) {
-    console.log(error);
-    showToast("Error saving employee data", true, 1800);
+  const popup = document.querySelector(".popup");
+  if (popup.classList.contains("from-view-popup")) {
+    popup.classList = "popup show-popup view-popup";
+  } else {
+    closePopup();
   }
 }
 

@@ -11,10 +11,20 @@ async function getData(url) {
  * Post data to url
  */
 export async function postData(url, data) {
+  const json = JSON.stringify(data);
   return fetch(url, {
     method: "POST",
-    body: JSON.stringify(data),
-  }).then((response) => response.json());
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  }).then((response) => {
+    if (response.status === 200) {
+      return response.json();
+    } else {
+      throw new Error("Error saving data to server");
+    }
+  });
 }
 
 /**
