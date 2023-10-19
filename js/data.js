@@ -1,5 +1,5 @@
 import { serverUri } from "./config.js";
-import { getData, postData } from "./helpers.js";
+import { deleteData, getData, postData } from "./helpers.js";
 
 let employees = [];
 let skills = [];
@@ -150,7 +150,10 @@ function getEmployee(id) {
  * @param {string} id employee id
  */
 async function deleteEmployee(id) {
-  await deleteData(serverUri + "/employees/" + id);
+  const response = await deleteData(serverUri + "/employees/" + id);
+  if (response.status !== "ok") {
+    throw new Error("Error deleting employee");
+  }
   employees = await getData(serverUri + "/employees");
 }
 

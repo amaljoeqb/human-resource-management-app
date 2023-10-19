@@ -297,10 +297,16 @@ function onClickDocument(event) {
 function onClickYes(e) {
   const confirmationPopup = document.querySelector(".confirmation-popup");
   const employeeId = confirmationPopup.dataset.id;
-  deleteEmployee(employeeId);
-  showToast("Employee deleted successfully", false, 1800);
+  deleteEmployee(employeeId)
+    .then(() => {
+      showToast("Employee deleted successfully", false, 1800);
+      renderTable();
+    })
+    .catch((error) => {
+      console.log(error);
+      showToast("Error deleting employee", true, 1800);
+    });
   closePopup();
-  renderTable();
 }
 
 /**
